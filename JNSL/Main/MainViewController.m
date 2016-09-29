@@ -155,6 +155,7 @@
     UINavigationBar *navBar=[UINavigationBar appearance];
     // 1.2.设置导航栏背景
     [navBar setBackgroundImage:[UIImage imageNamed:@"导航栏"] forBarMetrics:UIBarMetricsDefault];
+//    navBar.backgroundColor = ColorWithRGB(0x45a1d4);
     // 1.3.设置状态栏背景
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     //相对于上面的接口，这个接口可以动画的改变statusBar的前景色
