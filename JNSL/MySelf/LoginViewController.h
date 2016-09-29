@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate>
+@interface LoginViewController : UIViewController
 @property (nonatomic,strong) UIImageView *logoImageView;
 @property (nonatomic,strong) UIView *userView;
 @property (nonatomic,strong) UIImageView *userIcoImageView;
@@ -24,4 +24,6 @@
 @property (nonatomic,strong) UIView *setView;
 @property (nonatomic,strong) UITextField *serverIpTextFiled;
 @property (nonatomic,strong) UIButton *sureServerBtn;
+
+@property (nonatomic,strong) UIView *serviewView;
 @end

@@ -7,12 +7,14 @@
 //
 
 #ifndef Money_Come_Property_pch
-//#import "AFNetworkTool.h"
+#import "AFNetworkTool.h"
+#import "AppDelegate.h"
+#import "IQKeyboardManager.h"
 #import "UserInfo.h"
 #define userInfoJNSL ([UserInfo userInfo])
 #define Money_Come_Property_pch
-#define ServerUrl @"http://112.65.187.118:8074/ep4.1_nm_app/"
-#define LoginURL @"androidLoginAction!androidLogin.action"
+#define ServerUrl @"http://112.65.187.118:8074/ep4.1_nm_app"
+#define LoginURL ServerUrl@"/androidLoginAction!androidLogin.action"
 #define screenHeight  ([UIScreen mainScreen].bounds.size.height)
 #define screenWidth  ([UIScreen mainScreen].bounds.size.width)
 // 获取RGB颜色

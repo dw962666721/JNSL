@@ -6,7 +6,6 @@
 //  Copyright (c) 2016年 dw962666721. All rights reserved.
 //
 
-#import "AppDelegate.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +16,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;//控制整个功能是否启用。
+    manager.shouldResignOnTouchOutside = YES;//控制点击背景是否收起键盘
+    
+    //控制键盘上的工具条文字颜色是否用户自定义
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    //控制是否显示键盘上的工具条。
+    manager.enableAutoToolbar = YES;
     return YES;
 }
 
