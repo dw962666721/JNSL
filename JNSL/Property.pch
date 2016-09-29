@@ -1,0 +1,47 @@
+//
+//  Property.pch
+//  Money_Come
+//
+//  Created by user on 15/7/8.
+//  Copyright (c) 2015年 dw. All rights reserved.
+//
+
+#ifndef Money_Come_Property_pch
+//#import "AFNetworkTool.h"
+#import "UserInfo.h"
+#define userInfoJNSL ([UserInfo userInfo])
+#define Money_Come_Property_pch
+#define ServerUrl @"http://112.65.187.118:8074/ep4.1_nm_app/"
+#define LoginURL @"androidLoginAction!androidLogin.action"
+#define screenHeight  ([UIScreen mainScreen].bounds.size.height)
+#define screenWidth  ([UIScreen mainScreen].bounds.size.width)
+// 获取RGB颜色
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+//! 参数格式为：0xFFFFFF
+#define ColorWithRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 \
+                green:((float)((rgbValue & 0xFF00) >> 8)) / 255.0 \
+                 blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
+
+#define IPHONE4             ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )480) < DBL_EPSILON )
+#define IPHONE5             ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568) < DBL_EPSILON )
+#define IPHONE6             ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )667) < DBL_EPSILON )
+#define IPHONE6PLUS         ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )736) < DBL_EPSILON )
+//获取系统版本
+#define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+/**
+ *  4.设备系统版本
+ */
+#define iOS6_LATER          ([[UIDevice currentDevice].systemVersion floatValue] >=6.0)
+#define iOS7_LATER          ([[UIDevice currentDevice].systemVersion floatValue] >=7.0)
+#define iOS8_LATER          ([[UIDevice currentDevice].systemVersion floatValue] >=8.0)
+#define iOS9_LATER          ([[UIDevice currentDevice].systemVersion floatValue] >=9.0)
+#define iOS7_0              ([[UIDevice currentDevice].systemVersion floatValue] ==7.0)
+#define iOS7_1              ([[UIDevice currentDevice].systemVersion floatValue] ==7.1)
+#define iOS8_0              ([[UIDevice currentDevice].systemVersion floatValue] ==8.0)
+#define iOS8_1              ([[UIDevice currentDevice].systemVersion floatValue] ==8.1)
+#define iOS8_2              ([[UIDevice currentDevice].systemVersion floatValue] ==8.2)
+#define iOS8_3              ([[UIDevice currentDevice].systemVersion floatValue] ==8.3)
+#define iOS9_0              ([[UIDevice currentDevice].systemVersion floatValue] ==9.0)
+#define iOS9_1              ([[UIDevice currentDevice].systemVersion floatValue] ==7.1)
+#endif
