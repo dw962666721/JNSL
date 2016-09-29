@@ -34,37 +34,41 @@
 {
     NSInteger y=70;
     NSInteger logoW=70;
+    NSInteger icoW=30;
     self.logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((screenWidth-logoW)/2, y, logoW, logoW)];
     self.logoImageView.image = [UIImage imageNamed:@"sis_logo2"];
     [self.view addSubview:self.logoImageView];
     
-    y+=20;
+    y+=20+logoW;
     self.userView = [[UIView alloc] initWithFrame:CGRectMake(20, y, screenWidth-40, 45)];
     self.userView.backgroundColor = ColorWithRGB(0xbab5b1);
     self.userView.layer.cornerRadius=5;
     [self.view addSubview:self.userView];
     
-    self.userIcoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(2, (45-40)/2, 40, 40)];
+    self.userIcoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (45-icoW)/2, icoW, icoW)];
     self.userIcoImageView.image = [UIImage imageNamed:@"username_icon"];
     [self.userView addSubview:self.userIcoImageView];
     
-    self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(44, 0, self.userView.frame.size.width-44, self.userView.frame.size.height)];
+    self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(52, 0, self.userView.frame.size.width-44, self.userView.frame.size.height)];
     self.userTextField.delegate = self;
     [self.userView addSubview:self.userTextField];
     
-    y+=20;
+    y+=20+40;
     self.passWordtView = [[UIView alloc] initWithFrame:CGRectMake(20, y, screenWidth-40, 45)];
     self.passWordtView.backgroundColor = ColorWithRGB(0xbab5b1);
     self.passWordtView.layer.cornerRadius=5;
     [self.view addSubview:self.passWordtView];
     
-    self.passWordIcoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(2, (45-40)/2, 40, 40)];
-    self.passWordIcoImageView.image = [UIImage imageNamed:@"username_icon"];
+    self.passWordIcoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, (45-icoW)/2, icoW, icoW)];
+    self.passWordIcoImageView.image = [UIImage imageNamed:@"pwd_icon"];
     [self.passWordtView addSubview:self.passWordIcoImageView];
     
-    self.passWordTextField = [[UITextField alloc] initWithFrame:CGRectMake(44, 0, self.passWordtView.frame.size.width-44, self.passWordtView.frame.size.height)];
+    self.passWordTextField = [[UITextField alloc] initWithFrame:CGRectMake(52, 0, self.passWordtView.frame.size.width-44, self.passWordtView.frame.size.height)];
     self.passWordTextField.delegate = self;
     [self.passWordtView addSubview:self.passWordTextField];
+    
+    y+=20+40;
+    self.loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)];
 }
 
 - (void)didReceiveMemoryWarning {
