@@ -122,7 +122,7 @@
        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
-           
+            [self.navigationController popViewControllerAnimated:true];
         }
         
     } fail:^{

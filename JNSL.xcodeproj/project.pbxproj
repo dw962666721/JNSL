@@ -79,6 +79,7 @@
 		CF98FC3D1DA0C0730057D057 /* zhifaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF98FC3C1DA0C0730057D057 /* zhifaTableViewCell.m */; };
 		CF98FC401DA0E3730057D057 /* zhifaDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF98FC3F1DA0E3730057D057 /* zhifaDetailsViewController.m */; };
 		CF98FC431DA0E8690057D057 /* fileReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF98FC421DA0E8690057D057 /* fileReaderViewController.m */; };
+		CF98FC491DA1065A0057D057 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CF98FC481DA1065A0057D057 /* MBProgressHUD.m */; };
 		DB2F8C281D9CD99D0075DD6F /* JNSLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F8C271D9CD99D0075DD6F /* JNSLTests.m */; };
 		DB2F8C331D9CD99D0075DD6F /* JNSLUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F8C321D9CD99D0075DD6F /* JNSLUITests.m */; };
 /* End PBXBuildFile section */
@@ -243,6 +244,9 @@
 		CF98FC3F1DA0E3730057D057 /* zhifaDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zhifaDetailsViewController.m; sourceTree = "<group>"; };
 		CF98FC411DA0E8690057D057 /* fileReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileReaderViewController.h; sourceTree = "<group>"; };
 		CF98FC421DA0E8690057D057 /* fileReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fileReaderViewController.m; sourceTree = "<group>"; };
+		CF98FC451DA0F63E0057D057 /* zhifaProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhifaProtocal.h; sourceTree = "<group>"; };
+		CF98FC471DA1065A0057D057 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		CF98FC481DA1065A0057D057 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DB2F8C0A1D9CD99D0075DD6F /* JNSL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNSL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2F8C231D9CD99D0075DD6F /* JNSLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JNSLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2F8C271D9CD99D0075DD6F /* JNSLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JNSLTests.m; sourceTree = "<group>"; };
@@ -280,6 +284,8 @@
 		CF17D2991D9FC2EA0084CD9C /* JNSL */ = {
 			isa = PBXGroup;
 			children = (
+				CF98FC461DA1065A0057D057 /* mbprogress */,
+				CF98FC441DA0F6220057D057 /* protocol */,
 				CF17D38E1D9FC6360084CD9C /* MJRefresh */,
 				CF17D3431D9FC3F60084CD9C /* base */,
 				CF17D3461D9FC3F60084CD9C /* huanbao */,
@@ -594,6 +600,23 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		CF98FC441DA0F6220057D057 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CF98FC451DA0F63E0057D057 /* zhifaProtocal.h */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		CF98FC461DA1065A0057D057 /* mbprogress */ = {
+			isa = PBXGroup;
+			children = (
+				CF98FC471DA1065A0057D057 /* MBProgressHUD.h */,
+				CF98FC481DA1065A0057D057 /* MBProgressHUD.m */,
+			);
+			path = mbprogress;
+			sourceTree = "<group>";
+		};
 		DB2F8C011D9CD99D0075DD6F = {
 			isa = PBXGroup;
 			children = (
@@ -778,6 +801,7 @@
 				CF17D32D1D9FC2EA0084CD9C /* AFURLRequestSerialization.m in Sources */,
 				CF17D3751D9FC3F60084CD9C /* attentionCollectionViewCell.m in Sources */,
 				CF17D32C1D9FC2EA0084CD9C /* AFURLConnectionOperation.m in Sources */,
+				CF98FC491DA1065A0057D057 /* MBProgressHUD.m in Sources */,
 				CF17D3351D9FC2EA0084CD9C /* IQUIWindow+Hierarchy.m in Sources */,
 				CF17D31B1D9FC2EA0084CD9C /* main.m in Sources */,
 				CF17D33B1D9FC2EA0084CD9C /* IQTitleBarButtonItem.m in Sources */,

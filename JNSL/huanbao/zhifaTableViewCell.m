@@ -31,7 +31,7 @@
         //设置样式
         self.logoimg.image = [UIImage imageNamed:@"arrow_left3"];
         self.filename.text = @"desktop.ini";
-        [self.downloadBtn setTitle:@"已下载" forState:UIControlStateNormal];
+        [self.downloadBtn setTitle:@"" forState:UIControlStateNormal];
         [self.seeBrn setTitle:@"查看" forState:UIControlStateNormal];
         [self.downloadBtn setTitleColor:ColorWithRGB(0x1381f5) forState:UIControlStateNormal];
         [self.seeBrn setTitleColor:ColorWithRGB(0x1381f5) forState:UIControlStateNormal];
@@ -44,13 +44,41 @@
 
 }
 
+-(void)setDownText{
+    if ([self isexsitFile:self.cellFilename]) {
+        [self.downloadBtn setTitle:@"已下载" forState:UIControlStateNormal];
+    }else{
+        [self.downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
+    }
+}
+
 -(void)download{
+    //判断是否已经下载
+    if ([self isexsitFile:self.cellFilename]) {
+        //如果已经下载 直接打开
+        [self see];
+        
+    }else{
+        if (self.zprotocal != nil) {
+            [self.zprotocal cellClick:self.cellIndex withUrl:self.cellUrl withName:self.cellFilename withindexpath:self.ipath];
+        }
     
+    }
 }
 -(void)see{
-
+    //根据filename查找对应的文件路径
+    [self.zprotocal cellSee:self.cellIndex withfilename:self.cellFilename];
 }
 
+-(BOOL) isexsitFile:(NSString *)docName{
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) lastObject];
+    //2.创建资源存储路径
+    NSString *appendPath = [NSString stringWithFormat:@"%@%@",@"/",docName];
+    NSString *file = [documentsPath stringByAppendingString:appendPath];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    bool isexsit = [manager fileExistsAtPath:file];
+    return isexsit;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

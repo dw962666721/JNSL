@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "zhifaProtocal.h"
 @interface zhifaTableViewCell : UITableViewCell
 @property UIImageView *logoimg;
 @property UILabel *filename;
 @property UIButton *downloadBtn;
 @property UIButton *seeBrn;
+@property NSInteger *cellIndex;
+@property NSString *cellUrl;
+@property NSString *cellFilename;
+@property id<zhifaProtocal> zprotocal;
+@property NSIndexPath *ipath;
+@property NSString *fileId;
+-(void)setDownText;
 @end

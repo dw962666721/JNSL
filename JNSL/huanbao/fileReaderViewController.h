@@ -11,4 +11,5 @@
 
 @interface fileReaderViewController : baseViewController
 @property UIWebView *webview;
+@property NSString *filename;
 @end

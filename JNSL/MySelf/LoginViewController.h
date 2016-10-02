@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "baseViewController.h"
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : baseViewController
 @property (nonatomic,strong) UIImageView *logoImageView;
 @property (nonatomic,strong) UIView *userView;
 @property (nonatomic,strong) UIImageView *userIcoImageView;
