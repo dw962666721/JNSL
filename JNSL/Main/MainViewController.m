@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 
+
 @interface MainViewController ()
 @property (nonatomic,strong) NSArray *titleArray;
 @end
@@ -120,16 +121,20 @@
     view1.title = @"首页";
     [self addChildViewController:view1];
     
-    UIViewController *view2=[[UIViewController alloc] init];
+    myAttentionViewController *view2=[[myAttentionViewController alloc] init];
+    view2.title = @"关注";
     [self addChildViewController:view2];
     
-    UIViewController *view3=[[UIViewController alloc] init];
+    emeViewController *view3=[[emeViewController alloc] init];
+    view3.title = @"环保知识";
     [self addChildViewController:view3];
     
     MySelfViewController *mySelfView=[[MySelfViewController alloc] init];
     [self addChildViewController:mySelfView];
     
 }
+
+
 ////MARK --  选中index位置对应的子控制器
 -(void)selecteControllerAtIndex:(NSInteger)index
 {

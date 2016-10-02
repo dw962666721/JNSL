@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "JSCustomTabbar.h"
 #import "MySelfViewController.h"
+#import "myAttentionViewController.h"
+#import "emeViewController.h"
 #define kTabbarHeight 49.0f
 
 @interface MainViewController : UIViewController<UINavigationControllerDelegate,JSCustomTabbarDataSource,JSCustomTabbarDelegate>
