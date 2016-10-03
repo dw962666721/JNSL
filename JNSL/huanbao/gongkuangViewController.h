@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "baseViewController.h"
 #import "gongkuangDetailsViewController.h"
-#import "yuanliDetailsViewController.h"
 #import "zuoyongDetalsViewController.h"
+#import "wulaio1ViewController.h"
+#import "wulaio2ViewController.h"
+#import "wulaio3ViewController.h"
+#import "wulaio4ViewController.h"
+#import "guizeViewController.h"
+#import "yiyiViewController.h"
 
 
 @interface gongkuangViewController : baseViewController<UITableViewDataSource,UITableViewDelegate>

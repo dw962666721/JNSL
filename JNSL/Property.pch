@@ -19,7 +19,11 @@
 
 #define screenHeight  ([UIScreen mainScreen].bounds.size.height)
 #define screenWidth  ([UIScreen mainScreen].bounds.size.width)
+#define commonstr @""
 // 获取RGB颜色
+#define pi 3.14159265359
+#define   DEGREES_TO_RADIANS(degrees)  ((pi * degrees)/ 180)
+
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 //! 参数格式为：0xFFFFFF
 #define ColorWithRGB(rgbValue) \

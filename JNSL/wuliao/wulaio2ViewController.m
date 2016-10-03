@@ -1,45 +1,38 @@
 //
-//  yuanliDetailsViewController.m
+//  wulaio2ViewController.m
 //  JNSL
 //
 //  Created by wangjiang on 16/10/2.
 //  Copyright © 2016年 zw. All rights reserved.
 //
 
-#import "yuanliDetailsViewController.h"
+#import "wulaio2ViewController.h"
 
-@interface yuanliDetailsViewController ()
+@interface wulaio2ViewController ()
 
 @end
 
-@implementation yuanliDetailsViewController
+@implementation wulaio2ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.str = @"以脱硫系统为例:根据物质守恒的定律,根据物质守恒的定律";
+    NSString *str = @"以燃煤电厂为例：在燃煤燃烧理论中，有一些参数是有关联关系的，比如燃煤量、烟气量等，将这些关联关系融入到工况监控系统中，可以发现一些异常情况。";
     UIFont *font = [UIFont systemFontOfSize:28];
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:font,NSFontAttributeName, nil];
-    CGFloat hei = [self.str boundingRectWithSize:CGSizeMake(screenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size.height;
-                                                            
-    self.textlable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, hei)];
+    CGFloat hei = [str boundingRectWithSize:CGSizeMake(screenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size.height;
+    
+    self.textlable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, hei+50)];
     self.textlable.textColor = ColorWithRGB(0x737373);
     self.textlable.font = font;
     self.textlable.numberOfLines = 0;
-    self.textlable.text = self.str;
+    self.textlable.text = str;
     [self.view addSubview:self.textlable];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
-
-
 
 /*
 #pragma mark - Navigation

@@ -35,6 +35,56 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
+{
+    switch (indexPath.row) {
+        case 0:
+            
+             self.totalAmount = [[totalAmountViewController alloc] init];
+            
+            [self.navigationController pushViewController:self.totalAmount animated:true];
+            
+            break;
+        case 1:
+            
+            
+                self.excessiveWarinng = [[excessiveWarinngViewController alloc] init];
+            
+            [self.navigationController pushViewController:self.excessiveWarinng animated:true];
+            break;
+        case 2:
+            
+            
+                self.unusualReport = [[unusualReportViewController alloc] init];
+            
+            [self.navigationController pushViewController:self.unusualReport animated:true];
+            break;
+        case 3:
+            
+            
+                self.overproofReport = [[overproofReportViewController alloc] init];
+            
+            [self.navigationController pushViewController:self.overproofReport animated:true];
+            break;
+        case 4:
+            
+            
+                self.realtime = [[realtimeViewController alloc] init];
+            
+            [self.navigationController pushViewController:self.realtime animated:true];
+            break;
+        case 5:
+            self.realTechnologo = [[realTechnologoViewController alloc] init];
+            
+            [self.navigationController pushViewController:self.realTechnologo animated:true];
+            break;
+        
+            
+        default:
+            break;
+    }
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;

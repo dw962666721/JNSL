@@ -1,38 +1,33 @@
 //
-//  huanbaoDetailsViewController.m
+//  wulaio3ViewController.m
 //  JNSL
 //
 //  Created by wangjiang on 16/10/2.
 //  Copyright © 2016年 zw. All rights reserved.
 //
 
-#import "huanbaoDetailsViewController.h"
+#import "wulaio3ViewController.h"
 
-@interface huanbaoDetailsViewController ()
+@interface wulaio3ViewController ()
 
 @end
 
-@implementation huanbaoDetailsViewController
+@implementation wulaio3ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.str = @"以脱硫系统为例:根据物质守恒的定律,根据物质守恒的定律";
+    NSString *str = @"以脱硫系统为例：在脱硫系统中，多个过程参数之间有着复杂的逻辑关系，工况系统实时对这些参数进行比对，发现治污设施的运行异常。";
     UIFont *font = [UIFont systemFontOfSize:28];
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:font,NSFontAttributeName, nil];
-    CGFloat hei = [self.str boundingRectWithSize:CGSizeMake(screenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size.height;
+    CGFloat hei = [str boundingRectWithSize:CGSizeMake(screenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size.height;
     
-    self.textlable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, hei)];
+    self.textlable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screenWidth, hei+50)];
     self.textlable.textColor = ColorWithRGB(0x737373);
     self.textlable.font = font;
     self.textlable.numberOfLines = 0;
-    self.textlable.text = self.str;
+    self.textlable.text = str;
     [self.view addSubview:self.textlable];
-    // Do any additional setup after loading the view.
 }
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

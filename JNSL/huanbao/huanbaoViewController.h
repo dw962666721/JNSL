@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "baseViewController.h"
-#import "huanbaoDetailsViewController.h"
+#import "huanbaoWebViewController.h"
 
 @interface huanbaoViewController : baseViewController<UITableViewDataSource,UITableViewDelegate>
 

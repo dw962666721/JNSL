@@ -1,5 +1,5 @@
 //
-//  huanbaoDetailsViewController.h
+//  wulaio2ViewController.h
 //  JNSL
 //
 //  Created by wangjiang on 16/10/2.
@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "baseViewController.h"
 
-@interface huanbaoDetailsViewController : baseViewController
+@interface wulaio2ViewController : baseViewController
 @property UILabel *textlable;
-@property NSString *str;
 @end

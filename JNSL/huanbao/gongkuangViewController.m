@@ -16,8 +16,13 @@
     NSMutableArray *_flagArray;
     NSMutableArray *_dicarr;
     gongkuangDetailsViewController *gongkuangDetails;
-    yuanliDetailsViewController *yuanliDetails;
     zuoyongDetalsViewController *zuoyongDetails;
+    wulaio1ViewController *w1;
+    wulaio2ViewController *w2;
+    wulaio3ViewController *w3;
+    wulaio4ViewController *w4;
+    guizeViewController *guize;
+    yiyiViewController *yiyi;
 }
 @end
 
@@ -46,7 +51,7 @@
         [self.DataTable setLayoutMargins:UIEdgeInsetsZero];
     }
     gongkuangDetails = [[gongkuangDetailsViewController alloc] init];
-    yuanliDetails = [[yuanliDetailsViewController alloc] init];
+    
     zuoyongDetails = [[zuoyongDetalsViewController alloc] init];
     
     // Do any additional setup after loading the view.
@@ -116,35 +121,46 @@
         case 1:
             switch (indexPath.row) {
                 case 0:
-                    yuanliDetails.title = @"物料平衡";
+                    w1 = [[wulaio1ViewController alloc] init];
+                    w1.title = @"物料平衡";
+                    [self.navigationController pushViewController:w1 animated:true];
                     break;
                 case 1:
-                    yuanliDetails.title = @"关联关系";
+                    w2 = [[wulaio2ViewController alloc] init];
+                    w2.title = @"关联关系";
+                    [self.navigationController pushViewController:w2 animated:true];
                     break;
                 case 2:
-                    yuanliDetails.title = @"逻辑关系";
+                    w3 = [[wulaio3ViewController alloc] init];
+                    w3.title = @"逻辑关系";
+                    [self.navigationController pushViewController:w3 animated:true];
                     break;
                 case 3:
-                    yuanliDetails.title = @"环保检查经验";
+                    w4 = [[wulaio4ViewController alloc] init];
+                    w4.title = @"环保检查经验";
+                    [self.navigationController pushViewController:w4 animated:true];
                     break;
                 default:
                     break;
             }
-            [self.navigationController pushViewController:yuanliDetails animated:true];
+            
             break;
 
         case 2:
             switch (indexPath.row) {
                 case 0:
-                    gongkuangDetails.title = @"异常规则";
+                    guize = [[guizeViewController alloc] init];
+                    w4.title = @"异常规则";
+                    [self.navigationController pushViewController:guize animated:true];
                     break;
                 case 1:
-                    gongkuangDetails.title = @"环保意义";
+                    yiyi = [[yiyiViewController alloc] init];
+                    w4.title = @"环保意义";
+                    [self.navigationController pushViewController:yiyi animated:true];
                     break;
                 default:
                     break;
             }
-            [self.navigationController pushViewController:gongkuangDetails animated:true];
             break;
 
         default:

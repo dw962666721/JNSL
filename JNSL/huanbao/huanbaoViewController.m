@@ -14,7 +14,7 @@
     NSArray *arr2;
     NSMutableArray *_flagArray;
     NSMutableArray *_dicarr;
-    huanbaoDetailsViewController *huanbaoDetails;
+    huanbaoWebViewController *huanbaoDetails;
 }
 @end
 
@@ -41,7 +41,6 @@
     if ([self.DataTable respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.DataTable setLayoutMargins:UIEdgeInsetsZero];
     }
-    huanbaoDetails = [[huanbaoDetailsViewController alloc] init];
     // Do any additional setup after loading the view.
 }
 
@@ -87,34 +86,50 @@
         case 0:
             switch (indexPath.row) {
                 case 0:
+                    huanbaoDetails = [[huanbaoWebViewController alloc] init];
                     huanbaoDetails.title = @"雾和霾";
+                    huanbaoDetails.htmlname = @"wuyumai";
+                    [self.navigationController pushViewController:huanbaoDetails animated:true];
                     break;
                 case 1:
+                    huanbaoDetails = [[huanbaoWebViewController alloc] init];
                     huanbaoDetails.title = @"什么是AQI";
+                    huanbaoDetails.htmlname = @"AQI";
+                    [self.navigationController pushViewController:huanbaoDetails animated:true];
                     break;
                 case 2:
+                    huanbaoDetails = [[huanbaoWebViewController alloc] init];
                     huanbaoDetails.title = @"其他污染物";
+                    huanbaoDetails.htmlname = @"wuranwu";
+                    [self.navigationController pushViewController:huanbaoDetails animated:true];
                     break;
                 default:
                     break;
             }
-            [self.navigationController pushViewController:huanbaoDetails animated:true];
             break;
         case 1:
             switch (indexPath.row) {
                 case 0:
+                    huanbaoDetails = [[huanbaoWebViewController alloc] init];
                     huanbaoDetails.title = @"水质分类";
+                    huanbaoDetails.htmlname = @"shuizhifenlei";
+                    [self.navigationController pushViewController:huanbaoDetails animated:true];
                     break;
                 case 1:
+                    huanbaoDetails = [[huanbaoWebViewController alloc] init];
                     huanbaoDetails.title = @"水污染源";
+                    huanbaoDetails.htmlname = @"shuiwuranyuan";
+                    [self.navigationController pushViewController:huanbaoDetails animated:true];
                     break;
                 case 2:
+                    huanbaoDetails = [[huanbaoWebViewController alloc] init];
                     huanbaoDetails.title = @"其他污染物";
+                    huanbaoDetails.htmlname = @"wuranshui";
+                    [self.navigationController pushViewController:huanbaoDetails animated:true];
                     break;
                 default:
                     break;
             }
-            [self.navigationController pushViewController:huanbaoDetails animated:true];
             break;
             
         default:

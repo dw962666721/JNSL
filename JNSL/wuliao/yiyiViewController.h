@@ -1,5 +1,5 @@
 //
-//  yuanliDetailsViewController.h
+//  yiyiViewController.h
 //  JNSL
 //
 //  Created by wangjiang on 16/10/2.
@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "baseViewController.h"
 
-@interface yuanliDetailsViewController : baseViewController
-@property UILabel *textlable;
-@property NSString *str;
+@interface yiyiViewController : baseViewController
+@property UIWebView *webview;
 @end
