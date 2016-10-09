@@ -10,9 +10,15 @@
 
 @interface UserInfo : NSObject
 //@property (strong,nonatomic) UserInfo *info;
-@property (strong,nonatomic) NSString *useName;
-@property (strong,nonatomic) NSString *passWord;
-@property (strong,nonatomic) NSDictionary *userDict;
+@property (strong,nonatomic) NSString *userName;
+@property (strong,nonatomic) NSString *userIcon;
+@property (strong,nonatomic) NSString *userId;
+@property (strong,nonatomic) NSString *rollName;
+@property (strong,nonatomic) NSString *phoneNum;
+@property (strong,nonatomic) NSString *email;
+@property (strong,nonatomic) NSString *pollSourceId;
+//@property (strong,nonatomic) NSDictionary *userDict;
 -(NSDictionary*)getUserDict;
+-(void)clearUserDict;
 +(UserInfo*)userInfo;
 @end

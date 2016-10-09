@@ -7,18 +7,34 @@
 //
 
 #ifndef Money_Come_Property_pch
+// 数据请求
 #import "AFNetworkTool.h"
 #import "AppDelegate.h"
+// 键盘处理
 #import "IQKeyboardManager.h"
+// 图片缓存
+#import "UIImageView+WebCache.h"
+// 提示框
+//http://www.cnblogs.com/jys509/p/4757852.html 例子
+#import "MBProgressHUD+NJ.h"
+// 刷新
+#import "MJRefresh.h"
+// 自定义按钮
+#import "CustemButton.h"
+// 用户数据单例
 #import "UserInfo.h"
 #define userInfoJNSL ([UserInfo userInfo])
 #define Money_Come_Property_pch
 #define ServerUrl @"http://112.65.187.118:8074/ep4.1_nm_app"
+#define HomeURL ServerUrl@"/Android/openplant!firstPageList.action"
 #define LoginURL ServerUrl@"/androidLoginAction!androidLogin.action"
+#define MyMessageURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmReport.action"
 #define zhifaURL ServerUrl@"/sourceShareAction!getSourceShareListMobile.action"
+
 
 #define screenHeight  ([UIScreen mainScreen].bounds.size.height)
 #define screenWidth  ([UIScreen mainScreen].bounds.size.width)
+#define TextColor  RGBA(118, 118, 118, 1)
 #define commonstr @""
 // 获取RGB颜色
 #define pi 3.14159265359

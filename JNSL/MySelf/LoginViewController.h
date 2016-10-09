@@ -10,6 +10,7 @@
 #import "baseViewController.h"
 
 @interface LoginViewController : baseViewController
+@property (nonatomic,strong) UIImageView *backImageView;
 @property (nonatomic,strong) UIImageView *logoImageView;
 @property (nonatomic,strong) UIView *userView;
 @property (nonatomic,strong) UIImageView *userIcoImageView;

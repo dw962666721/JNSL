@@ -31,14 +31,14 @@
     [self.view addSubview:self.DataTable];
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
     __weak __typeof(self) weakSelf = self;
-    self.DataTable.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.DataTable.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadNewData];
     }];
-    self.DataTable.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.DataTable.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreData];
     }];
     // 马上进入刷新状态
-    [self.DataTable.mj_header beginRefreshing];
+    [self.DataTable.header beginRefreshing];
     //[self createProgress];
 }
 

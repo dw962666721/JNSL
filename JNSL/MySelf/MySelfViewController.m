@@ -13,21 +13,15 @@
 @end
 
 @implementation MySelfViewController
-//-(id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    self = [super initWithCoder:aDecoder];
-//    if(self)
-//    {
-//        self.view.backgroundColor = [UIColor lightGrayColor];
-//        [self addTopView];
-//
-//    }
-//    return self;
-//}
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    [self.userLogoView sd_setImageWithURL:[NSURL URLWithString:userInfoJNSL.userIcon] placeholderImage:[UIImage imageNamed:@"me_unlogin"]];
+    self.userNameLb.text = userInfoJNSL.userName;
+    if ([self.userNameLb.text isEqual:@""]||self.userNameLb.text==nil) {
+        self.userNameLb.text=@"未登录";
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -50,7 +44,7 @@
     NSInteger topViewHeigth = 200;
     if (IPHONE4) {
         userWidth=60;
-        topViewHeigth=150;
+        topViewHeigth=170;
     }
     self.topBackView = [[UIView alloc] initWithFrame:CGRectMake(0, y, screenWidth, topViewHeigth)];
     self.topBackView.backgroundColor = ColorWithRGB(0x45a1d4);
@@ -60,7 +54,7 @@
     self.userLogoView.image = [UIImage imageNamed:@"me_unlogin"];
     [self.topBackView addSubview:self.userLogoView];
     
-    self.userNameLb = [[UILabel alloc] initWithFrame:CGRectMake(0, (topViewHeigth-userWidth)/2+userWidth+10, screenWidth, 10)];
+    self.userNameLb = [[UILabel alloc] initWithFrame:CGRectMake(0, (topViewHeigth-userWidth)/2+userWidth+10, screenWidth, 20)];
     self.userNameLb.text = @"未登录";
     self.userNameLb.textColor = ColorWithRGB(0x1b6690);
     self.userNameLb.font = [UIFont systemFontOfSize:12];
@@ -114,6 +108,30 @@
     UITapGestureRecognizer *Tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchLogin)];
     [self.userLogoView addGestureRecognizer:Tap];
     self.userLogoView.userInteractionEnabled = YES;
+    
+    
+    UITapGestureRecognizer *Tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchMyMessage)];
+    [self.myMessageView addGestureRecognizer:Tap1];
+    self.myMessageView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *Tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchConcern)];
+    [self.myGzView addGestureRecognizer:Tap2];
+    self.myGzView.userInteractionEnabled = YES;
+    
+    
+    UITapGestureRecognizer *Tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchTS)];
+    [self.tSSetView addGestureRecognizer:Tap3];
+    self.tSSetView.userInteractionEnabled = YES;
+    
+    
+    UITapGestureRecognizer *Tap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchServiceCenter)];
+    [self.serverCenterView addGestureRecognizer:Tap4];
+    self.serverCenterView.userInteractionEnabled = YES;
+    
+    
+    UITapGestureRecognizer *Tap5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchSystemSet)];
+    [self.systemSetView addGestureRecognizer:Tap5];
+    self.systemSetView.userInteractionEnabled = YES;
 }
 -(void)viewAddSubView:(UIView*)view
 {
@@ -151,14 +169,49 @@
     [view addSubview:textLb];
     [view addSubview:rightImageView];
 }
+// 登录
 -(void)touchLogin
 {
-    if (userInfoJNSL.userDict==nil) {
+    if ([userInfoJNSL getUserDict]==nil) {
         
-        LoginViewController *loginView=[[LoginViewController alloc] init];
-        [self.navigationController pushViewController:loginView animated:YES];
-
+        LoginViewController *loginVC=[[LoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
     }
+    else
+    {
+        UserInformationViewController *userInformationVC = [[UserInformationViewController alloc] init];
+         [self.navigationController pushViewController:userInformationVC animated:YES];
+    }
+}
+// 我的消息
+-(void)touchMyMessage
+{
+    MyMessageViewController *view = [[MyMessageViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+}
+// 我的关注
+-(void)touchConcern
+{
+    MyConcernViewController *view = [[MyConcernViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+}
+// 推送设置
+-(void)touchTS
+{
+    TSMessageViewController *view = [[TSMessageViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+}
+// 服务中心
+-(void)touchServiceCenter
+{
+    ServiceCenterViewController *view = [[ServiceCenterViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+}
+// 系统设置
+-(void)touchSystemSet
+{
+    AboutUsViewController *view = [[AboutUsViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

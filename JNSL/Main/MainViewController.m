@@ -79,7 +79,7 @@
         {
             tabbarFrame.origin.y = self.view.frame.size.height - kTabbarHeight - 64;
         }
-        self.tabbar.frame = tabbarFrame;
+//        self.tabbar.frame = tabbarFrame;
         // 添加tabbar到根控制器界面
         [root.view addSubview:self.tabbar];
     }
@@ -117,9 +117,8 @@
 }
 -(void)createChildViewControllers
 {
-    UIViewController *view1=[[UIViewController alloc] init];
-    view1.title = @"首页";
-    [self addChildViewController:view1];
+    HomeViewController *home=[[HomeViewController alloc] init];
+    [self addChildViewController:home];
     
     myAttentionViewController *view2=[[myAttentionViewController alloc] init];
     view2.title = @"关注";

@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 #import "LoginViewController.h"
+#import "UserInformationViewController.h"
+#import "MyMessageViewController.h"
+#import "MyConcernViewController.h"
+#import "TSMessageViewController.h"
+#import "ServiceCenterViewController.h"
+#import "SystemSetViewController.h"
+
 @interface MySelfViewController : UIViewController
 @property (nonatomic,strong) UIView *topBackView;
 @property (nonatomic,strong) UIImageView *userLogoView;
