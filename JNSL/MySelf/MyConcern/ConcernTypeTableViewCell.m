@@ -82,17 +82,18 @@
 }
 -(void)setData:(NSDictionary *)date last:(Boolean)isLast
 {
-    if ([date objectForKey:@"name"]) {
-        self.titleLb.text = [date objectForKey:@"name"];
+    if ([date objectForKey:@"asr_name"]) {
+        self.titleLb.text = [date objectForKey:@"asr_name"];
     }
-    if ([date objectForKey:@"isCheck"]) {
-        if ([[date objectForKey:@"isCheck"] isEqual:@"0"]) {
-             self.rightImageView.image = [UIImage imageNamed:@"add_city"];
+    if ([date objectForKey:@"checked"]) {
+        NSInteger state = [[date objectForKey:@"checked"] integerValue];
+        if (state==1) {
+            self.rightImageView.tag=991;
+             self.rightImageView.image = [UIImage imageNamed:@"added_city"];
         }
         else
         {
-            self.rightImageView.tag=991;
-             self.rightImageView.image = [UIImage imageNamed:@"added_city"];
+             self.rightImageView.image = [UIImage imageNamed:@"add_city"];
         }
     }
     if (isLast) {

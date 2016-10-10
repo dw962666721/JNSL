@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CommonQuestionViewController : UIViewController
+#import "MessageTableViewCell.h"
+@interface CommonQuestionViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @end

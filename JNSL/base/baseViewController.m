@@ -19,10 +19,10 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     //  返回按钮
-    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 20, 12, 18)];
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [backBtn addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchDown];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"返回点击"] forState:UIControlStateHighlighted];
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//    [backBtn setBackgroundImage:[UIImage imageNamed:@"返回点击"] forState:UIControlStateHighlighted];
     UIBarButtonItem *leftbtn = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     self.navigationItem.leftBarButtonItem = leftbtn;
 }

@@ -23,12 +23,23 @@
 #import "CustemButton.h"
 // 用户数据单例
 #import "UserInfo.h"
+// 返回基类
+#import "baseViewController.h"
 #define userInfoJNSL ([UserInfo userInfo])
 #define Money_Come_Property_pch
-#define ServerUrl @"http://112.65.187.118:8074/ep4.1_nm_app"
-#define HomeURL ServerUrl@"/Android/openplant!firstPageList.action"
+#define ServerUrl @"http://112.65.187.118:8074//ep4.1_nm_app"
+// 首页数据
+#define HomeURL ServerUrl@"/androidOpenPlantAction!firstPageList.action"
 #define LoginURL ServerUrl@"/androidLoginAction!androidLogin.action"
 #define MyMessageURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmReport.action"
+// 常见问题列表
+#define CommonQuestionListURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmProblemMessage.action"
+// 功能权限
+#define FunctionRollMsgURL  ServerUrl@"/androidAlarmRecordInfoAction!getFunctionRollMsg.action"
+// 异常类型提交
+#define UpdateCheckedRollURL  ServerUrl@"/androidAlarmRecordInfoAction!updateCheckedRoll.action"
+// 提交留言
+#define SaveProblemMessageURL ServerUrl@"/androidAlarmRecordInfoAction!saveProblemMessage.action"
 #define zhifaURL ServerUrl@"/sourceShareAction!getSourceShareListMobile.action"
 
 

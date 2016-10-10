@@ -12,12 +12,16 @@
 @property UIScrollView *MainScrollView;
 @property UIView *MainView;
 @property UIView *allView;
+@property UILabel *allValueLb;
 @property UIView *_1View;
+@property UILabel *_1ValueLb;
 @property UIView *_2View;
+@property UILabel *_2ValueLb;
 @property UIButton *allBtn;
 @property UIButton *_1Btn;
 @property UIButton *_2Btn;
 @property NSMutableDictionary *viewDict;
+@property NSMutableArray *dataArray;
 @end
 
 @implementation HomeViewController
@@ -31,11 +35,35 @@
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 }
+-(void)loadData
+{
+    self.dataArray =[[NSMutableArray alloc] init];
+    [AFNetworkTool postJSONWithUrl:HomeURL parameters:nil success:^(id responseObject) {
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSString *result = [json objectForKey:@"resultCode"];
+        if ([result isEqual:@"true"]) {
+            NSMutableArray *resultEntity = [[NSMutableArray alloc] initWithArray:[json objectForKey:@"resultEntity"]];
+            self.dataArray = resultEntity;
+            // 填写数据
+            [self writeData];
+        }
+        
+    } fail:^{
+        // 移除HUD
+        [MBProgressHUD hideHUD];
+        
+        // 提醒有没有新数据
+        [MBProgressHUD showError:@"请求失败"];
+    }];
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewDict = [[NSMutableDictionary alloc] init];
     self.title=@"京能盛乐热电有限公司";
     [self loadUserInfo];
     [self addViews];
+    [self loadData];
     // Do any additional setup after loading the view.
 }
 // 给用户数据赋值
@@ -169,21 +197,42 @@
         switch (j) {
             case 0:
                 titleLb.text=@"全厂";
-                self.allView = [[UIView alloc] initWithFrame:CGRectMake(viewBack.frame.origin.x, viewBack.frame.size.height, viewBack.frame.size.width, 0)];
+                // 添加柱形条
+                self.allView = [[UIView alloc] initWithFrame:CGRectMake(0, viewBack.frame.size.height, viewBack.frame.size.width, 0)];
                 self.allView.backgroundColor = RGBA(65, 0, 255, 1);
                 [viewBack addSubview:self.allView];
+                // 添加数值
+                self.allValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
+                self.allValueLb.textColor = [UIColor blackColor];
+                self.allValueLb.textAlignment = NSTextAlignmentCenter;
+                self.allValueLb.font = [UIFont systemFontOfSize:8];
+                [viewBack addSubview:self.allValueLb];
                 break;
             case 1:
                 titleLb.text=@"#1机组";
-                self._1View = [[UIView alloc] initWithFrame:CGRectMake(viewBack.frame.origin.x, viewBack.frame.size.height, viewBack.frame.size.width, 0)];
+                // 添加柱形条
+                self._1View = [[UIView alloc] initWithFrame:CGRectMake(0, viewBack.frame.size.height, viewBack.frame.size.width, 0)];
                 self._1View.backgroundColor = RGBA(65, 0, 255, 1);
                 [viewBack addSubview:self._1View];
+                // 添加数值
+                self._1ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
+                self._1ValueLb.textColor = [UIColor blackColor];
+                self._1ValueLb.textAlignment = NSTextAlignmentCenter;
+                self._1ValueLb.font = [UIFont systemFontOfSize:8];
+                [viewBack addSubview:self._1ValueLb];
                 break;
             case 2:
                 titleLb.text=@"#1机组";
-                self._2View = [[UIView alloc] initWithFrame:CGRectMake(viewBack.frame.origin.x, viewBack.frame.size.height, viewBack.frame.size.width, 0)];
+                // 添加柱形条
+                self._2View = [[UIView alloc] initWithFrame:CGRectMake(0, viewBack.frame.size.height, viewBack.frame.size.width, 0)];
                 self._2View.backgroundColor = RGBA(65, 0, 255, 1);
                 [viewBack addSubview:self._2View];
+                // 添加数值
+                self._2ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
+                self._2ValueLb.textColor = [UIColor blackColor];
+                self._2ValueLb.textAlignment = NSTextAlignmentCenter;
+                self._2ValueLb.font = [UIFont systemFontOfSize:8];
+                [viewBack addSubview:self._2ValueLb];
                 break;
             default:
                 break;
@@ -232,8 +281,7 @@
     UIView *_2JZView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(line2.frame), screenWidth, 20)];
     _2JZView.backgroundColor = RGBA(10, 10, 10, 0.3);
     [self.MainView addSubview:_2JZView];
-    
-    self.viewDict = [[NSMutableDictionary alloc] init];
+
     NSInteger oneWidth = screenWidth/5;
     NSInteger fontSize = 11;
     NSInteger titleH = titleView.frame.size.height;
@@ -275,7 +323,7 @@
                 if ([name isEqual:@"qj"])
                 {
                     _1TitleLb.text=@"#1汽机";
-                    _2TitleLb.text=@"#2锅炉";
+                    _2TitleLb.text=@"#2汽机";
                 }
                 
             }
@@ -296,7 +344,7 @@
                 _1Lb.textAlignment = NSTextAlignmentCenter;
                 _1Lb.font = [UIFont systemFontOfSize:fontSize];
                 [_1JZView addSubview:_1Lb];
-                [self.viewDict addObserver:_1Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_11",name] options:NSKeyValueObservingOptionNew context:nil];
+                self.viewDict[[NSString stringWithFormat:@"%@%@",@"_11",name] ]=_1Lb;
                 
                 UILabel *_2Lb= [[UILabel alloc] initWithFrame:CGRectMake(oneWidth*i, 0, oneWidth, contentH)];
                 _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_12",name];
@@ -304,7 +352,7 @@
                 _2Lb.textAlignment = NSTextAlignmentCenter;
                 _2Lb.font = [UIFont systemFontOfSize:fontSize];
                 [_2JZView addSubview:_2Lb];
-                [self.viewDict addObserver:_2Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_12",name] options:NSKeyValueObservingOptionNew context:nil];
+                self.viewDict[[NSString stringWithFormat:@"%@%@",@"_12",name] ]=_2Lb;
                 
                 if ([name isEqual:@"gl"]) {
                     titleLb.text=@"主蒸汽压力(Mpa)";
@@ -331,7 +379,7 @@
                 _1Lb.textAlignment = NSTextAlignmentCenter;
                 _1Lb.font = [UIFont systemFontOfSize:fontSize];
                 [_1JZView addSubview:_1Lb];
-                [self.viewDict addObserver:_1Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_21",name] options:NSKeyValueObservingOptionNew context:nil];
+                self.viewDict[[NSString stringWithFormat:@"%@%@",@"_21",name] ]=_1Lb;
                 
                 UILabel *_2Lb= [[UILabel alloc] initWithFrame:CGRectMake(oneWidth*i, 0, oneWidth, contentH)];
                 _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_22",name] ;
@@ -339,7 +387,7 @@
                 _2Lb.textAlignment = NSTextAlignmentCenter;
                 _2Lb.font = [UIFont systemFontOfSize:fontSize];
                 [_2JZView addSubview:_2Lb];
-                [self.viewDict addObserver:_2Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_22",name] options:NSKeyValueObservingOptionNew context:nil];
+                self.viewDict[[NSString stringWithFormat:@"%@%@",@"_22",name] ]=_2Lb;
                 
                 if ([name isEqual:@"gl"]) {
                     titleLb.text=@"主蒸汽温度(C)";
@@ -367,15 +415,15 @@
                 _1Lb.textAlignment = NSTextAlignmentCenter;
                 _1Lb.font = [UIFont systemFontOfSize:fontSize];
                 [_1JZView addSubview:_1Lb];
-                [self.viewDict addObserver:_1Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_31",name]  options:NSKeyValueObservingOptionNew context:nil];
+                self.viewDict[[NSString stringWithFormat:@"%@%@",@"_31",name] ]=_1Lb;
                 
                 UILabel *_2Lb= [[UILabel alloc] initWithFrame:CGRectMake(oneWidth*i, 0, oneWidth, contentH)];
                 _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_32",name];
                 _2Lb.textColor=[UIColor whiteColor];
                 _2Lb.textAlignment = NSTextAlignmentCenter;
                 _2Lb.font = [UIFont systemFontOfSize:fontSize];
-                [_2JZView addSubview:_2Lb];
-                [self.viewDict addObserver:_2Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_32",name]  options:NSKeyValueObservingOptionNew context:nil];
+                [_2JZView addSubview:_2Lb];self.viewDict[[NSString stringWithFormat:@"%@%@",@"_32",name] ]=_2Lb;
+                self.viewDict[[NSString stringWithFormat:@"%@%@",@"_32",name] ]=_2Lb;
                 
                 
                 if ([name isEqual:@"gl"]) {
@@ -415,16 +463,16 @@
                     titleLb.text=@"再热气压力(Mpa)";
                     _1Lb.text=[NSString stringWithFormat:@"%@%@",@"_41",name] ;
                     _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_42",name] ;
-                    [self.viewDict addObserver:_1Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_41",name]  options:NSKeyValueObservingOptionNew context:nil];
-                    [self.viewDict addObserver:_2Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_42",name]  options:NSKeyValueObservingOptionNew context:nil];
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_41",name] ]=_1Lb;
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_42",name] ]=_2Lb;
                 }
                 if ([name isEqual:@"qj"])
                 {
                     titleLb.text=@"给水量(t/h)";
                     _1Lb.text=[NSString stringWithFormat:@"%@%@",@"_41",name] ;
                     _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_42",name] ;
-                    [self.viewDict addObserver:_1Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_41",name]  options:NSKeyValueObservingOptionNew context:nil];
-                    [self.viewDict addObserver:_2Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_42",name]  options:NSKeyValueObservingOptionNew context:nil];
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_41",name] ]=_1Lb;
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_42",name] ]=_2Lb;
                 }
             }
                 break;
@@ -459,16 +507,16 @@
                     titleLb.text=@"再热气温度(C)";
                     _1Lb.text=[NSString stringWithFormat:@"%@%@",@"_51",name] ;
                     _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_52",name] ;
-                    [self.viewDict addObserver:_1Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_51",name]  options:NSKeyValueObservingOptionNew context:nil];
-                    [self.viewDict addObserver:_2Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_52",name]  options:NSKeyValueObservingOptionNew context:nil];
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_51",name] ]=_1Lb;
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_52",name] ]=_2Lb;
                 }
                 if ([name isEqual:@"qj"])
                 {
                     titleLb.text=@"背压(Mpa)";
                     _1Lb.text=[NSString stringWithFormat:@"%@%@",@"_51",name] ;
                     _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_52",name] ;
-                    [self.viewDict addObserver:_1Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_51",name]  options:NSKeyValueObservingOptionNew context:nil];
-                    [self.viewDict addObserver:_2Lb forKeyPath:[NSString stringWithFormat:@"%@%@",@"_52",name]  options:NSKeyValueObservingOptionNew context:nil];
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_51",name] ]=_1Lb;
+                    self.viewDict[[NSString stringWithFormat:@"%@%@",@"_52",name] ]=_2Lb;
                 }
             }
                 break;
@@ -513,11 +561,164 @@
 }
 -(void)lookAll
 {
-    
+    HomeDetailViewController *detailVC = [[HomeDetailViewController alloc] init];
+    [detailVC setVCType:1];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 -(void)look2
 {
+    HomeDetailViewController *detailVC = [[HomeDetailViewController alloc] init];
+    [detailVC setVCType:2];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+-(void)writeData
+{
+    if (self.dataArray.count==0) {
+        return;
+    }
+    // 解析数据结构
+    NSMutableDictionary *dict = self.dataArray[0];
+//    if (Array.count==0) {
+//        return;
+//    }
+//    NSMutableDictionary *dict  = Array[0];
     
+    // 填写机组负荷数据
+    NSMutableArray *loadArray = [[NSMutableArray alloc] initWithArray:[dict objectForKey:@"load"]];
+    if (loadArray.count>0) {
+        for (NSInteger i=0; i<loadArray.count; i++) {
+            NSMutableDictionary *jzDict = [[NSMutableDictionary alloc] initWithDictionary:loadArray[i]];
+            CGFloat value = (CGFloat)([jzDict[@"loadValue"] floatValue]);
+            CGFloat viewH = 15*7*value/700;
+            if ([jzDict[@"loadName"] isEqual:@"全厂负荷"]) {
+                CGRect rect = self.allView.frame;
+                rect.size.height = viewH;
+                rect.origin.y=15*7-viewH;
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.allView.frame = rect;
+                }];
+                CGRect lbRect = self.allValueLb.frame;
+                lbRect.origin.y = 15*7-viewH-10;
+                self.allValueLb.frame = lbRect;
+                self.allValueLb.text = [NSString stringWithFormat:@"%d",(NSInteger)value];
+            }else if ([jzDict[@"loadName"] isEqual:@"#1机组"])
+            {
+                CGRect rect = self._1View.frame;
+                rect.size.height = viewH;
+                rect.origin.y=15*7-viewH;
+                [UIView animateWithDuration:0.25 animations:^{
+                    self._1View.frame = rect;
+                }];
+                CGRect lbRect = self._1ValueLb.frame;
+                lbRect.origin.y = 15*7-viewH-10;
+                self._1ValueLb.frame = lbRect;
+                 self._1ValueLb.text = [NSString stringWithFormat:@"%d",(NSInteger)value];
+            }
+            else
+            {
+                CGRect rect = self._2View.frame;
+                rect.size.height = viewH;
+                rect.origin.y=15*7-viewH;
+                [UIView animateWithDuration:0.25 animations:^{
+                    self._2View.frame = rect;
+                }];
+                CGRect lbRect = self._2ValueLb.frame;
+                lbRect.origin.y = 15*7-viewH-10;
+                self._2ValueLb.frame = lbRect;
+                 self._2ValueLb.text = [NSString stringWithFormat:@"%d",(NSInteger)value];
+            }
+        }
+    }
+    // 填写机组参数数据
+    NSMutableArray *environmentalArray = [[NSMutableArray alloc] initWithArray:[dict objectForKey:@"environmental"]];
+    if (environmentalArray.count>0) {
+        for (NSInteger i=0; i<environmentalArray.count; i++) {
+            NSMutableDictionary *jzDict = [[NSMutableDictionary alloc] initWithDictionary:environmentalArray[i]];
+            if ([jzDict[@"parameterName"] isEqual:@"#1机组"]) {
+                UILabel *lb1 = self.viewDict[@"_11jz"];
+                lb1.text=jzDict[@"so2Nd"];
+                UILabel *lb2 = self.viewDict[@"_21jz"];
+                lb2.text=jzDict[@"noxNd"];
+                UILabel *lb3 = self.viewDict[@"_31jz"];
+                lb3.text=jzDict[@"dustNd"];
+            }
+            else
+            {
+                UILabel *lb1 = self.viewDict[@"_12jz"];
+                lb1.text=jzDict[@"so2Nd"];
+                UILabel *lb2 = self.viewDict[@"_22jz"];
+                lb2.text=jzDict[@"noxNd"];
+                UILabel *lb3 = self.viewDict[@"_32jz"];
+                lb3.text=jzDict[@"dustNd"];
+            }
+        }
+    }
+    // 填写锅炉参数数据
+    NSMutableArray *boilerArray = [[NSMutableArray alloc] initWithArray:[dict objectForKey:@"boiler"]];
+    if (boilerArray.count>0) {
+        for (NSInteger i=0; i<boilerArray.count; i++) {
+            NSMutableDictionary *jzDict = [[NSMutableDictionary alloc] initWithDictionary:boilerArray[i]];
+            if ([jzDict[@"parameterName"] isEqual:@"#1锅炉"]) {
+                UILabel *lb1 = self.viewDict[@"_11gl"];
+                lb1.text=jzDict[@"ZZY"];
+                UILabel *lb2 = self.viewDict[@"_21gl"];
+                lb2.text=jzDict[@"ZZW"];
+                UILabel *lb3 = self.viewDict[@"_31gl"];
+                lb3.text=jzDict[@"ZZL"];
+                UILabel *lb4 = self.viewDict[@"_41gl"];
+                lb4.text=jzDict[@"ZRY"];
+                UILabel *lb5 = self.viewDict[@"_51gl"];
+                lb5.text=jzDict[@"ZRW"];
+            }
+            else
+            {
+                UILabel *lb1 = self.viewDict[@"_12gl"];
+                lb1.text=jzDict[@"ZZY"];
+                UILabel *lb2 = self.viewDict[@"_22gl"];
+                lb2.text=jzDict[@"ZZW"];
+                UILabel *lb3 = self.viewDict[@"_32gl"];
+                lb3.text=jzDict[@"ZZL"];
+                UILabel *lb4 = self.viewDict[@"_42gl"];
+                lb4.text=jzDict[@"ZRY"];
+                UILabel *lb5 = self.viewDict[@"_52gl"];
+                lb5.text=jzDict[@"ZRW"];
+            }
+        }
+    }
+    
+    // 填写汽机参数数据
+    NSMutableArray *turbineArray = [[NSMutableArray alloc] initWithArray:[dict objectForKey:@"turbine"]];
+    if (turbineArray.count>0) {
+        for (NSInteger i=0; i<turbineArray.count; i++) {
+            NSMutableDictionary *jzDict = [[NSMutableDictionary alloc] initWithDictionary:turbineArray[i]];
+            if ([jzDict[@"parameterName"] isEqual:@"#1汽机"]) {
+                UILabel *lb1 = self.viewDict[@"_11qj"];
+                lb1.text=jzDict[@"turbineSpeed"];
+                UILabel *lb2 = self.viewDict[@"_21qj"];
+                lb2.text=jzDict[@"condensatePressure"];
+                UILabel *lb3 = self.viewDict[@"_31qj"];
+                lb3.text=jzDict[@"feedPressure"];
+                UILabel *lb4 = self.viewDict[@"_41qj"];
+                lb4.text=jzDict[@"feedFlow"];
+                UILabel *lb5 = self.viewDict[@"_51qj"];
+                lb5.text=jzDict[@"backPressure"];
+            }
+            else
+            {
+                UILabel *lb1 = self.viewDict[@"_12qj"];
+                lb1.text=jzDict[@"turbineSpeed"];
+                UILabel *lb2 = self.viewDict[@"_22qj"];
+                lb2.text=jzDict[@"condensatePressure"];
+                UILabel *lb3 = self.viewDict[@"_32qj"];
+                lb3.text=jzDict[@"feedPressure"];
+                UILabel *lb4 = self.viewDict[@"_42qj"];
+                lb4.text=jzDict[@"feedFlow"];
+                UILabel *lb5 = self.viewDict[@"_52qj"];
+                lb5.text=jzDict[@"backPressure"];
+            }
+        }
+    }
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

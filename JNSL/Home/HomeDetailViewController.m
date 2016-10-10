@@ -9,16 +9,22 @@
 #import "HomeDetailViewController.h"
 
 @interface HomeDetailViewController ()
-@property NSInteger type;
+@property NSInteger type; // 0:#1锅炉  1:公用  2:＃2锅炉
 @property UIBarButtonItem *rightBtn;
+@property UITableView *tableView;
+@property NSMutableArray *dataArray;
 @end
 
 @implementation HomeDetailViewController
-
+-(void)loadData
+{
+    [self.tableView reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataArray = [[NSMutableArray alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
-    //  返回按钮
+    //  添加右侧切换按钮
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [backBtn addTarget:self action:@selector(changeView) forControlEvents:UIControlEventTouchDown];
     [backBtn setBackgroundImage:[UIImage imageNamed:@"trans"] forState:UIControlStateNormal];
@@ -28,15 +34,113 @@
     if (self.type==1) {
         self.navigationItem.rightBarButtonItem = nil;
     }
+    switch (self.type) {
+        case 0:
+            self.title = @"#1锅炉";
+            break;
+        case 1:
+            self.title = @"公用";
+            break;
+        case 2:
+            self.title = @"#2锅炉";
+            break;
+        default:
+            break;
+    }
+    
+    [self addViews];
     // Do any additional setup after loading the view.
+}
+-(void)addViews
+{
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-65)];
+    self.tableView.delegate=self;
+    self.tableView.dataSource=self;
+    [ self.tableView registerClass:[HomeDetailTableViewCell class] forCellReuseIdentifier:@"cell"];
+//    self.tableView.separatorInset = UIEdgeInsetsZero;
+//    self.tableView.
+//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+//    }
+
+    [self.view addSubview:self.tableView];
+    [self loadData];
+    
 }
 -(void)setVCType:(NSInteger)type
 {
     self.type = type;
 }
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+//    return self.dataArray.count;
+    return 20;
+}
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeDetailTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    [cell setCellData:self.dataArray[indexPath.row] row:indexPath.row];
+    [cell setCellData:nil row:indexPath.row];
+    return cell;
+}
+- ( UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    NSInteger viewH=30;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, viewH)];
+    //设置表头 企业名称,发生时间,污染物名称,排放值
+    CGFloat lbwid1 = 50;
+    CGFloat lbwid2 = (screenWidth-50*2)*2/3;
+    CGFloat lbwid3 = (screenWidth-50*2)*1/3;
+    CGFloat lbwid4 = 50;
+    UILabel *lb1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, lbwid1, viewH)];
+    UILabel *lb2 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(lb1.frame), 0, lbwid2, viewH)];
+    UILabel *lb3 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(lb2.frame), 0, lbwid3, viewH)];
+    UILabel *lb4 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(lb3.frame), 0, lbwid4, viewH)];
+    lb1.textAlignment = NSTextAlignmentCenter;
+    lb2.textAlignment = NSTextAlignmentCenter;
+    lb3.textAlignment = NSTextAlignmentCenter;
+    lb4.textAlignment = NSTextAlignmentCenter;
+    lb1.font = [UIFont systemFontOfSize:16];
+    lb2.font = [UIFont systemFontOfSize:16];
+    lb3.font = [UIFont systemFontOfSize:16];
+    lb4.font = [UIFont systemFontOfSize:16];
+    lb1.text = @"序号";
+    lb2.text = @"点名";
+    lb3.text = @"值";
+    lb4.text = @"单位";
+    [view addSubview:lb1];[view addSubview:lb2];
+    [view addSubview:lb3];[view addSubview:lb4];
+    //添加边框
+    UIView *borde1 = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(lb1.frame), 0, 1, viewH)];
+    UIView *borde2 = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(lb2.frame), 0, 1, viewH)];
+    UIView *borde3 = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(lb3.frame), 0, 1, viewH)];
+    borde1.backgroundColor = [UIColor whiteColor];
+    borde2.backgroundColor = [UIColor whiteColor];
+    borde3.backgroundColor = [UIColor whiteColor];
+    [view addSubview:borde1];[view addSubview:borde2];[view addSubview:borde3];
+    view.backgroundColor = ColorWithRGB(0x20647a);
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 30;
+}
+
 -(void)changeView
 {
-    
+    if (self.type==0) {
+        self.title = @"#2锅炉";
+        self.type=2;
+    }
+    else
+    {
+        self.title = @"#1锅炉";
+        self.type=0;
+    }
+    [self loadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

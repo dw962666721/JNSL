@@ -182,7 +182,16 @@
     nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName, nil];
     // 2.添加子控制器（包装过后的导航控制器）
     [super addChildViewController:nav];
+
 }
+
+
+-(void)backClick{
+    //[self.navigationController popToRootViewControllerAnimated:true];
+    [self.selectedViewController popViewControllerAnimated:true];
+}
+
+
 -(NSString*)customTabbar:(JSCustomTabbar *)customTabbar imageNormalForButtonAtIndex:(NSInteger)index
 {
     return self.titleArray[index];

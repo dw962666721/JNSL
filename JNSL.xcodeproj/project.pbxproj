@@ -54,6 +54,10 @@
 		CF98FC431DA0E8690057D057 /* fileReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF98FC421DA0E8690057D057 /* fileReaderViewController.m */; };
 		DB2F8C281D9CD99D0075DD6F /* JNSLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F8C271D9CD99D0075DD6F /* JNSLTests.m */; };
 		DB2F8C331D9CD99D0075DD6F /* JNSLUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2F8C321D9CD99D0075DD6F /* JNSLUITests.m */; };
+		DB3A08151DAA8F480085E1D0 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A08141DAA8F480085E1D0 /* MessageTableViewCell.m */; };
+		DB3A081B1DAA97E50085E1D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A08181DAA97E50085E1D0 /* LoginViewController.m */; };
+		DB3A081C1DAA97E50085E1D0 /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */; };
+		DB3A081F1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */; };
 		DBEDAD641DA6A6DC00913635 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD161DA6A6DC00913635 /* MBProgressHUD+NJ.m */; };
 		DBEDAD651DA6A6DC00913635 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD181DA6A6DC00913635 /* MBProgressHUD.m */; };
 		DBEDAD661DA6A6DC00913635 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD1C1DA6A6DC00913635 /* MJRefreshAutoFooter.m */; };
@@ -90,7 +94,6 @@
 		DBEDAD851DA6A6DC00913635 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD611DA6A6DC00913635 /* UIImageView+WebCache.m */; };
 		DBEDAD861DA6A6DC00913635 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD631DA6A6DC00913635 /* UIView+WebCacheOperation.m */; };
 		DBEDAD8A1DA6AA9E00913635 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD891DA6AA9E00913635 /* HomeViewController.m */; };
-		DBEDADDC1DA6B4CB00913635 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADC11DA6B4CB00913635 /* LoginViewController.m */; };
 		DBEDADDD1DA6B4CB00913635 /* ConcernTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADC41DA6B4CB00913635 /* ConcernTypeTableViewCell.m */; };
 		DBEDADDE1DA6B4CB00913635 /* ConcernTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADC61DA6B4CB00913635 /* ConcernTypeViewController.m */; };
 		DBEDADDF1DA6B4CB00913635 /* MyConcernViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADC81DA6B4CB00913635 /* MyConcernViewController.m */; };
@@ -101,7 +104,6 @@
 		DBEDADE41DA6B4CB00913635 /* ServiceCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADD41DA6B4CB00913635 /* ServiceCenterViewController.m */; };
 		DBEDADE51DA6B4CB00913635 /* ChooseTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADD71DA6B4CB00913635 /* ChooseTimeView.m */; };
 		DBEDADE61DA6B4CB00913635 /* TSMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADD91DA6B4CB00913635 /* TSMessageViewController.m */; };
-		DBEDADE71DA6B4CB00913635 /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADDB1DA6B4CB00913635 /* UserInformationViewController.m */; };
 		DBEDADFC1DA6B52F00913635 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADEA1DA6B52F00913635 /* AFHTTPRequestOperation.m */; };
 		DBEDADFD1DA6B52F00913635 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADEC1DA6B52F00913635 /* AFHTTPRequestOperationManager.m */; };
 		DBEDADFE1DA6B52F00913635 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDADEE1DA6B52F00913635 /* AFHTTPSessionManager.m */; };
@@ -240,6 +242,14 @@
 		DB2F8C2E1D9CD99D0075DD6F /* JNSLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JNSLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2F8C321D9CD99D0075DD6F /* JNSLUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JNSLUITests.m; sourceTree = "<group>"; };
 		DB2F8C341D9CD99D0075DD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB3A08131DAA8F480085E1D0 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTableViewCell.h; path = ../MessageTableViewCell.h; sourceTree = "<group>"; };
+		DB3A08141DAA8F480085E1D0 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewCell.m; path = ../MessageTableViewCell.m; sourceTree = "<group>"; };
+		DB3A08171DAA97E50085E1D0 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		DB3A08181DAA97E50085E1D0 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DB3A08191DAA97E50085E1D0 /* UserInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationViewController.h; sourceTree = "<group>"; };
+		DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationViewController.m; sourceTree = "<group>"; };
+		DB3A081D1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailTableViewCell.h; sourceTree = "<group>"; };
+		DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailTableViewCell.m; sourceTree = "<group>"; };
 		DBEDAD151DA6A6DC00913635 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
 		DBEDAD161DA6A6DC00913635 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
 		DBEDAD171DA6A6DC00913635 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -313,8 +323,6 @@
 		DBEDAD631DA6A6DC00913635 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		DBEDAD881DA6AA9E00913635 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		DBEDAD891DA6AA9E00913635 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		DBEDADC01DA6B4CB00913635 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		DBEDADC11DA6B4CB00913635 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		DBEDADC31DA6B4CB00913635 /* ConcernTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcernTypeTableViewCell.h; sourceTree = "<group>"; };
 		DBEDADC41DA6B4CB00913635 /* ConcernTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcernTypeTableViewCell.m; sourceTree = "<group>"; };
 		DBEDADC51DA6B4CB00913635 /* ConcernTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcernTypeViewController.h; sourceTree = "<group>"; };
@@ -335,8 +343,6 @@
 		DBEDADD71DA6B4CB00913635 /* ChooseTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseTimeView.m; sourceTree = "<group>"; };
 		DBEDADD81DA6B4CB00913635 /* TSMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMessageViewController.h; sourceTree = "<group>"; };
 		DBEDADD91DA6B4CB00913635 /* TSMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMessageViewController.m; sourceTree = "<group>"; };
-		DBEDADDA1DA6B4CB00913635 /* UserInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationViewController.h; sourceTree = "<group>"; };
-		DBEDADDB1DA6B4CB00913635 /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationViewController.m; sourceTree = "<group>"; };
 		DBEDADE91DA6B52F00913635 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		DBEDADEA1DA6B52F00913635 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		DBEDADEB1DA6B52F00913635 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -431,8 +437,8 @@
 		CF17D2991D9FC2EA0084CD9C /* JNSL */ = {
 			isa = PBXGroup;
 			children = (
-				CF17D2B11D9FC2EA0084CD9C /* main.m */,
 				CF17D2CA1D9FC2EA0084CD9C /* Property.pch */,
+				CF17D2B11D9FC2EA0084CD9C /* main.m */,
 				CF716C581DA1F552001AF719 /* html */,
 				CF716C421DA14D04001AF719 /* wuliao */,
 				CF98FC441DA0F6220057D057 /* protocol */,
@@ -625,6 +631,17 @@
 			path = JNSLUITests;
 			sourceTree = "<group>";
 		};
+		DB3A08161DAA97E50085E1D0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DB3A08171DAA97E50085E1D0 /* LoginViewController.h */,
+				DB3A08181DAA97E50085E1D0 /* LoginViewController.m */,
+				DB3A08191DAA97E50085E1D0 /* UserInformationViewController.h */,
+				DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		DBEDAD141DA6A6DC00913635 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -772,6 +789,8 @@
 				DBEDAD891DA6AA9E00913635 /* HomeViewController.m */,
 				DBEDAE4D1DAA0AF800913635 /* HomeDetailViewController.h */,
 				DBEDAE4E1DAA0AF800913635 /* HomeDetailViewController.m */,
+				DB3A081D1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.h */,
+				DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -779,17 +798,14 @@
 		DBEDADBF1DA6B4CB00913635 /* MySelf */ = {
 			isa = PBXGroup;
 			children = (
+				DB3A08161DAA97E50085E1D0 /* Login */,
 				DBEDAE461DA7326000913635 /* SystemSet */,
-				DBEDADC01DA6B4CB00913635 /* LoginViewController.h */,
-				DBEDADC11DA6B4CB00913635 /* LoginViewController.m */,
 				DBEDADC21DA6B4CB00913635 /* MyConcern */,
 				DBEDADC91DA6B4CB00913635 /* MyMessage */,
-				DBEDADCE1DA6B4CB00913635 /* MySelfViewController.h */,
-				DBEDADCF1DA6B4CB00913635 /* MySelfViewController.m */,
 				DBEDADD01DA6B4CB00913635 /* ServiceCenter */,
 				DBEDADD51DA6B4CB00913635 /* TSMessage */,
-				DBEDADDA1DA6B4CB00913635 /* UserInformationViewController.h */,
-				DBEDADDB1DA6B4CB00913635 /* UserInformationViewController.m */,
+				DBEDADCE1DA6B4CB00913635 /* MySelfViewController.h */,
+				DBEDADCF1DA6B4CB00913635 /* MySelfViewController.m */,
 			);
 			path = MySelf;
 			sourceTree = "<group>";
@@ -827,6 +843,8 @@
 				DBEDADD21DA6B4CB00913635 /* SendQuestionViewController.m */,
 				DBEDADD31DA6B4CB00913635 /* ServiceCenterViewController.h */,
 				DBEDADD41DA6B4CB00913635 /* ServiceCenterViewController.m */,
+				DB3A08131DAA8F480085E1D0 /* MessageTableViewCell.h */,
+				DB3A08141DAA8F480085E1D0 /* MessageTableViewCell.m */,
 			);
 			path = ServiceCenter;
 			sourceTree = "<group>";
@@ -1120,6 +1138,7 @@
 				DBEDAD6A1DA6A6DC00913635 /* MJRefreshHeader.m in Sources */,
 				DBEDAD781DA6A6DC00913635 /* UIView+MJExtension.m in Sources */,
 				DBEDAD7A1DA6A6DC00913635 /* SDImageCache.m in Sources */,
+				DB3A08151DAA8F480085E1D0 /* MessageTableViewCell.m in Sources */,
 				DBEDAE3E1DA6B64900913635 /* IQPreviousNextView.m in Sources */,
 				DBEDAD6B1DA6A6DC00913635 /* MJRefreshAutoGifFooter.m in Sources */,
 				DBEDAD751DA6A6DC00913635 /* MJRefreshConst.m in Sources */,
@@ -1166,12 +1185,12 @@
 				DBEDAD801DA6A6DC00913635 /* SDWebImagePrefetcher.m in Sources */,
 				DBEDADDE1DA6B4CB00913635 /* ConcernTypeViewController.m in Sources */,
 				DBEDADE21DA6B4CB00913635 /* MySelfViewController.m in Sources */,
+				DB3A081C1DAA97E50085E1D0 /* UserInformationViewController.m in Sources */,
 				DBEDAD861DA6A6DC00913635 /* UIView+WebCacheOperation.m in Sources */,
 				CF17D3691D9FC3F60084CD9C /* gongkuangViewController.m in Sources */,
 				DBEDAD641DA6A6DC00913635 /* MBProgressHUD+NJ.m in Sources */,
 				CF17D3171D9FC2EA0084CD9C /* JSCustomTabbarItem.m in Sources */,
 				DBEDAD7D1DA6A6DC00913635 /* SDWebImageDownloader.m in Sources */,
-				DBEDADDC1DA6B4CB00913635 /* LoginViewController.m in Sources */,
 				CF17D3151D9FC2EA0084CD9C /* AppDelegate.m in Sources */,
 				CF17D36B1D9FC3F60084CD9C /* zhengceViewController.m in Sources */,
 				DBEDAE3B1DA6B64900913635 /* IQKeyboardReturnKeyHandler.m in Sources */,
@@ -1181,7 +1200,6 @@
 				DBEDAD701DA6A6DC00913635 /* MJRefreshBackStateFooter.m in Sources */,
 				DBEDAE371DA6B64900913635 /* IQUIView+Hierarchy.m in Sources */,
 				DBEDAD6F1DA6A6DC00913635 /* MJRefreshBackNormalFooter.m in Sources */,
-				DBEDADE71DA6B4CB00913635 /* UserInformationViewController.m in Sources */,
 				CF716C7D1DA22101001AF719 /* realTechnologoViewController.m in Sources */,
 				DBEDAD6C1DA6A6DC00913635 /* MJRefreshAutoNormalFooter.m in Sources */,
 				DBEDADDF1DA6B4CB00913635 /* MyConcernViewController.m in Sources */,
@@ -1204,6 +1222,7 @@
 				DBEDAE411DA6B64900913635 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				CF98FC431DA0E8690057D057 /* fileReaderViewController.m in Sources */,
 				CF716C6E1DA21F98001AF719 /* totalAmountViewController.m in Sources */,
+				DB3A081F1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m in Sources */,
 				CF716C541DA14F30001AF719 /* guizeViewController.m in Sources */,
 				DBEDAE001DA6B52F00913635 /* AFSecurityPolicy.m in Sources */,
 				CF17D3681D9FC3F60084CD9C /* emeViewController.m in Sources */,
@@ -1212,6 +1231,7 @@
 				DBEDADE01DA6B4CB00913635 /* MyMessageTableViewCell.m in Sources */,
 				DBEDAE4F1DAA0AF800913635 /* HomeDetailViewController.m in Sources */,
 				CF716C801DA234BB001AF719 /* excessiveEariningCellTableViewCell.m in Sources */,
+				DB3A081B1DAA97E50085E1D0 /* LoginViewController.m in Sources */,
 				CF17D3161D9FC2EA0084CD9C /* JSCustomTabbar.m in Sources */,
 				CF98FC311DA0AECB0057D057 /* gongkuangDetailsViewController.m in Sources */,
 				DBEDAE341DA6B64900913635 /* IQNSArray+Sort.m in Sources */,

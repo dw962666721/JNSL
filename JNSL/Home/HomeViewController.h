@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeDetailViewController.h"
-@interface HomeViewController : UIViewController
+@interface HomeViewController : baseViewController
 
 @end

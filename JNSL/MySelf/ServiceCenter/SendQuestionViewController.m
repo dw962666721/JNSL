@@ -22,12 +22,14 @@
 @property UITextView *QQTextFiled;
 @property UILabel *qqPlaceholderLabel;
 @property UIButton *sendBtn;
+@property NSInteger type;
 @end
 
 @implementation SendQuestionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.type=1;
     self.view.backgroundColor = RGBA(240, 240, 240, 1);
     self.title=@"问题留言";
     [self addViews];
@@ -174,25 +176,58 @@
 }
 -(void)sendMessage
 {
-    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    dict[@"typeId"]=[NSString stringWithFormat:@"%ld",(long)self.type];
+    dict[@"problem"]=self.contentTextView.text;
+    dict[@"contact"]=self.QQTextFiled.text;
+    [MBProgressHUD showMessage:@"正在反馈....."];
+    [AFNetworkTool postJSONWithUrl:SaveProblemMessageURL parameters:dict success:^(id responseObject) {
+        // 移除HUD
+        [MBProgressHUD hideHUD];
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSString *result = [json objectForKey:@"resultCode"];
+        if ([result isEqual:@"true"]) {
+                NSString *resultDict = [json objectForKey:@"message"];
+                NSLog(@"%@",resultDict);
+            [MBProgressHUD showError:@"反馈成功"];
+            self.QQTextFiled.text=@"";
+            self.contentTextView.text=@"";
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            NSString *resultDict = [json objectForKey:@"message"];
+            NSLog(@"%@",resultDict);
+        }
+    } fail:^{
+        // 移除HUD
+        [MBProgressHUD hideHUD];
+        
+        // 提醒有没有新数据
+        [MBProgressHUD showError:@"请求失败"];
+    }];
+
 }
 -(void)touchHelp
 {
     self.helpImageView.image = [UIImage imageNamed:@"ClickIco"];
     self.jyImageView.image = [UIImage imageNamed:@"unClickIco"];
     self.otherImageView.image = [UIImage imageNamed:@"unClickIco"];
+    self.type=1;
 }
 -(void)touchJy
 {
     self.helpImageView.image = [UIImage imageNamed:@"unClickIco"];
     self.jyImageView.image = [UIImage imageNamed:@"ClickIco"];
     self.otherImageView.image = [UIImage imageNamed:@"unClickIco"];
+    self.type=2;
 }
 -(void)touchOther
 {
     self.helpImageView.image = [UIImage imageNamed:@"unClickIco"];
     self.jyImageView.image = [UIImage imageNamed:@"unClickIco"];
     self.otherImageView.image = [UIImage imageNamed:@"ClickIco"];
+    self.type=3;
 }
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
@@ -220,7 +255,16 @@
             self.qqPlaceholderLabel.hidden = NO;
         }
     }
-    
+    if ( ![self.contentTextView.text isEqual:@""]&&![self.QQTextFiled.text isEqual:@""])
+    {
+        self.sendBtn.backgroundColor = [UIColor blueColor];
+        self.sendBtn.userInteractionEnabled=YES;
+    }
+    else
+    {
+        self.sendBtn.backgroundColor = ColorWithRGB(0x999999);
+        self.sendBtn.userInteractionEnabled=NO;
+    }
     return YES;
 }
 - (void)didReceiveMemoryWarning {

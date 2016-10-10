@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface HomeDetailViewController : UIViewController
+#import "HomeDetailTableViewCell.h"
+@interface HomeDetailViewController : baseViewController<UITableViewDataSource,UITableViewDelegate>
 -(void)setVCType:(NSInteger)type;
 @end

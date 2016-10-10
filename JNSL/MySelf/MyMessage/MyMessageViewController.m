@@ -20,6 +20,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = RGBA(240, 240, 240, 1);
     self.title = @"我的消息";
     [self addViews];
     // Do any additional setup after loading the view.
