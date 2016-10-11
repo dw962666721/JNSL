@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface MyMessageTableViewCell : UITableViewCell
-@property (strong,nonatomic) UILabel *titleLb;
-@property (strong,nonatomic) UILabel *descriptionLb;
+@property (strong,nonatomic) UILabel *pollSourceNameLb;
+@property (strong,nonatomic) UILabel *facilityNameLb;
+@property (strong,nonatomic) UILabel *alarmTypeNameLb;
+@property (strong,nonatomic) UILabel *alarmCausesLb;
+@property (strong,nonatomic) UILabel *beginDateLb;
+@property (strong,nonatomic) UILabel *endDateLb;
 -(void)loadDate:(NSDictionary *)date;
 @end

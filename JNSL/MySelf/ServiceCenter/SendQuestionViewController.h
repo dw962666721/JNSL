@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SendQuestionViewController : UIViewController<UITextViewDelegate>
+@interface SendQuestionViewController : baseViewController<UITextViewDelegate>
 
 @end

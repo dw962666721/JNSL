@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ConcernTypeTableViewCell.h"
-@interface ConcernTypeViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ConcernTypeViewController : baseViewController<UITableViewDelegate,UITableViewDataSource>
 
 @end

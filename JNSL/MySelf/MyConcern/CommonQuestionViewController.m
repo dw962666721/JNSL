@@ -86,7 +86,7 @@
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadData:0];
     }];
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
          [weakSelf loadData:1];
     }];
     [self.view addSubview:self.tableView];
@@ -101,6 +101,7 @@
 {
     MessageTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     [cell setData:self.dateList[indexPath.row]];
     return  cell;
 }

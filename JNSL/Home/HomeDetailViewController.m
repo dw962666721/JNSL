@@ -18,7 +18,42 @@
 @implementation HomeDetailViewController
 -(void)loadData
 {
-    [self.tableView reloadData];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    if (self.type==0) {
+         dict[@"typeId"]=@"1";
+    }
+    else if (self.type==1)
+    {
+        dict[@"typeId"]=@"7";
+    }
+    else
+    {
+        dict[@"typeId"]=@"4";
+    }
+   
+    [AFNetworkTool postJSONWithUrl:FacilityDetialInfoURL parameters:dict success:^(id responseObject) {
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSString *result = [json objectForKey:@"resultCode"];
+        if ([result isEqual:@"true"]) {
+            NSMutableArray *resultArray = [[NSMutableArray alloc] initWithArray:[json objectForKey:@"resultEntity"]];
+            self.dataArray = resultArray;
+            [self.tableView reloadData];
+        }
+        else
+        {
+            NSString *resultDict = [json objectForKey:@"message"];
+            NSLog(@"%@",resultDict);
+        }
+        [self.tableView.header endRefreshing];
+    } fail:^{
+        // 移除HUD
+        [MBProgressHUD hideHUD];
+        
+        // 提醒有没有新数据
+        [MBProgressHUD showError:@"请求失败"];
+    }];
+
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,17 +92,21 @@
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
     [ self.tableView registerClass:[HomeDetailTableViewCell class] forCellReuseIdentifier:@"cell"];
-//    self.tableView.separatorInset = UIEdgeInsetsZero;
-//    self.tableView.
-//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    self.tableView.tableHeaderView = [[UIView alloc] init];
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    __weak __typeof(self) weakSelf = self;
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
 
     [self.view addSubview:self.tableView];
-    [self loadData];
+    [self.tableView.header beginRefreshing];
     
 }
 -(void)setVCType:(NSInteger)type
@@ -76,15 +115,14 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return self.dataArray.count;
-    return 20;
+    return self.dataArray.count;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeDetailTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    [cell setCellData:self.dataArray[indexPath.row] row:indexPath.row];
-    [cell setCellData:nil row:indexPath.row];
+    [cell setCellData:self.dataArray[indexPath.row] row:indexPath.row];
     return cell;
 }
 - ( UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -128,7 +166,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 30;
 }
-
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 -(void)changeView
 {
     if (self.type==0) {

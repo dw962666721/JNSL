@@ -88,11 +88,7 @@
 }
 -(void)setCellData:(NSDictionary*)dict row:(NSInteger)row
 {
-    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc] init];
-    dict1[@"id"]=@"1";
-    dict1[@"name"]=@"热网供水温度";
-    dict1[@"value"]=@"15.98";
-    dict1[@"unit"]=@"C";
+
     if (row%2==0) {
         self.backgroundColor = [UIColor whiteColor];
     }
@@ -101,19 +97,18 @@
         self.backgroundColor = RGBA(230, 230, 230, 1);
     }
     
-    if ([dict1 objectForKey:@"id"]) {
-        self.idLb.text = [dict1 objectForKey:@"id"];
-    }
-    if ([dict1 objectForKey:@"name"]) {
-        self.nameLb.text = [dict1 objectForKey:@"name"];
+    self.idLb.text = [NSString stringWithFormat:@"%d",row+1];
+    
+    if ([dict objectForKey:@"alias"]) {
+        self.nameLb.text = [dict objectForKey:@"alias"];
     }
 
-    if ([dict1 objectForKey:@"value"]) {
-        self.valueLb.text = [dict1 objectForKey:@"value"];
+    if ([dict objectForKey:@"value"]) {
+        self.valueLb.text = [dict objectForKey:@"value"];
     }
     
-    if ([dict1 objectForKey:@"unit"]) {
-        self.unitLb.text = [dict1 objectForKey:@"unit"];
+    if ([dict objectForKey:@"unit"]) {
+        self.unitLb.text = [dict objectForKey:@"unit"];
     }
 
 }

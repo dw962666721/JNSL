@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChooseTimeView.h"
 
-@interface TSMessageViewController : UIViewController<ChooseTimeViewDelegate>
+@interface TSMessageViewController : baseViewController<ChooseTimeViewDelegate>
 @property (nonatomic,strong) UIView *ssTimeView;
 @property (nonatomic,strong) UILabel *ssSendLb;
 @property (nonatomic,strong) UISwitch *ssSwitch;

@@ -19,10 +19,10 @@
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"userId"]=userInfoJNSL.userId;
-    [MBProgressHUD showMessage:@"正在加载数据中....."];
+    [MBProgressHUD showMessage:@"正在加载数据中....." toView:self.view];
     [AFNetworkTool postJSONWithUrl:FunctionRollMsgURL parameters:dict success:^(id responseObject) {
         // 移除HUD
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view];
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
@@ -41,7 +41,7 @@
         
     } fail:^{
         // 移除HUD
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view];
         
         // 提醒有没有新数据
         [MBProgressHUD showError:@"请求失败"];
@@ -138,10 +138,10 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"userId"]=userInfoJNSL.userId;
     dict[@"checkedIds"]=idStr;
-       [MBProgressHUD showMessage:@"正在修改配置....."];
+    [MBProgressHUD showMessage:@"正在修改配置....." toView:self.view];
     [AFNetworkTool postJSONWithUrl:UpdateCheckedRollURL parameters:dict success:^(id responseObject) {
         // 移除HUD
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view];
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
@@ -156,7 +156,7 @@
         }
     } fail:^{
         // 移除HUD
-        [MBProgressHUD hideHUD];
+        [MBProgressHUD hideHUDForView:self.view];
         
         // 提醒有没有新数据
         [MBProgressHUD showError:@"请求失败"];

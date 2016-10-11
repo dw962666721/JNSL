@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SendQuestionViewController.h"
 #import "CommonQuestionViewController.h"
-@interface ServiceCenterViewController : UIViewController
+@interface ServiceCenterViewController : baseViewController
 
 @end

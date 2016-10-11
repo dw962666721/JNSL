@@ -18,8 +18,24 @@
     [super viewDidLoad];
     self.title=@"推送设置";
  self.view.backgroundColor = RGBA(229, 230, 232, 1);
-    [self addViews];
+//    [self addViews];
+    [self addViewsNew];
     // Do any additional setup after loading the view.
+}
+-(void)addViewsNew
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 15, screenWidth, 40)];
+    view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:view];
+    
+    UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, view.frame.size.height)];
+    titleLb.text=@"是否推送";
+    titleLb.textColor = TextColor;
+    [view addSubview:titleLb];
+    
+    UISwitch *switchItem = [[UISwitch alloc] initWithFrame:CGRectMake(screenWidth-60, (40-27)/2, 50, 20)];
+    switchItem.transform = CGAffineTransformMakeScale(0.75, 0.75);
+    [view addSubview:switchItem];
 }
 -(void)addViews
 {

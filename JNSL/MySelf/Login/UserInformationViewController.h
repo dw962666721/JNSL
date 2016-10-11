@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserInformationViewController : UIViewController<UIActionSheetDelegate>
+@interface UserInformationViewController : baseViewController<UIActionSheetDelegate>
 @property (strong,nonatomic) CustemButton *userNameView;
 @property (strong,nonatomic) CustemButton *phoneView;
 @property (strong,nonatomic) CustemButton *emailView;

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MessageTableViewCell.h"
-@interface CommonQuestionViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface CommonQuestionViewController : baseViewController<UITableViewDelegate,UITableViewDataSource>
 
 @end

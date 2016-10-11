@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ConcernTypeViewController.h"
-@interface MyConcernViewController : UIViewController
+@interface MyConcernViewController : baseViewController
 
 @end
