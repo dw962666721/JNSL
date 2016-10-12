@@ -17,6 +17,7 @@
 @property (strong,nonatomic) NSString *phoneNum;
 @property (strong,nonatomic) NSString *email;
 @property (strong,nonatomic) NSString *pollSourceId;
+//@property (strong,nonatomic) NSString *tsChoose;
 //@property (strong,nonatomic) NSDictionary *userDict;
 -(NSDictionary*)getUserDict;
 -(void)clearUserDict;

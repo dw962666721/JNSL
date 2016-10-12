@@ -74,5 +74,6 @@ static UserInfo* instance = nil;
     instance.phoneNum = @"";
     instance.email = @"";
     instance.pollSourceId = @"";
+//    instance.tsChoose=@"0";
 }
 @end
