@@ -11,4 +11,14 @@
 @interface rounfView : UIView
 
 @property (nonatomic,strong) NSArray *arr;
+
+@property UILabel *lb1;
+@property UILabel *lb2;
+@property UILabel *lb3;
+@property UILabel *lb4;
+-(void)setText:(NSDictionary *)data;
+@property double zhinanzhen;
+@property UIImageView *img;
+
+@property double haifrac;
 @end

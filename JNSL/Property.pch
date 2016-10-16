@@ -27,8 +27,12 @@
 #import "baseViewController.h"
 #define userInfoJNSL ([UserInfo userInfo])
 #define Money_Come_Property_pch
-#define ServerUrl @"http://112.65.187.118:8074//ep4.1_nm_app"
-//#define ServerUrl @"http://60.31.21.53:8080//ep4.1_nm_app"
+#define requestType @"http://"
+#define ip requestType@"60.31.21.53:8080"
+//#define ip requestType@"112.65.187.118:8074"
+
+//#define ip userInfoJNSL.ip
+#define ServerUrl ip@"//ep4.1_nm_app"
 // 首页数据
 #define HomeURL ServerUrl@"/androidOpenPlantAction!firstPageList.action"
 #define LoginURL ServerUrl@"/androidLoginAction!androidLogin.action"
@@ -44,8 +48,17 @@
 #define SaveProblemMessageURL ServerUrl@"/androidAlarmRecordInfoAction!saveProblemMessage.action"
 // 机组详情（汽机，锅炉，环保，公用）
 #define FacilityDetialInfoURL ServerUrl@"/androidOpenPlantAction!getFacilityDetialInfo.action"
-#define zhifaURL ServerUrl@"/sourceShareAction!getSourceShareListMobile.action"
-
+#define zhifaURL ServerUrl@"/androidSourceFileAction!getSourceShareListMobile.action"
+#define gongkuangURL ServerUrl@"/androidSourceFileAction!getSourceFileList.action"
+#define yujingURL ServerUrl@"/androidAlarmRecordInfoAction!getOverStandardPreAlarm.action"
+#define yichangURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmReport.action"
+#define yichangDetailsURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmReportTypeADetail.action"
+#define chaobiaoURL ServerUrl@"/androidAlarmRecordInfoAction!getExcessiveReportingByUserId.action"
+#define chaobiaoDetailsURL ServerUrl@"/androidAlarmRecordInfoAction!getExcessiveReportingMessageByUserId.action"
+#define jizuURL ServerUrl@"/androidAlarmRecordInfoAction!getFacilityListByEnterpriseId.action"
+#define nianduzongliangURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmPollTotal.action"
+#define zhexianURL ServerUrl@"/androidPreAlarmAction!getDayTotalEmissionForChart.action"
+#define shishiURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmSixWarningListByUserIdV2.action"
 
 #define screenHeight  ([UIScreen mainScreen].bounds.size.height)
 #define screenWidth  ([UIScreen mainScreen].bounds.size.width)

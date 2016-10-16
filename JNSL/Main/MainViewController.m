@@ -175,7 +175,7 @@
 -(void)addChildViewController:(UIViewController *)childController
 {
     // 1.创建导航控制器的目的：需要一个导航条
-    UINavigationController *nav=[[UINavigationController alloc] initWithRootViewController:childController];
+    UINavigationController *nav=[[myNavigationViewController alloc] initWithRootViewController:childController];
     nav.delegate = self;
     // 1.4.设置导航栏的文字
     nav.navigationBar.tintColor = [UIColor whiteColor];
@@ -185,6 +185,15 @@
 
 }
 
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
+    return  NO;
+}
+
+
+-(bool)shouldAutorotate{
+    return NO;
+}
 
 -(void)backClick{
     //[self.navigationController popToRootViewControllerAnimated:true];
@@ -200,6 +209,8 @@
 {
     return self.titleArray[index];
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -7,7 +7,12 @@
 //
 
 #import "baseViewController.h"
+#import "MJRefresh.h"
 #import "excessiveEariningCellTableViewCell.h"
-@interface unusualReportViewController : baseViewController<UITableViewDataSource,UITableViewDelegate>
+#import "unusualReportTableViewCell.h"
+#import "unusualReportDetailsViewController.h"
+#import "excessiveSearchViewController.h"
+
+@interface unusualReportViewController : baseViewController<UITableViewDataSource,UITableViewDelegate,excessiveSearchProtocal>
 @property UITableView *datatable;
 @end

@@ -7,7 +7,12 @@
 //
 
 #import "baseViewController.h"
+#import "MJRefresh.h"
 #import "excessiveEariningCellTableViewCell.h"
+#import "realTimeTableViewCell.h"
+#import "realTimeSearchViewController.h"
+
+
 @interface realtimeViewController : baseViewController<UITableViewDataSource,UITableViewDelegate>
 @property UITableView *datatable;
 @end

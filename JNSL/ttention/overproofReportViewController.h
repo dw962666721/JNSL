@@ -7,7 +7,12 @@
 //
 
 #import "baseViewController.h"
+#import "MJRefresh.h"
 #import "excessiveEariningCellTableViewCell.h"
-@interface overproofReportViewController : baseViewController<UITableViewDataSource,UITableViewDelegate>
+#import "overproofReportDetailsViewController.h"
+#import "overproofSeachViewController.h"
+
+
+@interface overproofReportViewController : baseViewController<UITableViewDataSource,UITableViewDelegate,overproofSearchProtocal>
 @property UITableView *datatable;
 @end

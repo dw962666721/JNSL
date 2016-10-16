@@ -14,31 +14,42 @@
 
 @implementation emeViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置背景图片
     UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
     [self.view setBackgroundColor:bgColor];
     CGFloat screenWid = ([UIScreen mainScreen].bounds.size.width-50)/4;
-    UIImageView *gongkuang = [[UIImageView alloc] initWithFrame:CGRectMake(10, 20, screenWid, screenWid)];
+    UIImageView *gongkuang = [[UIImageView alloc] initWithFrame:CGRectMake(10, 50, screenWid, screenWid)];
     gongkuang.image = [UIImage imageNamed:@"gongkuangjieshao"];
     gongkuang.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick1)];
     [gongkuang addGestureRecognizer:singleTap1];
     
-    UIImageView *huanbao = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid+20, 20, screenWid, screenWid)];
+    UIImageView *huanbao = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid+20, 50, screenWid, screenWid)];
     huanbao.image = [UIImage imageNamed:@"huanbaozhishi"];
     huanbao.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick2)];
     [huanbao addGestureRecognizer:singleTap2];
     
-    UIImageView *zhifa = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*2+30, 20, screenWid, screenWid)];
+    UIImageView *zhifa = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*2+30, 50, screenWid, screenWid)];
     zhifa.image = [UIImage imageNamed:@"zhifaanli"];
     zhifa.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick3)];
     [zhifa addGestureRecognizer:singleTap3];
     
-    UIImageView *zhengce = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*3+40, 20, screenWid, screenWid)];
+    UIImageView *zhengce = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*3+40, 50, screenWid, screenWid)];
     zhengce.image = [UIImage imageNamed:@"zhengcewenjian"];
     zhengce.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick4)];
@@ -61,12 +72,17 @@
 }
 - (void)imgClick3 {
     zhifaViewController *gongkuangView = [[zhifaViewController alloc] init];
+    gongkuangView.title = @"执法案例";
+    gongkuangView.viewtype = @"zhifa";
     [self.navigationController pushViewController:gongkuangView animated:true];
     
 }
 - (void)imgClick4 {
-    zhengceViewController *gongkuangView = [[zhengceViewController alloc] init];
+    zhifaViewController *gongkuangView = [[zhifaViewController alloc] init];
+    gongkuangView.title = @"政策文件";
+    gongkuangView.viewtype = @"gongkuang";
     [self.navigationController pushViewController:gongkuangView animated:true];
+    
     
 }
 

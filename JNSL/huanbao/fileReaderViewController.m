@@ -17,9 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"详情";
-    self.webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    self.webview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-65)];
     [self.view addSubview:self.webview];
     self.webview.backgroundColor = [UIColor whiteColor];
+    self.webview.delegate = self;
     if (self.filename != nil) {
         [self loadDocument:self.filename];
     }
@@ -39,8 +40,14 @@
         NSURL *url = [NSURL fileURLWithPath:file];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         [self.webview loadRequest:request];
+        [MBProgressHUD showMessage:@"" toView:self.view];
     }
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [MBProgressHUD hideHUDForView:self.view];
+}
+
 
 -(void)loadTxt:(NSString *)fileName{
     ///编码可以解决 .txt 中文显示乱码问题

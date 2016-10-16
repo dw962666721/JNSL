@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 @interface LoginViewController ()
+@property UITextField *serverTextFiled;
 @end
 
 @implementation LoginViewController
@@ -115,11 +116,11 @@
     [tipLabel setTextColor:[UIColor whiteColor]];
     [self.serviewView addSubview:tipLabel];
     
-    UITextField *serverTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(leftSplit, 45, screenWidth-leftSplit*2, viewH)];
-    serverTextFiled.placeholder = @" 如:192.168.11.102:8080";
-    serverTextFiled.backgroundColor = [UIColor whiteColor];
-    serverTextFiled.layer.cornerRadius = 5;
-    [self.serviewView addSubview:serverTextFiled];
+    self.serverTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(leftSplit, 45, screenWidth-leftSplit*2, viewH)];
+    self.serverTextFiled.placeholder = @" 如:192.168.11.102:8080";
+    self.serverTextFiled.backgroundColor = [UIColor whiteColor];
+    self.serverTextFiled.layer.cornerRadius = 5;
+    [self.serviewView addSubview:self.serverTextFiled];
     
     UIButton *setSureBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, 85, screenWidth-leftSplit*2, 25)];
     setSureBtn.backgroundColor = ColorWithRGB(0xe87d37);
@@ -131,6 +132,7 @@
 }
 -(void)setSureAction
 {
+//    userInfoJNSL.ip = self.serverTextFiled.text;
 }
 -(void)loginAction
 {
@@ -173,7 +175,7 @@
 }
 -(void)setAction
 {
-    
+    self.serviewView.hidden = !self.serviewView.hidden;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

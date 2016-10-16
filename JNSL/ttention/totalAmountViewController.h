@@ -12,5 +12,14 @@
 
 @interface totalAmountViewController : baseViewController
 
+@property UIScrollView *scroll;
+@property rounfView *orvl;
+@property UILabel *lineTitle;
 
+@property UIButton *lineBtn1;
+@property UIButton *lineBtn2;
+@property UIButton *lineBtn3;
+
+@property lineChartView *zhexianview;
+@property NSArray *zhexianArr;
 @end

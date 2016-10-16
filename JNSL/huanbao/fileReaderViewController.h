@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "baseViewController.h"
 
-@interface fileReaderViewController : baseViewController
+@interface fileReaderViewController : baseViewController<UIWebViewDelegate>
 @property UIWebView *webview;
 @property NSString *filename;
 @end

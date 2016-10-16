@@ -9,24 +9,59 @@
 #import "myAttentionViewController.h"
 
 @interface myAttentionViewController ()
+{
+    NSString *logintype;
+}
  @property  UICollectionView *cillection;
+
 @end
 
 @implementation myAttentionViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"pullID");
+    NSLog(userInfoJNSL.pollSourceId);
+    [super viewWillAppear:animated];
+    
+    [self refresuserdata];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+-(void)refresuserdata{
+    if (userInfoJNSL.pollSourceId == nil || userInfoJNSL.userId == nil) {
+        logintype = @"0";
+    }else{
+        logintype = @"1";
+    }
+    [self.cillection reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (userInfoJNSL.pollSourceId == nil || userInfoJNSL.userId == nil) {
+        logintype = @"0";
+    }else{
+        logintype = @"1";
+    }
+    
     CGFloat screenwid = [UIScreen mainScreen].bounds.size.width;
     //设置背景图片
     UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
-                        [self.view setBackgroundColor:bgColor];
+    [self.view setBackgroundColor:bgColor];
     UICollectionViewFlowLayout * customLayout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
     customLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     //设置每个item的大小为100*100
     customLayout.itemSize = CGSizeMake((screenwid-60)/3, (screenwid-60)/3);
     
-     self.cillection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenwid, [UIScreen mainScreen].bounds.size.height) collectionViewLayout:customLayout];
+     self.cillection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenwid, screenHeight-65) collectionViewLayout:customLayout];
     [self.cillection registerClass:[attentionCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     self.cillection.dataSource = self;
     self.cillection.delegate = self;
@@ -37,52 +72,47 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    switch (indexPath.row) {
-        case 0:
-            
-             self.totalAmount = [[totalAmountViewController alloc] init];
-            
-            [self.navigationController pushViewController:self.totalAmount animated:true];
-            
-            break;
-        case 1:
-            
-            
+    if ([logintype  isEqual: @"1"]) {
+        switch (indexPath.row) {
+            case 0:
+                self.totalAmount = [[totalAmountViewController alloc] init];
+                
+                [self.navigationController pushViewController:self.totalAmount animated:YES];
+                
+                break;
+            case 1:
                 self.excessiveWarinng = [[excessiveWarinngViewController alloc] init];
-            
-            [self.navigationController pushViewController:self.excessiveWarinng animated:true];
-            break;
-        case 2:
-            
-            
+                
+                [self.navigationController pushViewController:self.excessiveWarinng animated:YES];
+                break;
+            case 2:
                 self.unusualReport = [[unusualReportViewController alloc] init];
-            
-            [self.navigationController pushViewController:self.unusualReport animated:true];
-            break;
-        case 3:
-            
-            
+                
+                [self.navigationController pushViewController:self.unusualReport animated:YES];
+                break;
+            case 3:
                 self.overproofReport = [[overproofReportViewController alloc] init];
-            
-            [self.navigationController pushViewController:self.overproofReport animated:true];
-            break;
-        case 4:
-            
-            
+                
+                [self.navigationController pushViewController:self.overproofReport animated:YES];
+                break;
+            case 4:
+                
                 self.realtime = [[realtimeViewController alloc] init];
-            
-            [self.navigationController pushViewController:self.realtime animated:true];
-            break;
-        case 5:
-            self.realTechnologo = [[realTechnologoViewController alloc] init];
-            
-            [self.navigationController pushViewController:self.realTechnologo animated:true];
-            break;
-        
-            
-        default:
-            break;
+                
+                [self.navigationController pushViewController:self.realtime animated:YES];
+                break;
+            case 5:
+                self.realTechnologo = [[realTechnologoViewController alloc] init];
+                
+                [self.navigationController pushViewController:self.realTechnologo animated:YES];
+                break;
+            default:
+                break;
+        }
+    }else{
+        [MBProgressHUD showError:@"请先登录,您没有权限"];
     }
+   
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -93,7 +123,12 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 6;
+    if ([logintype  isEqual: @"1"]) {
+         return 6;
+    }else{
+        return 3;
+    }
+   
 }
 
 
@@ -101,28 +136,44 @@
 {
     attentionCollectionViewCell *cell = [self.cillection dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     if (cell) {
-        switch (indexPath.row) {
-            case 0:
-                cell.img.image = [UIImage imageNamed:@"chaobiaobaogao"];
-                break;
-            case 1:
-                cell.img.image = [UIImage imageNamed:@"chaobiaoyujing"];
-                break;
-            case 2:
-                cell.img.image = [UIImage imageNamed:@"shishibaojing"];
-                break;
-            case 3:
-                cell.img.image = [UIImage imageNamed:@"shishigongyitu"];
-                break;
-            case 4:
-                cell.img.image = [UIImage imageNamed:@"yichangbaogao"];
-                break;
-            case 5:
-                cell.img.image = [UIImage imageNamed:@"zongliangjiankong"];
-                break;
-                
-            default:
-                break;
+        if ([logintype  isEqual: @"1"]) {
+            switch (indexPath.row) {
+                case 0:
+                    cell.img.image = [UIImage imageNamed:@"zongliangjiankong"];
+                    break;
+                case 1:
+                    cell.img.image = [UIImage imageNamed:@"chaobiaoyujing"];
+                    break;
+                case 2:
+                    cell.img.image = [UIImage imageNamed:@"yichangbaogao"];
+                    break;
+                case 3:
+                    cell.img.image = [UIImage imageNamed:@"chaobiaobaogao"];
+                    break;
+                case 4:
+                    cell.img.image = [UIImage imageNamed:@"shishibaojing"];
+                    break;
+                case 5:
+                    cell.img.image = [UIImage imageNamed:@"shishigongyitu"];
+                    break;
+                    
+                default:
+                    break;
+            }
+        }else{
+            switch (indexPath.row) {
+                case 0:
+                    cell.img.image = [UIImage imageNamed:@"zongliangjiankong"];
+                    break;
+                case 1:
+                    cell.img.image = [UIImage imageNamed:@"chaobiaobaogao"];
+                    break;
+                case 2:
+                    cell.img.image = [UIImage imageNamed:@"shishibaojing"];
+                    break;
+                default:
+                    break;
+            }
         }
     }
     

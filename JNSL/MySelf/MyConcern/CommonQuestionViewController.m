@@ -64,6 +64,8 @@
         }
 
     } fail:^{
+        [self.tableView.header endRefreshing];
+        [self.tableView.footer endRefreshing];
         // 移除HUD
         [MBProgressHUD hideHUD];
         

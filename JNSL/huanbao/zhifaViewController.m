@@ -13,6 +13,7 @@
 
     NSString *currentFilename;
     NSString *currentIndexpath;
+    NSMutableArray *dataArr;
 }
 @end
 
@@ -20,8 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"执法案例";
     self.pageindex = 0;
+    dataArr = [[NSMutableArray alloc] init];
     self.DataTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-65)];
     self.DataTable.dataSource = self;
     self.DataTable.delegate = self;
@@ -34,12 +35,28 @@
     self.DataTable.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf loadNewData];
     }];
-    self.DataTable.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.DataTable.footer = [MJRefreshBackFooter footerWithRefreshingBlock:^{
         [weakSelf loadMoreData];
     }];
+    
     // 马上进入刷新状态
     [self.DataTable.header beginRefreshing];
     //[self createProgress];
+}
+
+#pragma mark - 数据处理相关
+#pragma mark 下拉刷新数据
+- (void)loadNewData
+{
+    [self loadData:true];
+    //[self.DataTable.mj_header endRefreshing];
+}
+
+#pragma mark 上拉加载更多数据
+- (void)loadMoreData
+{
+    [self loadData:false];
+    //[self.DataTable.mj_footer endRefreshing];
 }
 
 //加载数据
@@ -48,27 +65,53 @@
     
     if (type) {
         //刷新数据
-        self.pageindex = 0;
+        dict[@"start"]= [NSString stringWithFormat:@"%ld",0];
     }else{
         //加载数据
-        
+        dict[@"start"]= [NSString stringWithFormat:@"%ld",(long)dataArr.count];
     }
-    dict[@"start"]= [NSString stringWithFormat:@"%ld",(long)self.pageindex];
-    NSLog(@"vvvv");
-    NSLog(zhifaURL);
-    [AFNetworkTool postJSONWithUrl:zhifaURL parameters:dict success:^(id responseObject) {
+    
+    NSString *urlstr = @"";
+    if (self.viewtype == @"zhifa") {
+        urlstr = zhifaURL;
+        dict[@"fileTypeId"] = @"ZFAL";
+    }else{
+        urlstr = gongkuangURL;
+    }
+    
+    [AFNetworkTool postJSONWithUrl:urlstr parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
-            self.pageindex = self.pageindex + 1;
-            
+            NSMutableArray *resultEntityArray = [[NSMutableArray alloc] initWithArray:[json objectForKey:@"resultEntity"]];
+            if (resultEntityArray.count>0) {
+                NSMutableDictionary *resultEntityDict = resultEntityArray[0];
+                NSArray *resultArray = resultEntityDict[@"data"];
+                if (type) {
+                    dataArr = [[NSMutableArray alloc] initWithArray:resultArray];
+                    [self.DataTable.header endRefreshing];
+                    if (dataArr.count == 0) {
+                        [MBProgressHUD showError:@"暂无数据"];
+                    }
+                }else{
+                    [dataArr addObjectsFromArray:resultArray];
+                    [self.DataTable.footer endRefreshing];
+                }
+                
+                [self.DataTable reloadData];
+                //self.pageindex = self.pageindex + 1;
+            }
         }
         
     } fail:^{
-        
+        [MBProgressHUD showError:@"获取数据失败"];
+        [self.DataTable.header endRefreshing];
+        [self.DataTable.footer endRefreshing];
     }];
     
 }
+
+
 
 
 //指定有多少个分区(Section)，默认为1
@@ -81,7 +124,7 @@
 //指定每个分区中有多少行，默认为1
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 20;
+    return dataArr.count;
     
 }
 
@@ -102,29 +145,18 @@
             cell = [[zhifaTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         }
     cell.cellIndex = indexPath.row;
-    cell.cellUrl = @"";
-    cell.cellFilename = @"new.jpg";
+    NSString *datafileurl = [dataArr[indexPath.row] objectForKey:@"fileUrl"];
+    NSString *fileurl = [[NSString alloc] initWithFormat:@"%@,%@", ServerUrl, datafileurl ];
+    cell.cellUrl = fileurl;
+    cell.cellFilename = [dataArr[indexPath.row] objectForKey:@"fileName"];
     cell.ipath = indexPath;
     cell.zprotocal = self;
-    cell.fileId = @"";
+    cell.fileId = [dataArr[indexPath.row] objectForKey:@"fileId"];
     [cell setDownText];
     return cell;
 }
 
-#pragma mark - 数据处理相关
-#pragma mark 下拉刷新数据
-- (void)loadNewData
-{
-    [self loadData:true];
-    //[self.DataTable.mj_header endRefreshing];
-}
 
-#pragma mark 上拉加载更多数据
-- (void)loadMoreData
-{
-    [self loadData:false];
-    //[self.DataTable.mj_footer endRefreshing];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -191,7 +223,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
         //回到主线程进行本地视频播放
         dispatch_async(dispatch_get_main_queue(), ^{
             //成功
-            [self showMes:@"成功"];
+            [MBProgressHUD showError:@"成功"];
             //刷新表格
             NSArray *arr = [[NSArray alloc] initWithObjects:currentIndexpath, nil];
             [self.DataTable reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationMiddle];
@@ -200,13 +232,6 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
     [self endProgress];
 }
 
--(void)showMes:(NSString *)mes{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示框" message:mes preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        //点击按钮的响应事件；
-    }]];
-    [self presentViewController:alertController animated:YES completion:nil];
-}
 
 -(void)createProgress{
     self.HUD = [[MBProgressHUD alloc] initWithView:self.view];

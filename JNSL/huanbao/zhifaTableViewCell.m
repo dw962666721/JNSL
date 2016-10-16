@@ -30,7 +30,7 @@
         [self addSubview:self.seeBrn];
         //设置样式
         self.logoimg.image = [UIImage imageNamed:@"arrow_left3"];
-        self.filename.text = @"desktop.ini";
+        
         [self.downloadBtn setTitle:@"" forState:UIControlStateNormal];
         [self.seeBrn setTitle:@"查看" forState:UIControlStateNormal];
         [self.downloadBtn setTitleColor:ColorWithRGB(0x1381f5) forState:UIControlStateNormal];
@@ -45,6 +45,7 @@
 }
 
 -(void)setDownText{
+    self.filename.text = self.cellFilename;
     if ([self isexsitFile:self.cellFilename]) {
         [self.downloadBtn setTitle:@"已下载" forState:UIControlStateNormal];
     }else{

@@ -7,9 +7,13 @@
 //
 
 #import "baseViewController.h"
+#import "MJRefresh.h"
 #import "excessiveEariningCellTableViewCell.h"
+#import "excessiveSearchViewController.h"
 
 //超标预警
-@interface excessiveWarinngViewController : baseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface excessiveWarinngViewController : baseViewController<UITableViewDataSource,UITableViewDelegate,excessiveSearchProtocal>
 @property UITableView *datatable;
+
+
 @end

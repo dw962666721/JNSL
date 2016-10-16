@@ -29,6 +29,11 @@
         [self reloadData];
     }
 }
+
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+
 -(void)reloadData
 {
     //    self.backgroundColor = [UIColor colorWithRed:35 green:40 blue:50 alpha:1];

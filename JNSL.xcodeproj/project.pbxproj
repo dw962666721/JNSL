@@ -58,6 +58,19 @@
 		DB3A081B1DAA97E50085E1D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A08181DAA97E50085E1D0 /* LoginViewController.m */; };
 		DB3A081C1DAA97E50085E1D0 /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */; };
 		DB3A081F1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */; };
+		DB849B611DB117A200393441 /* realTechTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB849B601DB117A200393441 /* realTechTableViewCell.m */; };
+		DB849B641DB11BFD00393441 /* realTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB849B631DB11BFD00393441 /* realTimeTableViewCell.m */; };
+		DB849B671DB11E3E00393441 /* unusualReportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB849B661DB11E3E00393441 /* unusualReportTableViewCell.m */; };
+		DB84F03A1DB1E3DE0059934A /* unusualReportDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F0391DB1E3DE0059934A /* unusualReportDetailsViewController.m */; };
+		DB84F03D1DB1F50E0059934A /* overproofReportDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F03C1DB1F50E0059934A /* overproofReportDetailsViewController.m */; };
+		DB84F0401DB1F7A40059934A /* overproofReportDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F03F1DB1F7A40059934A /* overproofReportDetailsTableViewCell.m */; };
+		DB84F0431DB1FC900059934A /* realTechTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F0421DB1FC900059934A /* realTechTDetailsViewController.m */; };
+		DB84F0491DB209DD0059934A /* excessiveSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F0481DB209DD0059934A /* excessiveSearchViewController.m */; };
+		DB84F04C1DB224CF0059934A /* overproofSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F04B1DB224CF0059934A /* overproofSeachViewController.m */; };
+		DBDD34851DB31D5F000DF69D /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34821DB31D5F000DF69D /* HooDatePicker.m */; };
+		DBDD34861DB31D5F000DF69D /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34841DB31D5F000DF69D /* NSDate+HooDatePicker.m */; };
+		DBDD34891DB33DA8000DF69D /* realTimeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34881DB33DA8000DF69D /* realTimeSearchViewController.m */; };
+		DBDD348C1DB38D5B000DF69D /* myNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD348B1DB38D5B000DF69D /* myNavigationViewController.m */; };
 		DBEDAD641DA6A6DC00913635 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD161DA6A6DC00913635 /* MBProgressHUD+NJ.m */; };
 		DBEDAD651DA6A6DC00913635 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD181DA6A6DC00913635 /* MBProgressHUD.m */; };
 		DBEDAD661DA6A6DC00913635 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD1C1DA6A6DC00913635 /* MJRefreshAutoFooter.m */; };
@@ -250,6 +263,32 @@
 		DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationViewController.m; sourceTree = "<group>"; };
 		DB3A081D1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailTableViewCell.h; sourceTree = "<group>"; };
 		DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailTableViewCell.m; sourceTree = "<group>"; };
+		DB849B5F1DB117A200393441 /* realTechTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = realTechTableViewCell.h; sourceTree = "<group>"; };
+		DB849B601DB117A200393441 /* realTechTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = realTechTableViewCell.m; sourceTree = "<group>"; };
+		DB849B621DB11BFD00393441 /* realTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = realTimeTableViewCell.h; sourceTree = "<group>"; };
+		DB849B631DB11BFD00393441 /* realTimeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = realTimeTableViewCell.m; sourceTree = "<group>"; };
+		DB849B651DB11E3E00393441 /* unusualReportTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unusualReportTableViewCell.h; sourceTree = "<group>"; };
+		DB849B661DB11E3E00393441 /* unusualReportTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = unusualReportTableViewCell.m; sourceTree = "<group>"; };
+		DB84F0381DB1E3DE0059934A /* unusualReportDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unusualReportDetailsViewController.h; sourceTree = "<group>"; };
+		DB84F0391DB1E3DE0059934A /* unusualReportDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = unusualReportDetailsViewController.m; sourceTree = "<group>"; };
+		DB84F03B1DB1F50E0059934A /* overproofReportDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = overproofReportDetailsViewController.h; sourceTree = "<group>"; };
+		DB84F03C1DB1F50E0059934A /* overproofReportDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = overproofReportDetailsViewController.m; sourceTree = "<group>"; };
+		DB84F03E1DB1F7A40059934A /* overproofReportDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = overproofReportDetailsTableViewCell.h; sourceTree = "<group>"; };
+		DB84F03F1DB1F7A40059934A /* overproofReportDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = overproofReportDetailsTableViewCell.m; sourceTree = "<group>"; };
+		DB84F0411DB1FC900059934A /* realTechTDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = realTechTDetailsViewController.h; sourceTree = "<group>"; };
+		DB84F0421DB1FC900059934A /* realTechTDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = realTechTDetailsViewController.m; sourceTree = "<group>"; };
+		DB84F0471DB209DD0059934A /* excessiveSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = excessiveSearchViewController.h; sourceTree = "<group>"; };
+		DB84F0481DB209DD0059934A /* excessiveSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = excessiveSearchViewController.m; sourceTree = "<group>"; };
+		DB84F04A1DB224CF0059934A /* overproofSeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = overproofSeachViewController.h; sourceTree = "<group>"; };
+		DB84F04B1DB224CF0059934A /* overproofSeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = overproofSeachViewController.m; sourceTree = "<group>"; };
+		DBDD34811DB31D5F000DF69D /* HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HooDatePicker.h; sourceTree = "<group>"; };
+		DBDD34821DB31D5F000DF69D /* HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HooDatePicker.m; sourceTree = "<group>"; };
+		DBDD34831DB31D5F000DF69D /* NSDate+HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HooDatePicker.h"; sourceTree = "<group>"; };
+		DBDD34841DB31D5F000DF69D /* NSDate+HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HooDatePicker.m"; sourceTree = "<group>"; };
+		DBDD34871DB33DA8000DF69D /* realTimeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = realTimeSearchViewController.h; sourceTree = "<group>"; };
+		DBDD34881DB33DA8000DF69D /* realTimeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = realTimeSearchViewController.m; sourceTree = "<group>"; };
+		DBDD348A1DB38D5B000DF69D /* myNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myNavigationViewController.h; sourceTree = "<group>"; };
+		DBDD348B1DB38D5B000DF69D /* myNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myNavigationViewController.m; sourceTree = "<group>"; };
 		DBEDAD151DA6A6DC00913635 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
 		DBEDAD161DA6A6DC00913635 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
 		DBEDAD171DA6A6DC00913635 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -437,6 +476,7 @@
 		CF17D2991D9FC2EA0084CD9C /* JNSL */ = {
 			isa = PBXGroup;
 			children = (
+				DBDD34801DB31D5F000DF69D /* HooDatePicker */,
 				CF17D2CA1D9FC2EA0084CD9C /* Property.pch */,
 				CF17D2B11D9FC2EA0084CD9C /* main.m */,
 				CF716C581DA1F552001AF719 /* html */,
@@ -467,6 +507,8 @@
 				CF17D2AE1D9FC2EA0084CD9C /* Main.storyboard */,
 				CF17D2AF1D9FC2EA0084CD9C /* MainViewController.h */,
 				CF17D2B01D9FC2EA0084CD9C /* MainViewController.m */,
+				DBDD348A1DB38D5B000DF69D /* myNavigationViewController.h */,
+				DBDD348B1DB38D5B000DF69D /* myNavigationViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -544,6 +586,26 @@
 				CF716C7C1DA22101001AF719 /* realTechnologoViewController.m */,
 				CF716C7E1DA234BB001AF719 /* excessiveEariningCellTableViewCell.h */,
 				CF716C7F1DA234BB001AF719 /* excessiveEariningCellTableViewCell.m */,
+				DB849B5F1DB117A200393441 /* realTechTableViewCell.h */,
+				DB849B601DB117A200393441 /* realTechTableViewCell.m */,
+				DB849B621DB11BFD00393441 /* realTimeTableViewCell.h */,
+				DB849B631DB11BFD00393441 /* realTimeTableViewCell.m */,
+				DB849B651DB11E3E00393441 /* unusualReportTableViewCell.h */,
+				DB849B661DB11E3E00393441 /* unusualReportTableViewCell.m */,
+				DB84F0381DB1E3DE0059934A /* unusualReportDetailsViewController.h */,
+				DB84F0391DB1E3DE0059934A /* unusualReportDetailsViewController.m */,
+				DB84F03B1DB1F50E0059934A /* overproofReportDetailsViewController.h */,
+				DB84F03C1DB1F50E0059934A /* overproofReportDetailsViewController.m */,
+				DB84F03E1DB1F7A40059934A /* overproofReportDetailsTableViewCell.h */,
+				DB84F03F1DB1F7A40059934A /* overproofReportDetailsTableViewCell.m */,
+				DB84F0411DB1FC900059934A /* realTechTDetailsViewController.h */,
+				DB84F0421DB1FC900059934A /* realTechTDetailsViewController.m */,
+				DB84F0471DB209DD0059934A /* excessiveSearchViewController.h */,
+				DB84F0481DB209DD0059934A /* excessiveSearchViewController.m */,
+				DB84F04A1DB224CF0059934A /* overproofSeachViewController.h */,
+				DB84F04B1DB224CF0059934A /* overproofSeachViewController.m */,
+				DBDD34871DB33DA8000DF69D /* realTimeSearchViewController.h */,
+				DBDD34881DB33DA8000DF69D /* realTimeSearchViewController.m */,
 			);
 			path = ttention;
 			sourceTree = "<group>";
@@ -640,6 +702,17 @@
 				DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		DBDD34801DB31D5F000DF69D /* HooDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				DBDD34811DB31D5F000DF69D /* HooDatePicker.h */,
+				DBDD34821DB31D5F000DF69D /* HooDatePicker.m */,
+				DBDD34831DB31D5F000DF69D /* NSDate+HooDatePicker.h */,
+				DBDD34841DB31D5F000DF69D /* NSDate+HooDatePicker.m */,
+			);
+			path = HooDatePicker;
 			sourceTree = "<group>";
 		};
 		DBEDAD141DA6A6DC00913635 /* MBProgressHUD */ = {
@@ -1055,7 +1128,7 @@
 				TargetAttributes = {
 					DB2F8C091D9CD99D0075DD6F = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4UMT272HGZ;
+						DevelopmentTeam = K5T39T72HB;
 					};
 					DB2F8C221D9CD99D0075DD6F = {
 						CreatedOnToolsVersion = 7.3;
@@ -1146,6 +1219,9 @@
 				DBEDAD851DA6A6DC00913635 /* UIImageView+WebCache.m in Sources */,
 				DBEDAD731DA6A6DC00913635 /* MJRefreshStateHeader.m in Sources */,
 				DBEDAD6D1DA6A6DC00913635 /* MJRefreshAutoStateFooter.m in Sources */,
+				DB849B611DB117A200393441 /* realTechTableViewCell.m in Sources */,
+				DB84F0491DB209DD0059934A /* excessiveSearchViewController.m in Sources */,
+				DB84F0401DB1F7A40059934A /* overproofReportDetailsTableViewCell.m in Sources */,
 				DBEDAD721DA6A6DC00913635 /* MJRefreshNormalHeader.m in Sources */,
 				DBEDAD841DA6A6DC00913635 /* UIImageView+HighlightedWebCache.m in Sources */,
 				DBEDAD651DA6A6DC00913635 /* MBProgressHUD.m in Sources */,
@@ -1162,6 +1238,7 @@
 				DBEDADE51DA6B4CB00913635 /* ChooseTimeView.m in Sources */,
 				DBEDAD8A1DA6AA9E00913635 /* HomeViewController.m in Sources */,
 				DBEDADE31DA6B4CB00913635 /* SendQuestionViewController.m in Sources */,
+				DB84F03D1DB1F50E0059934A /* overproofReportDetailsViewController.m in Sources */,
 				CF17D3751D9FC3F60084CD9C /* attentionCollectionViewCell.m in Sources */,
 				DBEDAE381DA6B64900913635 /* IQUIViewController+Additions.m in Sources */,
 				DBEDAE361DA6B64900913635 /* IQUITextFieldView+Additions.m in Sources */,
@@ -1171,7 +1248,9 @@
 				CF17D31B1D9FC2EA0084CD9C /* main.m in Sources */,
 				CF716C481DA14D31001AF719 /* wulaio1ViewController.m in Sources */,
 				DBEDAE4C1DA73AE200913635 /* AboutUsViewController.m in Sources */,
+				DB849B671DB11E3E00393441 /* unusualReportTableViewCell.m in Sources */,
 				CF716C711DA22012001AF719 /* excessiveWarinngViewController.m in Sources */,
+				DB84F04C1DB224CF0059934A /* overproofSeachViewController.m in Sources */,
 				DBEDAE011DA6B52F00913635 /* AFURLConnectionOperation.m in Sources */,
 				CF716C771DA2209B001AF719 /* overproofReportViewController.m in Sources */,
 				DBEDAD831DA6A6DC00913635 /* UIImage+MultiFormat.m in Sources */,
@@ -1196,7 +1275,9 @@
 				DBEDAE3B1DA6B64900913635 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				CF17D31A1D9FC2EA0084CD9C /* MainViewController.m in Sources */,
 				DBEDADE11DA6B4CB00913635 /* MyMessageViewController.m in Sources */,
+				DBDD34851DB31D5F000DF69D /* HooDatePicker.m in Sources */,
 				DBEDAD6E1DA6A6DC00913635 /* MJRefreshBackGifFooter.m in Sources */,
+				DB84F0431DB1FC900059934A /* realTechTDetailsViewController.m in Sources */,
 				DBEDAD701DA6A6DC00913635 /* MJRefreshBackStateFooter.m in Sources */,
 				DBEDAE371DA6B64900913635 /* IQUIView+Hierarchy.m in Sources */,
 				DBEDAD6F1DA6A6DC00913635 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1205,6 +1286,7 @@
 				DBEDADDF1DA6B4CB00913635 /* MyConcernViewController.m in Sources */,
 				CF17D3761D9FC3F60084CD9C /* myAttentionViewController.m in Sources */,
 				DBEDAE351DA6B64900913635 /* IQUIScrollView+Additions.m in Sources */,
+				DBDD348C1DB38D5B000DF69D /* myNavigationViewController.m in Sources */,
 				DBEDADE41DA6B4CB00913635 /* ServiceCenterViewController.m in Sources */,
 				DBEDAE3C1DA6B64900913635 /* IQTextView.m in Sources */,
 				DBEDAD761DA6A6DC00913635 /* UIScrollView+MJExtension.m in Sources */,
@@ -1214,6 +1296,8 @@
 				DBEDAE0E1DA6B59B00913635 /* UserInfo.m in Sources */,
 				DBEDAD681DA6A6DC00913635 /* MJRefreshComponent.m in Sources */,
 				CF98FC371DA0B2A10057D057 /* zuoyongDetalsViewController.m in Sources */,
+				DBDD34861DB31D5F000DF69D /* NSDate+HooDatePicker.m in Sources */,
+				DBDD34891DB33DA8000DF69D /* realTimeSearchViewController.m in Sources */,
 				CF716C6B1DA1FE21001AF719 /* huanbaoWebViewController.m in Sources */,
 				DBEDAE3A1DA6B64900913635 /* IQKeyboardManager.m in Sources */,
 				DBEDAE451DA72FBE00913635 /* CommonQuestionViewController.m in Sources */,
@@ -1223,6 +1307,7 @@
 				CF98FC431DA0E8690057D057 /* fileReaderViewController.m in Sources */,
 				CF716C6E1DA21F98001AF719 /* totalAmountViewController.m in Sources */,
 				DB3A081F1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m in Sources */,
+				DB84F03A1DB1E3DE0059934A /* unusualReportDetailsViewController.m in Sources */,
 				CF716C541DA14F30001AF719 /* guizeViewController.m in Sources */,
 				DBEDAE001DA6B52F00913635 /* AFSecurityPolicy.m in Sources */,
 				CF17D3681D9FC3F60084CD9C /* emeViewController.m in Sources */,
@@ -1242,6 +1327,7 @@
 				CF17D36C1D9FC3F60084CD9C /* zhifaViewController.m in Sources */,
 				CF716C4B1DA14D3C001AF719 /* wulaio2ViewController.m in Sources */,
 				CF716C741DA2206C001AF719 /* unusualReportViewController.m in Sources */,
+				DB849B641DB11BFD00393441 /* realTimeTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

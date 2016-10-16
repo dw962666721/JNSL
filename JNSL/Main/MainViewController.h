@@ -12,6 +12,8 @@
 #import "HomeViewController.h"
 #import "myAttentionViewController.h"
 #import "emeViewController.h"
+#import "myNavigationViewController.h"
+
 #define kTabbarHeight 49.0f
 
 @interface MainViewController : UIViewController<UINavigationControllerDelegate,JSCustomTabbarDataSource,JSCustomTabbarDelegate>

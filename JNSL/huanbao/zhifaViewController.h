@@ -24,4 +24,5 @@
 @property (strong, nonatomic)           NSURLSession *currentSession;    // 当前会话
 @property (strong, nonatomic) NSURLSessionDownloadTask *cancellableTask; // 可取消的下载任务
 @property MBProgressHUD *HUD;
+@property NSString *viewtype;
 @end

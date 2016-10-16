@@ -10,4 +10,11 @@
 
 @interface excessiveEariningCellTableViewCell : UITableViewCell
 
+@property UILabel  *lb1;
+@property UILabel  *lb2;
+@property UILabel  *lb3;
+@property UILabel  *lb4;
+
+-(void)setData:(NSDictionary *)data;
+
 @end
