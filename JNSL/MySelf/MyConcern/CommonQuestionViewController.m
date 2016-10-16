@@ -37,7 +37,7 @@
     }
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"start"]= [NSString stringWithFormat:@"%ld",(long)self.PageIndex];
-    [AFNetworkTool postJSONWithUrl:CommonQuestionListURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,CommonQuestionListURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {

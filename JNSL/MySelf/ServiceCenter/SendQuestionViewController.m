@@ -181,7 +181,7 @@
     dict[@"problem"]=self.contentTextView.text;
     dict[@"contact"]=self.QQTextFiled.text;
     [MBProgressHUD showMessage:@"正在反馈....."];
-    [AFNetworkTool postJSONWithUrl:SaveProblemMessageURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,SaveProblemMessageURL] parameters:dict success:^(id responseObject) {
         // 移除HUD
         [MBProgressHUD hideHUD];
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];

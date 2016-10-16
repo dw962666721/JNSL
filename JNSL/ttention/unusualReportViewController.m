@@ -147,7 +147,7 @@
         dict[@"alarmTypeCode"] = wuranType;
     }
     
-    [AFNetworkTool postJSONWithUrl:yichangURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,yichangURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {

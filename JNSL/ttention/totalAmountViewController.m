@@ -55,7 +55,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"pollSourceId"] = pollSourceId;
     dict[@"type"] = thetype;
-    [AFNetworkTool postJSONWithUrl:nianduzongliangURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,nianduzongliangURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
@@ -107,7 +107,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"pollSourceId"] = pollSourceId;
     dict[@"pollutantType"] = thetype;
-    [AFNetworkTool postJSONWithUrl:zhexianURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,zhexianURL] parameters:dict success:^(id responseObject) {
         [MBProgressHUD hideHUDForView:self.view];
         NSLog(@"zhuweibbbbbbbb");
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];

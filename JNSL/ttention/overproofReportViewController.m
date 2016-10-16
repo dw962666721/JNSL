@@ -126,7 +126,7 @@
         dict[@"start"]= [NSString stringWithFormat:@"%ld",(long)dataArr.count];
     }
     dict[@"checkDate"]= beginDate;
-    [AFNetworkTool postJSONWithUrl:chaobiaoURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,chaobiaoURL]  parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {

@@ -26,7 +26,7 @@
 -(void)loadData{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"alarmLogId"]= self.alarmLogId;
-    [AFNetworkTool postJSONWithUrl:yichangDetailsURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,yichangDetailsURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {

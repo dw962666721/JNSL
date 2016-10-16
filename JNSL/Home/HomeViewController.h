@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeDetailViewController.h"
 #import "realTechnologoViewController.h"
+#import "WelComeViewController.h"
 
 @interface HomeViewController : baseViewController
 

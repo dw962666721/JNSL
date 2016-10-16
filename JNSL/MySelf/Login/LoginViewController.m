@@ -39,6 +39,11 @@
     [self.view addSubview:backView];
     // 创建控件
     [self addView];
+    
+    NSArray *ipArray = [userInfoJNSL.ip componentsSeparatedByString:@"//"];
+    if (ipArray.count>1) {
+        self.serverTextFiled.text = ipArray[1];
+    }
 }
 -(void)back
 {
@@ -124,7 +129,7 @@
     
     UIButton *setSureBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, 85, screenWidth-leftSplit*2, 25)];
     setSureBtn.backgroundColor = ColorWithRGB(0xe87d37);
-    [setSureBtn addTarget:self action:@selector(setSureAction) forControlEvents:UIControlEventTouchDragInside];
+    [setSureBtn addTarget:self action:@selector(setSureAction) forControlEvents:UIControlEventTouchUpInside];
     [setSureBtn setTitle:@"确定" forState:UIControlStateNormal];
     setSureBtn.layer.cornerRadius = 5;
      [setSureBtn setFont:[UIFont systemFontOfSize:12]];
@@ -133,6 +138,8 @@
 -(void)setSureAction
 {
 //    userInfoJNSL.ip = self.serverTextFiled.text;
+    userInfoJNSL.ip = [NSString stringWithFormat:@"%@%@%@",@"http://",self.serverTextFiled.text,@"//ep4.1_nm_app"];
+    self.serviewView.hidden = YES;
 }
 -(void)loginAction
 {
@@ -140,7 +147,7 @@
     dict[@"userName"]=self.userTextField.text;
     dict[@"passWord"]=self.passWordTextField.text;
     [MBProgressHUD showMessage:@"正在加载数据中....."];
-    [AFNetworkTool postJSONWithUrl:LoginURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,LoginURL] parameters:dict success:^(id responseObject) {
         // 移除HUD
         [MBProgressHUD hideHUD];
        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
@@ -150,7 +157,7 @@
             if (userArray.count==0) {
                 return ;
             }
-            NSDictionary *userInfo = userArray[0];
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc ] initWithDictionary:userArray[0]];
 
             userInfoJNSL.userName = self.userTextField.text;
             userInfoJNSL.userId = ([userInfo objectForKey:@"userId"]==nil ? @"" : [userInfo objectForKey:@"userId"]);
@@ -159,6 +166,7 @@
             userInfoJNSL.email = [userInfo objectForKey:@"email"]==nil?@"":[userInfo objectForKey:@"email"];
             userInfoJNSL.phoneNum = [userInfo objectForKey:@"phoneNum"]==nil?@"":[json objectForKey:@"phoneNum"];
             userInfoJNSL.pollSourceId = [userInfo objectForKey:@"pollSourceId"]==nil?@"":[userInfo objectForKey:@"pollSourceId"];
+            userInfo[@"ip"] = userInfoJNSL.ip;
             
             [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"JNSL"];
             [self.navigationController popViewControllerAnimated:YES];

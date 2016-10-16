@@ -17,7 +17,13 @@ static UserInfo* instance = nil;
     }
     return instance;
 }
-
++(NSString*)ipStr
+{
+    if (instance==nil) {
+        instance = [[UserInfo alloc] init];
+    }
+    return instance.ip;
+}
 //// 设置用户名
 //-(void)setUserName:(NSString *)userName
 //{

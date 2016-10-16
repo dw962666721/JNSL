@@ -20,7 +20,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"userId"]=userInfoJNSL.userId;
     [MBProgressHUD showMessage:@"正在加载数据中....." toView:self.view];
-    [AFNetworkTool postJSONWithUrl:FunctionRollMsgURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,FunctionRollMsgURL] parameters:dict success:^(id responseObject) {
         // 移除HUD
         [MBProgressHUD hideHUDForView:self.view];
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
@@ -139,7 +139,7 @@
     dict[@"userId"]=userInfoJNSL.userId;
     dict[@"checkedIds"]=idStr;
     [MBProgressHUD showMessage:@"正在修改配置....." toView:self.view];
-    [AFNetworkTool postJSONWithUrl:UpdateCheckedRollURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,UpdateCheckedRollURL]  parameters:dict success:^(id responseObject) {
         // 移除HUD
         [MBProgressHUD hideHUDForView:self.view];
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];

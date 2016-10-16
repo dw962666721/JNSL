@@ -65,21 +65,21 @@
     
     if (type) {
         //刷新数据
-        dict[@"start"]= [NSString stringWithFormat:@"%ld",0];
+        dict[@"start"]= [NSString stringWithFormat:@"%d",0];
     }else{
         //加载数据
         dict[@"start"]= [NSString stringWithFormat:@"%ld",(long)dataArr.count];
     }
     
     NSString *urlstr = @"";
-    if (self.viewtype == @"zhifa") {
+    if ([self.viewtype  isEqual: @"zhifa"]) {
         urlstr = zhifaURL;
         dict[@"fileTypeId"] = @"ZFAL";
     }else{
         urlstr = gongkuangURL;
     }
     
-    [AFNetworkTool postJSONWithUrl:urlstr parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,urlstr] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
@@ -146,7 +146,7 @@
         }
     cell.cellIndex = indexPath.row;
     NSString *datafileurl = [dataArr[indexPath.row] objectForKey:@"fileUrl"];
-    NSString *fileurl = [[NSString alloc] initWithFormat:@"%@,%@", ServerUrl, datafileurl ];
+    NSString *fileurl = [[NSString alloc] initWithFormat:@"%@,%@", userInfoJNSL.ip, datafileurl ];
     cell.cellUrl = fileurl;
     cell.cellFilename = [dataArr[indexPath.row] objectForKey:@"fileName"];
     cell.ipath = indexPath;

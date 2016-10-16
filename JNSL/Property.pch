@@ -28,37 +28,39 @@
 #define userInfoJNSL ([UserInfo userInfo])
 #define Money_Come_Property_pch
 #define requestType @"http://"
-#define ip requestType@"60.31.21.53:8080"
+#define IP ([UserInfo ipStr])
+//#define ip requestType@"60.31.21.53:8080"
 //#define ip requestType@"112.65.187.118:8074"
 
 //#define ip userInfoJNSL.ip
-#define ServerUrl ip@"//ep4.1_nm_app"
+//#define ServerUrl IP@"//ep4.1_nm_app"
+//#define ServerUrl IP@"//ep4.1_nm_app"
 // 首页数据
-#define HomeURL ServerUrl@"/androidOpenPlantAction!firstPageList.action"
-#define LoginURL ServerUrl@"/androidLoginAction!androidLogin.action"
+#define HomeURL @"/androidOpenPlantAction!firstPageList.action"
+#define LoginURL @"/androidLoginAction!androidLogin.action"
 // 我的消息
-#define MyMessageURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmSixWarningListByUserIdV2.action"
+#define MyMessageURL @"/androidAlarmRecordInfoAction!getAlarmSixWarningListByUserIdV2.action"
 // 常见问题列表
-#define CommonQuestionListURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmProblemMessage.action"
+#define CommonQuestionListURL @"/androidAlarmRecordInfoAction!getAlarmProblemMessage.action"
 // 功能权限
-#define FunctionRollMsgURL  ServerUrl@"/androidAlarmRecordInfoAction!getFunctionRollMsg.action"
+#define FunctionRollMsgURL  @"/androidAlarmRecordInfoAction!getFunctionRollMsg.action"
 // 异常类型提交
-#define UpdateCheckedRollURL  ServerUrl@"/androidAlarmRecordInfoAction!updateCheckedRoll.action"
+#define UpdateCheckedRollURL  @"/androidAlarmRecordInfoAction!updateCheckedRoll.action"
 // 提交留言
-#define SaveProblemMessageURL ServerUrl@"/androidAlarmRecordInfoAction!saveProblemMessage.action"
+#define SaveProblemMessageURL @"/androidAlarmRecordInfoAction!saveProblemMessage.action"
 // 机组详情（汽机，锅炉，环保，公用）
-#define FacilityDetialInfoURL ServerUrl@"/androidOpenPlantAction!getFacilityDetialInfo.action"
-#define zhifaURL ServerUrl@"/androidSourceFileAction!getSourceShareListMobile.action"
-#define gongkuangURL ServerUrl@"/androidSourceFileAction!getSourceFileList.action"
-#define yujingURL ServerUrl@"/androidAlarmRecordInfoAction!getOverStandardPreAlarm.action"
-#define yichangURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmReport.action"
-#define yichangDetailsURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmReportTypeADetail.action"
-#define chaobiaoURL ServerUrl@"/androidAlarmRecordInfoAction!getExcessiveReportingByUserId.action"
-#define chaobiaoDetailsURL ServerUrl@"/androidAlarmRecordInfoAction!getExcessiveReportingMessageByUserId.action"
-#define jizuURL ServerUrl@"/androidAlarmRecordInfoAction!getFacilityListByEnterpriseId.action"
-#define nianduzongliangURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmPollTotal.action"
-#define zhexianURL ServerUrl@"/androidPreAlarmAction!getDayTotalEmissionForChart.action"
-#define shishiURL ServerUrl@"/androidAlarmRecordInfoAction!getAlarmSixWarningListByUserIdV2.action"
+#define FacilityDetialInfoURL @"/androidOpenPlantAction!getFacilityDetialInfo.action"
+#define zhifaURL @"/androidSourceFileAction!getSourceShareListMobile.action"
+#define gongkuangURL @"/androidSourceFileAction!getSourceFileList.action"
+#define yujingURL @"/androidAlarmRecordInfoAction!getOverStandardPreAlarm.action"
+#define yichangURL @"/androidAlarmRecordInfoAction!getAlarmReport.action"
+#define yichangDetailsURL @"/androidAlarmRecordInfoAction!getAlarmReportTypeADetail.action"
+#define chaobiaoURL @"/androidAlarmRecordInfoAction!getExcessiveReportingByUserId.action"
+#define chaobiaoDetailsURL @"/androidAlarmRecordInfoAction!getExcessiveReportingMessageByUserId.action"
+#define jizuURL @"/androidAlarmRecordInfoAction!getFacilityListByEnterpriseId.action"
+#define nianduzongliangURL @"/androidAlarmRecordInfoAction!getAlarmPollTotal.action"
+#define zhexianURL @"/androidPreAlarmAction!getDayTotalEmissionForChart.action"
+#define shishiURL @"/androidAlarmRecordInfoAction!getAlarmSixWarningListByUserIdV2.action"
 
 #define screenHeight  ([UIScreen mainScreen].bounds.size.height)
 #define screenWidth  ([UIScreen mainScreen].bounds.size.width)

@@ -28,7 +28,7 @@
     dict[@"start"]=[NSString stringWithFormat:@"%ld",(long)self.pageIndex];
     dict[@"startTime"]=nil;
     dict[@"endTime"]=nil;
-    [AFNetworkTool postJSONWithUrl:MyMessageURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,MyMessageURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {

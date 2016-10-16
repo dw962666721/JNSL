@@ -71,6 +71,7 @@
 		DBDD34861DB31D5F000DF69D /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34841DB31D5F000DF69D /* NSDate+HooDatePicker.m */; };
 		DBDD34891DB33DA8000DF69D /* realTimeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34881DB33DA8000DF69D /* realTimeSearchViewController.m */; };
 		DBDD348C1DB38D5B000DF69D /* myNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD348B1DB38D5B000DF69D /* myNavigationViewController.m */; };
+		DBDD348F1DB3A7CE000DF69D /* WelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD348E1DB3A7CE000DF69D /* WelComeViewController.m */; };
 		DBEDAD641DA6A6DC00913635 /* MBProgressHUD+NJ.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD161DA6A6DC00913635 /* MBProgressHUD+NJ.m */; };
 		DBEDAD651DA6A6DC00913635 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD181DA6A6DC00913635 /* MBProgressHUD.m */; };
 		DBEDAD661DA6A6DC00913635 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = DBEDAD1C1DA6A6DC00913635 /* MJRefreshAutoFooter.m */; };
@@ -289,6 +290,8 @@
 		DBDD34881DB33DA8000DF69D /* realTimeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = realTimeSearchViewController.m; sourceTree = "<group>"; };
 		DBDD348A1DB38D5B000DF69D /* myNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myNavigationViewController.h; sourceTree = "<group>"; };
 		DBDD348B1DB38D5B000DF69D /* myNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myNavigationViewController.m; sourceTree = "<group>"; };
+		DBDD348D1DB3A7CE000DF69D /* WelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelComeViewController.h; sourceTree = "<group>"; };
+		DBDD348E1DB3A7CE000DF69D /* WelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelComeViewController.m; sourceTree = "<group>"; };
 		DBEDAD151DA6A6DC00913635 /* MBProgressHUD+NJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+NJ.h"; sourceTree = "<group>"; };
 		DBEDAD161DA6A6DC00913635 /* MBProgressHUD+NJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+NJ.m"; sourceTree = "<group>"; };
 		DBEDAD171DA6A6DC00913635 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -864,6 +867,8 @@
 				DBEDAE4E1DAA0AF800913635 /* HomeDetailViewController.m */,
 				DB3A081D1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.h */,
 				DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */,
+				DBDD348D1DB3A7CE000DF69D /* WelComeViewController.h */,
+				DBDD348E1DB3A7CE000DF69D /* WelComeViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1217,6 +1222,7 @@
 				DBEDAD751DA6A6DC00913635 /* MJRefreshConst.m in Sources */,
 				DBEDADFF1DA6B52F00913635 /* AFNetworkReachabilityManager.m in Sources */,
 				DBEDAD851DA6A6DC00913635 /* UIImageView+WebCache.m in Sources */,
+				DBDD348F1DB3A7CE000DF69D /* WelComeViewController.m in Sources */,
 				DBEDAD731DA6A6DC00913635 /* MJRefreshStateHeader.m in Sources */,
 				DBEDAD6D1DA6A6DC00913635 /* MJRefreshAutoStateFooter.m in Sources */,
 				DB849B611DB117A200393441 /* realTechTableViewCell.m in Sources */,

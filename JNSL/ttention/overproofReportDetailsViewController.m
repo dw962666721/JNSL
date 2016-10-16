@@ -100,7 +100,7 @@
     dict[@"pollutantName"]= self.pollutantName;
     dict[@"checkDate"]= self.checkDate;
     dict[@"crewId"]= self.crewId;
-    [AFNetworkTool postJSONWithUrl:chaobiaoDetailsURL parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,chaobiaoDetailsURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {

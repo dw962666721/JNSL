@@ -22,6 +22,7 @@
 @property UIButton *_2Btn;
 @property NSMutableDictionary *viewDict;
 @property NSMutableArray *dataArray;
+
 @end
 
 @implementation HomeViewController
@@ -38,7 +39,7 @@
 -(void)loadData
 {
     self.dataArray =[[NSMutableArray alloc] init];
-    [AFNetworkTool postJSONWithUrl:HomeURL parameters:nil success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,HomeURL] parameters:nil success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
@@ -59,13 +60,19 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    WelComeViewController *VC = [[WelComeViewController alloc] init];
+    VC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController: VC animated:NO completion:nil];
+    
     self.viewDict = [[NSMutableDictionary alloc] init];
     self.title=@"京能盛乐热电有限公司";
+
     [self loadUserInfo];
     [self addViews];
     [self loadData];
     // Do any additional setup after loading the view.
 }
+
 // 给用户数据赋值
 -(void)loadUserInfo
 {
@@ -78,6 +85,7 @@
         userInfoJNSL.email =[userDict objectForKey:@"email"];
         userInfoJNSL.pollSourceId =[userDict objectForKey:@"pollSourceId"];
         userInfoJNSL.rollName =[userDict objectForKey:@"rollName"];
+        userInfoJNSL.ip = [userDict objectForKey:@"ip"];
     }
 }
 -(void)addViews

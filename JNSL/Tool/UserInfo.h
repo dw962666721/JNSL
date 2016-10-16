@@ -23,4 +23,5 @@
 -(NSDictionary*)getUserDict;
 -(void)clearUserDict;
 +(UserInfo*)userInfo;
++(NSString*)ipStr;
 @end
