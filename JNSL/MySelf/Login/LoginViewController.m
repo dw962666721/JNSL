@@ -146,7 +146,7 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     dict[@"userName"]=self.userTextField.text;
     dict[@"passWord"]=self.passWordTextField.text;
-    [MBProgressHUD showMessage:@"正在加载数据中....."];
+    [MBProgressHUD showMessage:@"正在登录中....."];
     [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,LoginURL] parameters:dict success:^(id responseObject) {
         // 移除HUD
         [MBProgressHUD hideHUD];

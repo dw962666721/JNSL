@@ -48,8 +48,9 @@
             // 填写数据
             [self writeData];
         }
-        
+        [self.MainScrollView.header endRefreshing];
     } fail:^{
+        [self.MainScrollView.header endRefreshing];
         // 移除HUD
         [MBProgressHUD hideHUD];
         
@@ -146,6 +147,11 @@
     self.MainScrollView.showsVerticalScrollIndicator = NO;
     self.MainScrollView.backgroundColor = RGBA(4, 41, 144, 1);
     [self.view addSubview:self.MainScrollView];
+    
+    __weak __typeof(self) weakSelf = self;
+    self.MainScrollView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
     
     // ScrollView填充UIView
     self.MainView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, screenWidth, 630)];

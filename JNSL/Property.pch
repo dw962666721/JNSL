@@ -31,7 +31,7 @@
 #define IP ([UserInfo ipStr])
 //#define ip requestType@"60.31.21.53:8080"
 //#define ip requestType@"112.65.187.118:8074"
-
+//#define ip requestType@"10.78.120.60:8080"
 //#define ip userInfoJNSL.ip
 //#define ServerUrl IP@"//ep4.1_nm_app"
 //#define ServerUrl IP@"//ep4.1_nm_app"

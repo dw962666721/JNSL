@@ -34,7 +34,11 @@
 }
 
 -(void)refresuserdata{
-    if (userInfoJNSL.pollSourceId == nil || userInfoJNSL.userId == nil) {
+    NSLog(@"vvvvvvvvv");
+    NSLog(userInfoJNSL.pollSourceId);
+     NSLog(userInfoJNSL.userId);
+    if (userInfoJNSL.userId == nil || [userInfoJNSL.userId  isEqual: @""]) {
+        NSLog(@"weidenglu");
         logintype = @"0";
     }else{
         logintype = @"1";
@@ -45,7 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (userInfoJNSL.pollSourceId == nil || userInfoJNSL.userId == nil) {
+    if ([userInfoJNSL.userId  isEqual: @""]|| userInfoJNSL.userId == nil) {
         logintype = @"0";
     }else{
         logintype = @"1";
