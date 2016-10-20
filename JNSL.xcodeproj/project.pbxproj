@@ -1133,7 +1133,7 @@
 				TargetAttributes = {
 					DB2F8C091D9CD99D0075DD6F = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 6FJM5AB746;
+						DevelopmentTeam = J7JSRSE85C;
 					};
 					DB2F8C221D9CD99D0075DD6F = {
 						CreatedOnToolsVersion = 7.3;
@@ -1462,12 +1462,14 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JNSL/Property.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = JNSL/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = zw.JNSL;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.JNSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "33d6660d-18ef-4362-ade3-7ad8f30f00c4";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1482,12 +1484,14 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JNSL/Property.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = JNSL/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = zw.JNSL;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.JNSL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "33d6660d-18ef-4362-ade3-7ad8f30f00c4";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

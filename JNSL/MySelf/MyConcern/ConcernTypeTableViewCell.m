@@ -43,6 +43,9 @@
     if (!_titleLb) {
         UILabel *temp = [[UILabel alloc] initWithFrame:CGRectMake(5, (self.frame.size.height-20)/2, self.frame.size.width-30, 20)];
         temp.font = [UIFont systemFontOfSize:11];
+        if (IPHONE6||IPHONE6PLUS) {
+            temp.font = [UIFont systemFontOfSize:13];
+        }
         temp.textColor =RGBA(118, 118, 118, 1);
         [self addSubview:temp];
         _titleLb = temp;
@@ -53,6 +56,9 @@
 {
     if (!_rightImageView) {
         UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-20, (self.frame.size.height-10)/2, 10, 10)];
+        if (IPHONE6||IPHONE6PLUS) {
+            temp = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-30, (self.frame.size.height-15)/2, 15, 15)];
+        }
         temp.tag = 990;
         temp.image = [UIImage imageNamed:@"add_city"];
         [self addSubview:temp];

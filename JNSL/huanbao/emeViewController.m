@@ -17,12 +17,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
+    //[self.navigationController setNavigationBarHidden:YES];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
+//    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)viewDidLoad {
@@ -31,25 +31,25 @@
     UIColor *bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
     [self.view setBackgroundColor:bgColor];
     CGFloat screenWid = ([UIScreen mainScreen].bounds.size.width-50)/4;
-    UIImageView *gongkuang = [[UIImageView alloc] initWithFrame:CGRectMake(10, 50, screenWid, screenWid)];
+    UIImageView *gongkuang = [[UIImageView alloc] initWithFrame:CGRectMake(10, 30, screenWid, screenWid)];
     gongkuang.image = [UIImage imageNamed:@"gongkuangjieshao"];
     gongkuang.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick1)];
     [gongkuang addGestureRecognizer:singleTap1];
     
-    UIImageView *huanbao = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid+20, 50, screenWid, screenWid)];
+    UIImageView *huanbao = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid+20, 30, screenWid, screenWid)];
     huanbao.image = [UIImage imageNamed:@"huanbaozhishi"];
     huanbao.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick2)];
     [huanbao addGestureRecognizer:singleTap2];
     
-    UIImageView *zhifa = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*2+30, 50, screenWid, screenWid)];
+    UIImageView *zhifa = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*2+30, 30, screenWid, screenWid)];
     zhifa.image = [UIImage imageNamed:@"zhifaanli"];
     zhifa.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick3)];
     [zhifa addGestureRecognizer:singleTap3];
     
-    UIImageView *zhengce = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*3+40, 50, screenWid, screenWid)];
+    UIImageView *zhengce = [[UIImageView alloc] initWithFrame:CGRectMake(screenWid*3+40, 30, screenWid, screenWid)];
     zhengce.image = [UIImage imageNamed:@"zhengcewenjian"];
     zhengce.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgClick4)];

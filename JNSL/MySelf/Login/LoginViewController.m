@@ -24,7 +24,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_login"]];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_login"]];
+    UIImageView *backGroudImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
+    backGroudImageView.image = [UIImage imageNamed:@"bg_login"];
+    [self.view addSubview:backGroudImageView];
+    
     self.backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 30, 20, 20)];
     self.backImageView.image = [UIImage imageNamed:@"back"];
     self.backImageView.contentMode = UIViewContentModeTopLeft;
@@ -41,8 +45,13 @@
     [self addView];
     
     NSArray *ipArray = [userInfoJNSL.ip componentsSeparatedByString:@"//"];
-    if (ipArray.count>1) {
-        self.serverTextFiled.text = ipArray[1];
+    if (ipArray.count>0) {
+        NSArray *ip1Array = [ipArray[1] componentsSeparatedByString:@"/"];
+        if (ip1Array.count>1) {
+            self.serverTextFiled.text = ip1Array
+            [0];
+        }
+        
     }
 }
 -(void)back
@@ -56,6 +65,14 @@
     NSInteger icoW=20;
     NSInteger leftSplit = 50;
     NSInteger viewH=30;
+    NSInteger btnH = 25;
+    NSInteger splitH = 30;
+    if (IPHONE6||IPHONE6PLUS) {
+        viewH=45;
+        logoW = 120;
+        icoW = 30;
+        btnH = 40;
+    }
     self.logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((screenWidth-logoW)/2, y, logoW, logoW)];
     self.logoImageView.image = [UIImage imageNamed:@"sis_logo2"];
     [self.view addSubview:self.logoImageView];
@@ -75,7 +92,7 @@
     [self.userView addSubview:self.userTextField];
     
     // 密码框
-    y+=20+30;
+    y+=20+viewH;
     self.passWordtView = [[UIView alloc] initWithFrame:CGRectMake(leftSplit, y, screenWidth-leftSplit*2, viewH)];
     self.passWordtView.backgroundColor = ColorWithRGB(0xbab5b1);
     self.passWordtView.layer.cornerRadius=5;
@@ -89,8 +106,8 @@
     [self.passWordtView addSubview:self.passWordTextField];
     
     // 登录按钮
-    y+=20+30;
-    self.loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, y, (screenWidth-leftSplit*2-20)/2, 25)];
+    y+=20+viewH;
+    self.loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, y, (screenWidth-leftSplit*2-20)/2, btnH)];
     [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.loginBtn.backgroundColor = ColorWithRGB(0x0057f7);
     [self.loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
@@ -100,7 +117,7 @@
     [self.view addSubview:self.loginBtn];
     
     //配置
-    self.setBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.loginBtn.frame)+20, y, (screenWidth-leftSplit*2-20)/2, 25)];
+    self.setBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.loginBtn.frame)+20, y, (screenWidth-leftSplit*2-20)/2, btnH)];
     [self.setBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.setBtn.backgroundColor = ColorWithRGB(0x0057f7);
     [self.setBtn addTarget:self action:@selector(setAction) forControlEvents:UIControlEventTouchUpInside];
@@ -111,7 +128,7 @@
     
      y=15+CGRectGetMaxY(self.loginBtn.frame);
     // 配置框
-    self.serviewView = [[UIView alloc] initWithFrame:CGRectMake(0, y, screenWidth, 130)];
+    self.serviewView = [[UIView alloc] initWithFrame:CGRectMake(0, y, screenWidth, 150)];
 //    self.serviewView .backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.serviewView];
     
@@ -127,7 +144,7 @@
     self.serverTextFiled.layer.cornerRadius = 5;
     [self.serviewView addSubview:self.serverTextFiled];
     
-    UIButton *setSureBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, 85, screenWidth-leftSplit*2, 25)];
+    UIButton *setSureBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, CGRectGetMaxY(self.serverTextFiled .frame)+20, screenWidth-leftSplit*2, btnH)];
     setSureBtn.backgroundColor = ColorWithRGB(0xe87d37);
     [setSureBtn addTarget:self action:@selector(setSureAction) forControlEvents:UIControlEventTouchUpInside];
     [setSureBtn setTitle:@"确定" forState:UIControlStateNormal];

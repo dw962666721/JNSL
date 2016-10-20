@@ -118,6 +118,9 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (IPHONE6||IPHONE6PLUS) {
+        return 65;
+    }
     return 45;
 }
 

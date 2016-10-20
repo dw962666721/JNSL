@@ -79,6 +79,9 @@
         {
             tabbarFrame.origin.y = self.view.frame.size.height - kTabbarHeight - 64;
         }
+        if ([root isKindOfClass:[myAttentionViewController class]]||[root isKindOfClass:[emeViewController class]]) {
+            self.tabbar.frame = tabbarFrame;
+        }
 //        self.tabbar.frame = tabbarFrame;
         // 添加tabbar到根控制器界面
         [root.view addSubview:self.tabbar];

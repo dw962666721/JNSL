@@ -22,7 +22,11 @@
 @property UIButton *_2Btn;
 @property NSMutableDictionary *viewDict;
 @property NSMutableArray *dataArray;
-
+@property NSInteger rowH;
+@property BOOL bo;
+@property HomeDetailViewController *detailVC1;
+@property HomeDetailViewController *detailVCAll;
+@property HomeDetailViewController *detailVC2;
 @end
 
 @implementation HomeViewController
@@ -30,6 +34,7 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+    [self loadData];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -38,6 +43,10 @@
 }
 -(void)loadData
 {
+    if (self.bo) {
+        return;
+    }
+    self.bo = YES;
     self.dataArray =[[NSMutableArray alloc] init];
     [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,HomeURL] parameters:nil success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
@@ -48,14 +57,16 @@
             // 填写数据
             [self writeData];
         }
+        self.bo = NO;
         [self.MainScrollView.header endRefreshing];
     } fail:^{
         [self.MainScrollView.header endRefreshing];
         // 移除HUD
-        [MBProgressHUD hideHUD];
+//        [MBProgressHUD hideHUD];
         
         // 提醒有没有新数据
-        [MBProgressHUD showError:@"请求失败"];
+//        [MBProgressHUD showError:@"请求失败"];
+        self.bo = NO;
     }];
 
 }
@@ -70,7 +81,6 @@
 
     [self loadUserInfo];
     [self addViews];
-    [self loadData];
     // Do any additional setup after loading the view.
 }
 
@@ -88,6 +98,10 @@
         userInfoJNSL.rollName =[userDict objectForKey:@"rollName"];
         userInfoJNSL.ip = [userDict objectForKey:@"ip"];
     }
+    else
+    {
+        userInfoJNSL.ip = @"http://10.78.120.60:8080/ep4.1_nm_app/";
+    }
 }
 -(void)addViews
 {
@@ -100,14 +114,26 @@
     // 添加表格
     [self addTable];
     
-    // 添加机组信息
-    [self addJZ:230 name:@"jz"];
     
-    // 添加锅炉信息
-    [self addJZ:320 name:@"gl"];
+    if (IPHONE6PLUS||IPHONE6) {
+        // 添加机组信息
+        [self addJZ:320 name:@"jz"];
+        // 添加锅炉信息
+        [self addJZ:400 name:@"gl"];
+        // 添加汽机信息
+        [self addJZ:510 name:@"qj"];
+    }
+   else
+   {
+       // 添加机组信息
+       [self addJZ:230 name:@"jz"];
+       // 添加锅炉信息
+       [self addJZ:320 name:@"gl"];
+       // 添加汽机信息
+       [self addJZ:430 name:@"qj"];
+   }
     
-    // 添加汽机信息
-    [self addJZ:430 name:@"qj"];
+   
     
     // 添加最下方按钮
     [self addDetails];
@@ -117,10 +143,14 @@
 -(void)addTitle
 {
     NSInteger y=25;
+    NSInteger titleSize = 13;
+    if (IPHONE6||IPHONE6PLUS) {
+        titleSize = 17;
+    }
     // 添加标题
     UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(0, y, screenWidth, 25)];
     titleLb.text = @"京能盛乐热电有限公司";
-    titleLb.font = [UIFont boldSystemFontOfSize:13];
+    titleLb.font = [UIFont boldSystemFontOfSize:titleSize];
     titleLb.textColor = [UIColor whiteColor];
     titleLb.textAlignment=NSTextAlignmentCenter;
     [self.MainView addSubview:titleLb];
@@ -133,7 +163,7 @@
     [df setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSString* s1 = [df stringFromDate:today];
     timeLb.text = s1;
-    timeLb.font = [UIFont systemFontOfSize:9];
+    timeLb.font = [UIFont systemFontOfSize:titleSize-4];
     timeLb.textColor = [UIColor whiteColor];
     timeLb.textAlignment=NSTextAlignmentCenter;
     [self.MainView addSubview:timeLb];
@@ -148,14 +178,18 @@
     self.MainScrollView.backgroundColor = RGBA(4, 41, 144, 1);
     [self.view addSubview:self.MainScrollView];
     
-    __weak __typeof(self) weakSelf = self;
-    self.MainScrollView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf loadData];
-    }];
+//    __weak __typeof(self) weakSelf = self;
+//    self.MainScrollView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [weakSelf loadData];
+//    }];
     
     // ScrollView填充UIView
-    self.MainView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, screenWidth, 630)];
-    //    self.MainView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_work"]];
+    NSInteger MainH = 680;
+    if (IPHONE6||IPHONE6PLUS) {
+        MainH=730;
+    }
+    self.MainView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, screenWidth, MainH)];
+//        self.MainView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_work"]];
     [self.MainScrollView addSubview:self.MainView];
     self.MainScrollView.contentSize = CGSizeMake(self.MainView.frame.size.width, self.MainView.frame.size.height+29);
     
@@ -168,21 +202,27 @@
 {
     NSInteger x=25;
     NSInteger y=75;
-    NSInteger splitH = 15;
+    if (IPHONE6||IPHONE6PLUS) {
+        y=85;
+    }
+    self.rowH = 15;
     NSInteger splitW=(screenWidth-x-10)/3;
     NSInteger width0=screenWidth-x-10;
-    NSInteger height0=splitH*7;
+    if (IPHONE6||IPHONE6PLUS) {
+        self.rowH=25;
+    }
+     NSInteger height0=self.rowH*7;
     // 创建横线
     for (NSInteger i=0; i<8; i++) {
         //画线
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(x, y+splitH*i,width0 , 0.7)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(x, y+self.rowH*i,width0 , 0.7)];
         lineView.layer.borderColor = [UIColor lightGrayColor].CGColor;
         lineView.layer.borderWidth=0.7;
         [self.MainView addSubview:lineView];
         
         // 标刻度
-        UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(0, y+splitH*i-4, 25, 10)];
-        titleLb.text=[NSString stringWithFormat:@"%d",700-i*100];
+        UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(0, y+self.rowH*i-4, 25, 10)];
+        titleLb.text=[NSString stringWithFormat:@"%ld",700-i*100];
         titleLb.textColor = [UIColor whiteColor];
         titleLb.font = [UIFont systemFontOfSize:8];
         titleLb.textAlignment = NSTextAlignmentRight;
@@ -545,45 +585,66 @@
     NSInteger y=560;
     NSInteger width = 65;
     NSInteger height = 40;
-    NSInteger splitW = (screenWidth-20*2-width*3)/2;
+    if (IPHONE6PLUS||IPHONE6) {
+        y=620;
+        width = 95;
+        height = 50;
+    }
+     NSInteger splitW = (screenWidth-20*2-width*3)/2;
     self._1Btn = [[UIButton alloc] initWithFrame:CGRectMake(20, y, width, height)];
     [self._1Btn setTitle:@"#1" forState:UIControlStateNormal];
     self._1Btn.layer.cornerRadius = 5;
     self._1Btn.backgroundColor = RGBA(0, 171, 97, 1);
-    [self._1Btn addTarget:self action:@selector(look1) forControlEvents:UIControlEventTouchUpInside];
+    [self._1Btn addTarget:self action:@selector(look1) forControlEvents:UIControlEventTouchDown];
     [self.MainView addSubview:self._1Btn];
     
     self.allBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self._1Btn.frame)+splitW, y, width, height)];
     [self.allBtn setTitle:@"公用" forState:UIControlStateNormal];
     self.allBtn.layer.cornerRadius = 5;
     self.allBtn.backgroundColor = RGBA(255, 208, 43, 1);
-    [self.allBtn addTarget:self action:@selector(lookAll) forControlEvents:UIControlEventTouchUpInside];
+    [self.allBtn addTarget:self action:@selector(lookAll) forControlEvents:UIControlEventTouchDown];
     [self.MainView addSubview:self.allBtn];
     
     self._2Btn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.allBtn.frame)+splitW, y, width, height)];
     [self._2Btn setTitle:@"#2" forState:UIControlStateNormal];
     self._2Btn.layer.cornerRadius = 5;
     self._2Btn.backgroundColor = RGBA(75, 129, 249, 1);
-    [self._2Btn addTarget:self action:@selector(look2) forControlEvents:UIControlEventTouchUpInside];
+    [self._2Btn addTarget:self action:@selector(look2) forControlEvents:UIControlEventTouchDown];
     [self.MainView addSubview:self._2Btn];
+    
+//    UITapGestureRecognizer *tap0 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(look1)];
+//    [self._1Btn addGestureRecognizer:tap0];
+//    
+//    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(lookAll)];
+//    [self.allBtn addGestureRecognizer:tap1];
+//    
+//    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(look2)];
+//    [self._2Btn addGestureRecognizer:tap2];
 }
+
 -(void)look1
 {
-    HomeDetailViewController *detailVC = [[HomeDetailViewController alloc] init];
-    [detailVC setVCType:0];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    if (self.detailVC1==nil) {
+        self.detailVC1 = [[HomeDetailViewController alloc] init];
+        [self.detailVC1 setVCType:0];
+    }
+    [self.navigationController pushViewController:self.detailVC1 animated:YES];
 }
 -(void)lookAll
 {
-    HomeDetailViewController *detailVC = [[HomeDetailViewController alloc] init];
-    [detailVC setVCType:1];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    if (self.detailVCAll==nil) {
+        self.detailVCAll = [[HomeDetailViewController alloc] init];
+        [self.detailVCAll setVCType:1];
+    }
+    [self.navigationController pushViewController:self.detailVCAll animated:YES];
 }
 -(void)look2
 {
-    HomeDetailViewController *detailVC = [[HomeDetailViewController alloc] init];
-    [detailVC setVCType:2];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    if (self.detailVC2==nil) {
+        self.detailVC2 = [[HomeDetailViewController alloc] init];
+        [self.detailVC2 setVCType:2];
+    }
+    [self.navigationController pushViewController:self.detailVC2 animated:YES];
 }
 -(void)writeData
 {
@@ -603,43 +664,43 @@
         for (NSInteger i=0; i<loadArray.count; i++) {
             NSMutableDictionary *jzDict = [[NSMutableDictionary alloc] initWithDictionary:loadArray[i]];
             CGFloat value = (CGFloat)([jzDict[@"loadValue"] floatValue]);
-            CGFloat viewH = 15*7*value/700;
+            CGFloat viewH = self.rowH*7*value/700;
             if ([jzDict[@"loadName"] isEqual:@"全厂负荷"]) {
                 CGRect rect = self.allView.frame;
                 rect.size.height = viewH;
-                rect.origin.y=15*7-viewH;
+                rect.origin.y=self.rowH*7-viewH;
                 [UIView animateWithDuration:0.25 animations:^{
                     self.allView.frame = rect;
                 }];
                 CGRect lbRect = self.allValueLb.frame;
-                lbRect.origin.y = 15*7-viewH-10;
+                lbRect.origin.y = self.rowH*7-viewH-10;
                 self.allValueLb.frame = lbRect;
-                self.allValueLb.text = [NSString stringWithFormat:@"%d",(NSInteger)value];
+                self.allValueLb.text = [NSString stringWithFormat:@"%ld",(long)value];
             }else if ([jzDict[@"loadName"] isEqual:@"#1机组"])
             {
                 CGRect rect = self._1View.frame;
                 rect.size.height = viewH;
-                rect.origin.y=15*7-viewH;
+                rect.origin.y=self.rowH*7-viewH;
                 [UIView animateWithDuration:0.25 animations:^{
                     self._1View.frame = rect;
                 }];
                 CGRect lbRect = self._1ValueLb.frame;
-                lbRect.origin.y = 15*7-viewH-10;
+                lbRect.origin.y = self.rowH*7-viewH-10;
                 self._1ValueLb.frame = lbRect;
-                 self._1ValueLb.text = [NSString stringWithFormat:@"%d",(NSInteger)value];
+                 self._1ValueLb.text = [NSString stringWithFormat:@"%ld",(long)value];
             }
             else
             {
                 CGRect rect = self._2View.frame;
                 rect.size.height = viewH;
-                rect.origin.y=15*7-viewH;
+                rect.origin.y=self.rowH*7-viewH;
                 [UIView animateWithDuration:0.25 animations:^{
                     self._2View.frame = rect;
                 }];
                 CGRect lbRect = self._2ValueLb.frame;
-                lbRect.origin.y = 15*7-viewH-10;
+                lbRect.origin.y = self.rowH*7-viewH-10;
                 self._2ValueLb.frame = lbRect;
-                 self._2ValueLb.text = [NSString stringWithFormat:@"%d",(NSInteger)value];
+                 self._2ValueLb.text = [NSString stringWithFormat:@"%ld",(long)value];
             }
         }
     }

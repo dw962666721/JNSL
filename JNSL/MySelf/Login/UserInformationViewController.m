@@ -83,10 +83,13 @@
      y=CGRectGetMaxY(self.emailView.frame)+10;
     // 退出
     self.exitButton = [[CustemButton alloc] initWithFrame:CGRectMake(leftSplit, y, screenWidth-leftSplit*2, viewH-10)];
+    if (IPHONE6PLUS||IPHONE6) {
+        self.exitButton = [[CustemButton alloc] initWithFrame:CGRectMake(leftSplit, y, screenWidth-leftSplit*2, viewH)];
+    }
     self.exitButton.backgroundColor = [UIColor whiteColor];
 //    [self.exitButton addTarget:self action:@selector(exitAction) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:self.exitButton];
-    UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.exitButton.frame), viewH-10)];
+    UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.exitButton.frame), self.exitButton.frame.size.height)];
     titleLb.text=@"退出账号";
     titleLb.textAlignment = NSTextAlignmentCenter;
     titleLb.textColor=[UIColor blackColor];

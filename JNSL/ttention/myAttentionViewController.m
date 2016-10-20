@@ -20,23 +20,17 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"pullID");
-    NSLog(userInfoJNSL.pollSourceId);
     [super viewWillAppear:animated];
-    
     [self refresuserdata];
-    [self.navigationController setNavigationBarHidden:YES];
+    //[self.navigationController setNavigationBarHidden:YES];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO];
+//    [self.navigationController setNavigationBarHidden:NO];
 }
 
 -(void)refresuserdata{
-    NSLog(@"vvvvvvvvv");
-    NSLog(userInfoJNSL.pollSourceId);
-     NSLog(userInfoJNSL.userId);
     if (userInfoJNSL.userId == nil || [userInfoJNSL.userId  isEqual: @""]) {
         NSLog(@"weidenglu");
         logintype = @"0";
@@ -63,7 +57,13 @@
     //设置布局方向为垂直流布局
     customLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     //设置每个item的大小为100*100
-    customLayout.itemSize = CGSizeMake((screenwid-60)/3, (screenwid-60)/3);
+    if (IPHONE6||IPHONE6PLUS) {
+        customLayout.itemSize = CGSizeMake((screenwid-150)/3, (screenwid-150)/3);
+    }
+    else
+    {
+        customLayout.itemSize = CGSizeMake((screenwid-120)/3, (screenwid-120)/3);
+    }
     
      self.cillection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenwid, screenHeight-65) collectionViewLayout:customLayout];
     [self.cillection registerClass:[attentionCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -198,7 +198,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(30, 10, 20, 10);
+    return UIEdgeInsetsMake(30, 30, 20, 30);
 }
 
 /*

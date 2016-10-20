@@ -42,6 +42,13 @@
 }
 -(void)setData:(NSDictionary*)dict
 {
+    if (IPHONE6PLUS||IPHONE6) {
+        self.titleLb.frame = CGRectMake(5, 5, self.frame.size.width, 30);
+        self.titleLb.font = [UIFont systemFontOfSize:14];
+        
+        self.descriptionLb.frame = CGRectMake(5, 35, self.frame.size.width, 25);
+        self.descriptionLb.font = [UIFont systemFontOfSize:12];
+    }
     if ([dict objectForKey:@"problem"]) {
         self.titleLb.text = [dict objectForKey:@"problem"];
     }

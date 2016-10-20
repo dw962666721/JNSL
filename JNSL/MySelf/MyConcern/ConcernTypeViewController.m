@@ -64,6 +64,9 @@
 {
     NSInteger y = 10;
     self.headView = [[UIView alloc] initWithFrame:CGRectMake(10, y, screenWidth-20, 40)];
+    if (IPHONE6PLUS||IPHONE6) {
+        self.headView = [[UIView alloc] initWithFrame:CGRectMake(10, y, screenWidth-20, 50)];
+    }
     self.headView.backgroundColor = [UIColor whiteColor];
     self.headView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.headView.layer.borderWidth = 0.5;
@@ -74,6 +77,9 @@
     headLb.textColor = RGBA(118, 118, 118, 1);
     headLb.text = @" 请选择问题类型";
     headLb.font = [UIFont systemFontOfSize:12];
+    if (IPHONE6PLUS||IPHONE6) {
+         headLb.font = [UIFont systemFontOfSize:14];
+    }
     [self.headView addSubview:headLb];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.headView.frame)-2, self.headView.frame.size.width, self.view.frame.size.height-CGRectGetMaxY(self.headView.frame)-80)];
@@ -89,6 +95,9 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (IPHONE6PLUS||IPHONE6) {
+        return 50;
+    }
     return 40;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

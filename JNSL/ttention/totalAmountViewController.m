@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     thetype = @"so2";
+    self.title = @"总量监控";
     pollSourceId = userInfoJNSL.pollSourceId;
     shuarr = [[NSMutableArray alloc] init];
     hengarr = [[NSMutableArray alloc] init];

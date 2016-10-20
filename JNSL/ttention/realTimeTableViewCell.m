@@ -23,6 +23,7 @@
         self.datastatue = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-100, 10, 100, 20)];
         self.datastatue.textColor = [UIColor redColor];
         self.jizu = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 200, 20)];
+        self.jizu.font =[UIFont systemFontOfSize:14];
         self.sdate = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, screenWidth/2-10, 15)];
         self.edate = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth/2, 45, screenWidth/2, 15)];
         self.sdate.font =[UIFont systemFontOfSize:13];

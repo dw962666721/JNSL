@@ -32,7 +32,7 @@
     [self.view addSubview:self.webview];
     self.webview.delegate = self;
     if (self.url != nil) {
-        NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com/"]];
+        NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:self.url ]];
         [self.webview loadRequest:request];
         [MBProgressHUD showError:@"正在加载..."];
     }
