@@ -21,12 +21,13 @@
 @property UIButton *_1Btn;
 @property UIButton *_2Btn;
 @property NSMutableDictionary *viewDict;
-@property NSMutableArray *dataArray;
-@property NSInteger rowH;
-@property BOOL bo;
-@property HomeDetailViewController *detailVC1;
-@property HomeDetailViewController *detailVCAll;
-@property HomeDetailViewController *detailVC2;
+@property NSMutableArray *dataArray; // 请求到的数据
+@property NSInteger rowH; // 图形行高
+@property BOOL bo; // 是否正在请求数据
+@property HomeDetailViewController *detailVC1; // ＃1
+@property HomeDetailViewController *detailVCAll; // 全厂
+@property HomeDetailViewController *detailVC2; // #2
+@property UILabel *timeLb; // 时间
 @end
 
 @implementation HomeViewController
@@ -71,17 +72,20 @@
 
 }
 - (void)viewDidLoad {
-    [super viewDidLoad];
     WelComeViewController *VC = [[WelComeViewController alloc] init];
     VC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController: VC animated:NO completion:nil];
+    
+    [super viewDidLoad];
     
     self.viewDict = [[NSMutableDictionary alloc] init];
     self.title=@"京能盛乐热电有限公司";
 
     [self loadUserInfo];
     [self addViews];
-    // Do any additional setup after loading the view.
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 // 给用户数据赋值
@@ -157,16 +161,16 @@
     
     y+=25;
     // 添加时间
-    UILabel *timeLb = [[UILabel alloc] initWithFrame:CGRectMake(0, y, screenWidth, 15)];
+    self.timeLb = [[UILabel alloc] initWithFrame:CGRectMake(0, y, screenWidth, 15)];
     NSDate* today = [NSDate date];
     NSDateFormatter*df = [[NSDateFormatter alloc]init];//格式化
     [df setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSString* s1 = [df stringFromDate:today];
-    timeLb.text = s1;
-    timeLb.font = [UIFont systemFontOfSize:titleSize-4];
-    timeLb.textColor = [UIColor whiteColor];
-    timeLb.textAlignment=NSTextAlignmentCenter;
-    [self.MainView addSubview:timeLb];
+    self.timeLb.text = s1;
+    self.timeLb.font = [UIFont systemFontOfSize:titleSize-4];
+    self.timeLb.textColor = [UIColor whiteColor];
+    self.timeLb.textAlignment=NSTextAlignmentCenter;
+    [self.MainView addSubview:self.timeLb];
 
 }
 // 添加主框架
@@ -222,7 +226,7 @@
         
         // 标刻度
         UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(0, y+self.rowH*i-4, 25, 10)];
-        titleLb.text=[NSString stringWithFormat:@"%ld",700-i*100];
+        titleLb.text=[NSString stringWithFormat:@"%d",700-i*100];
         titleLb.textColor = [UIColor whiteColor];
         titleLb.font = [UIFont systemFontOfSize:8];
         titleLb.textAlignment = NSTextAlignmentRight;
@@ -648,6 +652,13 @@
 }
 -(void)writeData
 {
+    // 修改时间
+    NSDate* today = [NSDate date];
+    NSDateFormatter*df = [[NSDateFormatter alloc]init];//格式化
+    [df setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString* s1 = [df stringFromDate:today];
+    self.timeLb.text = s1;
+    
     if (self.dataArray.count==0) {
         return;
     }

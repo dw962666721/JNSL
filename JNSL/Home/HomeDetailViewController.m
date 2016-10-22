@@ -11,42 +11,90 @@
 @interface HomeDetailViewController ()
 @property NSInteger type; // 0:#1锅炉  1:公用  2:＃2锅炉
 @property UIBarButtonItem *rightBtn;
-@property UITableView *tableView;
-@property NSMutableArray *dataArray;
+@property UIScrollView *mainScrollView;
+@property UITableView *tableView1;// 锅炉
+@property UITableView *tableViewAll; // 汽机
+@property UITableView *tableView2; // 环保
+@property UITableView *currentTableView; // 当前tableView
+@property NSMutableArray *dataArray1;
+@property NSMutableArray *dataArrayAll;
+@property NSMutableArray *dataArray2;
 @end
 
 @implementation HomeDetailViewController
 -(void)loadData
 {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    if (self.type==0) {
-         dict[@"typeId"]=@"1";
+    switch (self.currentTableView.tag) {
+        case 990:
+            if (self.type==0) {
+                dict[@"typeId"]=@"1";
+//                self.title = @"#1锅炉";
+            }
+            else
+            {
+                dict[@"typeId"]=@"4";
+//                self.title = @"#2锅炉";
+            }
+            break;
+        case 991:
+            if (self.type==0) {
+                dict[@"typeId"]=@"2";
+//                self.title = @"#1汽机";
+            }
+            else
+            {
+                dict[@"typeId"]=@"5";
+//                self.title = @"#2汽机";
+            }
+            break;
+        case 992:
+            if (self.type==0) {
+                dict[@"typeId"]=@"3";
+//                self.title = @"#1环保";
+            }
+            else
+            {
+                dict[@"typeId"]=@"6";
+//                self.title = @"#2环保";
+            }
+            break;
+        default:
+            break;
     }
-    else if (self.type==1)
-    {
-        dict[@"typeId"]=@"7";
-    }
-    else
-    {
-        dict[@"typeId"]=@"4";
-    }
-   
+     if (self.type==1) {
+          dict[@"typeId"]=@"7";
+     }
     [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,FacilityDetialInfoURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
             NSMutableArray *resultArray = [[NSMutableArray alloc] initWithArray:[json objectForKey:@"resultEntity"]];
-            self.dataArray = resultArray;
-            [self.tableView reloadData];
+            
+            switch (self.currentTableView.tag) {
+                case 990:
+                   self.dataArray1 = resultArray;
+                    break;
+                case 991:
+                   self.dataArrayAll = resultArray;
+                    break;
+                case 992:
+                    self.dataArray2 = resultArray;
+                    break;
+                default:
+                    break;
+            }
+            
+            [self.currentTableView reloadData];
         }
         else
         {
             NSString *resultDict = [json objectForKey:@"message"];
             NSLog(@"%@",resultDict);
         }
-        [self.tableView.header endRefreshing];
+        [self.currentTableView.header endRefreshing];
     } fail:^{
-        [self.tableView.header endRefreshing];
+        [self.currentTableView.header endRefreshing];
         // 移除HUD
         [MBProgressHUD hideHUD];
         
@@ -58,7 +106,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataArray = [[NSMutableArray alloc] init];
+    self.dataArray1 = [[NSMutableArray alloc] init];
+    self.dataArrayAll = [[NSMutableArray alloc] init];
+    self.dataArray2 = [[NSMutableArray alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
     //  添加右侧切换按钮
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -85,48 +135,12 @@
     }
     
     [self addViews];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     // Do any additional setup after loading the view.
 }
 -(void)addViews
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-65)];
-    self.tableView.delegate=self;
-    self.tableView.dataSource=self;
-    [ self.tableView registerClass:[HomeDetailTableViewCell class] forCellReuseIdentifier:@"cell"];
-    self.tableView.tableHeaderView = [[UIView alloc] init];
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    __weak __typeof(self) weakSelf = self;
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf loadData];
-    }];
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
-
-    [self.view addSubview:self.tableView];
-    [self.tableView.header beginRefreshing];
-    
-}
--(void)setVCType:(NSInteger)type
-{
-    self.type = type;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.dataArray.count;
-}
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    HomeDetailTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    [cell setCellData:self.dataArray[indexPath.row] row:indexPath.row];
-    [cell setCellData:self.dataArray[indexPath.row] row:indexPath.row];
-    return cell;
-}
-- ( UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     NSInteger viewH=30;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, viewH)];
     //设置表头 企业名称,发生时间,污染物名称,排放值
@@ -161,11 +175,123 @@
     borde3.backgroundColor = [UIColor whiteColor];
     [view addSubview:borde1];[view addSubview:borde2];[view addSubview:borde3];
     view.backgroundColor = ColorWithRGB(0x20647a);
-    return view;
+    [self.view addSubview:view];
+    
+    self.mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, viewH, screenWidth, screenHeight-65-viewH)];
+    self.mainScrollView.delegate = self;
+    self.mainScrollView.pagingEnabled = YES;
+    self.mainScrollView.showsHorizontalScrollIndicator = NO;
+    if (self.type!=1) {
+        self.mainScrollView.contentSize = CGSizeMake(screenWidth*3, self.mainScrollView.frame.size.height);
+    }
+    [self.view addSubview:self.mainScrollView];
+    
+    // 添加锅炉
+    self.tableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight-65-viewH)];
+    self.tableView1.delegate=self;
+    self.tableView1.dataSource=self;
+    self.tableView1.tag = 990;
+    [ self.tableView1 registerClass:[HomeDetailTableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView1.tableHeaderView = [[UIView alloc] init];
+    self.tableView1.tableFooterView = [[UIView alloc] init];
+    __weak __typeof(self) weakSelf = self;
+    self.tableView1.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
+    if ([self.tableView1 respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView1 setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView1 respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView1 setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    [self.mainScrollView addSubview:self.tableView1];
+    
+    // 添加汽机
+    self.tableViewAll = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth, 0, screenWidth, screenHeight-65-viewH)];
+    self.tableViewAll.delegate=self;
+    self.tableViewAll.dataSource=self;
+    self.tableViewAll.tag = 991;
+    [ self.tableViewAll registerClass:[HomeDetailTableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableViewAll.tableHeaderView = [[UIView alloc] init];
+    self.tableViewAll.tableFooterView = [[UIView alloc] init];
+    self.tableViewAll.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
+    if ([self.tableViewAll respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableViewAll setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableViewAll respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableViewAll setLayoutMargins:UIEdgeInsetsZero];
+    }
+    
+    [self.mainScrollView addSubview:self.tableViewAll];
+    
+    // 添加环保
+    self.tableView2 = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth*2, 0, screenWidth, screenHeight-65-viewH)];
+    self.tableView2.delegate=self;
+    self.tableView2.dataSource=self;
+    self.tableView2.tag = 992;
+    [ self.tableView2 registerClass:[HomeDetailTableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView2.tableHeaderView = [[UIView alloc] init];
+    self.tableView2.tableFooterView = [[UIView alloc] init];
+    self.tableView2.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakSelf loadData];
+    }];
+    if ([self.tableView2 respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView2 setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView2 respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView2 setLayoutMargins:UIEdgeInsetsZero];
+    }
+    [self.mainScrollView addSubview:self.tableView2];
+    
+    self.currentTableView = self.tableView1;
+   
+    [self.currentTableView.header beginRefreshing];
+    
+}
+-(void)setVCType:(NSInteger)type
+{
+    self.type = type;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    switch (self.currentTableView.tag) {
+        case 990:
+            return self.dataArray1.count;
+            break;
+        case 991:
+            return self.dataArrayAll.count;
+            break;
+        case 992:
+            return self.dataArray2.count;
+            break;
+        default:
+            break;
+    }
+    return 0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   
+    switch (self.currentTableView.tag) {
+        case 990:
+             [cell setCellData:self.dataArray1[indexPath.row] row:indexPath.row];
+            break;
+        case 991:
+             [cell setCellData:self.dataArrayAll[indexPath.row] row:indexPath.row];
+            break;
+        case 992:
+             [cell setCellData:self.dataArray2[indexPath.row] row:indexPath.row];
+            break;
+        default:
+            break;
+    }
+    return cell;
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -176,18 +302,93 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger i=scrollView.contentOffset.x/screenWidth;
+    if (i==0)
+    {
+        if (self.currentTableView != self.tableView1) {
+            self.currentTableView = self.tableView1;
+        }
+    }
+    else if (i==1)
+    {
+        if (self.currentTableView != self.tableViewAll) {
+            self.currentTableView = self.tableViewAll;
+            if (self.dataArrayAll.count==0) {
+                [self loadData];
+            }
+        }
+    }
+    else
+    {
+        
+        if (self.currentTableView != self.tableView2) {
+            self.currentTableView = self.tableView2;
+            if (self.dataArray2.count==0) {
+                [self loadData];
+            }
+
+        }
+    }
+    [self updateTitle];
+   
+}
+
+-(void)updateTitle
+{
+    if (self.type == 1) {
+         self.title = @"公用";
+        return;
+    }
+    switch (self.currentTableView.tag) {
+        case 990:
+            if (self.type==0) {
+                self.title = @"#1锅炉";
+            }
+            else
+            {
+                self.title = @"#2锅炉";
+            }
+            break;
+        case 991:
+            if (self.type==0) {
+                self.title = @"#1汽机";
+            }
+            else
+            {
+                self.title = @"#2汽机";
+            }
+            break;
+        case 992:
+            if (self.type==0) {
+                self.title = @"#1环保";
+            }
+            else
+            {
+                self.title = @"#2环保";
+            }
+            break;
+        default:
+            break;
+    }
+
+}
 -(void)changeView
 {
     if (self.type==0) {
-        self.title = @"#2锅炉";
+//        self.title = @"#2锅炉";
         self.type=2;
     }
     else
     {
-        self.title = @"#1锅炉";
+//        self.title = @"#1锅炉";
         self.type=0;
     }
-    [self loadData];
+    [self updateTitle];
+    [self.currentTableView.header beginRefreshing];
+//    [self loadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

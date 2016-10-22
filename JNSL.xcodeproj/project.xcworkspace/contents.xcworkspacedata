@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:JNSL.xcodeproj">
+      location = "self:/Users/zw/Documents/JNSL/JNSL.xcodeproj">
    </FileRef>
 </Workspace>

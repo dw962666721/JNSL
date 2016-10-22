@@ -250,10 +250,10 @@
 		CF98FC421DA0E8690057D057 /* fileReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fileReaderViewController.m; sourceTree = "<group>"; };
 		CF98FC451DA0F63E0057D057 /* zhifaProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhifaProtocal.h; sourceTree = "<group>"; };
 		DB2F8C0A1D9CD99D0075DD6F /* JNSL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JNSL.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB2F8C231D9CD99D0075DD6F /* JNSLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JNSLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB2F8C231D9CD99D0075DD6F /* JNSL.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JNSL.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2F8C271D9CD99D0075DD6F /* JNSLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JNSLTests.m; sourceTree = "<group>"; };
 		DB2F8C291D9CD99D0075DD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB2F8C2E1D9CD99D0075DD6F /* JNSLUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JNSLUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB2F8C2E1D9CD99D0075DD6F /* JNSL.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JNSL.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2F8C321D9CD99D0075DD6F /* JNSLUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JNSLUITests.m; sourceTree = "<group>"; };
 		DB2F8C341D9CD99D0075DD6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3A08131DAA8F480085E1D0 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTableViewCell.h; path = ../MessageTableViewCell.h; sourceTree = "<group>"; };
@@ -672,8 +672,8 @@
 			isa = PBXGroup;
 			children = (
 				DB2F8C0A1D9CD99D0075DD6F /* JNSL.app */,
-				DB2F8C231D9CD99D0075DD6F /* JNSLTests.xctest */,
-				DB2F8C2E1D9CD99D0075DD6F /* JNSLUITests.xctest */,
+				DB2F8C231D9CD99D0075DD6F /* JNSL.xctest */,
+				DB2F8C2E1D9CD99D0075DD6F /* JNSL.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1101,7 +1101,7 @@
 			);
 			name = JNSLTests;
 			productName = JNSLTests;
-			productReference = DB2F8C231D9CD99D0075DD6F /* JNSLTests.xctest */;
+			productReference = DB2F8C231D9CD99D0075DD6F /* JNSL.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		DB2F8C2D1D9CD99D0075DD6F /* JNSLUITests */ = {
@@ -1119,7 +1119,7 @@
 			);
 			name = JNSLUITests;
 			productName = JNSLUITests;
-			productReference = DB2F8C2E1D9CD99D0075DD6F /* JNSLUITests.xctest */;
+			productReference = DB2F8C2E1D9CD99D0075DD6F /* JNSL.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1466,9 +1466,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.JNSL;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "33d6660d-18ef-4362-ade3-7ad8f30f00c4";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.sldc;
+				PRODUCT_NAME = JNSL;
+				PROVISIONING_PROFILE = "b41ef193-1940-4af3-b518-b4ab59baf2e1";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
@@ -1488,9 +1488,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.JNSL;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "33d6660d-18ef-4362-ade3-7ad8f30f00c4";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.sldc;
+				PRODUCT_NAME = JNSL;
+				PROVISIONING_PROFILE = "b41ef193-1940-4af3-b518-b4ab59baf2e1";
 				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
@@ -1502,7 +1502,7 @@
 				INFOPLIST_FILE = JNSLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zw.JNSLTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JNSL;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JNSL.app/JNSL";
 			};
 			name = Debug;
@@ -1514,7 +1514,7 @@
 				INFOPLIST_FILE = JNSLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zw.JNSLTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JNSL;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JNSL.app/JNSL";
 			};
 			name = Release;
@@ -1525,7 +1525,7 @@
 				INFOPLIST_FILE = JNSLUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zw.JNSLUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JNSL;
 				TEST_TARGET_NAME = JNSL;
 			};
 			name = Debug;
@@ -1536,7 +1536,7 @@
 				INFOPLIST_FILE = JNSLUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zw.JNSLUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JNSL;
 				TEST_TARGET_NAME = JNSL;
 			};
 			name = Release;

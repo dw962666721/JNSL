@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DB2F8C221D9CD99D0075DD6F"
-               BuildableName = "JNSLTests.xctest"
+               BuildableName = "JNSL.xctest"
                BlueprintName = "JNSLTests"
                ReferencedContainer = "container:JNSL.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DB2F8C2D1D9CD99D0075DD6F"
-               BuildableName = "JNSLUITests.xctest"
+               BuildableName = "JNSL.xctest"
                BlueprintName = "JNSLUITests"
                ReferencedContainer = "container:JNSL.xcodeproj">
             </BuildableReference>
