@@ -35,7 +35,6 @@
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-    [self loadData];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -83,9 +82,9 @@
 
     [self loadUserInfo];
     [self addViews];
-    
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [self loadData];
 }
 
 // 给用户数据赋值
