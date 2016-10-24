@@ -70,6 +70,7 @@
     }];
 
 }
+
 - (void)viewDidLoad {
     WelComeViewController *VC = [[WelComeViewController alloc] init];
     VC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -248,7 +249,7 @@
         UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(x+splitW*j, y+height0, width0/3, 15)];
         titleLb.textAlignment = NSTextAlignmentCenter;
         titleLb.textColor = [UIColor whiteColor];
-        titleLb.font = [UIFont systemFontOfSize:10];
+        titleLb.font = [UIFont systemFontOfSize:12];
         [self.MainView addSubview:titleLb];
         
         switch (j) {
@@ -262,7 +263,7 @@
                 self.allValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
                 self.allValueLb.textColor = [UIColor blackColor];
                 self.allValueLb.textAlignment = NSTextAlignmentCenter;
-                self.allValueLb.font = [UIFont systemFontOfSize:8];
+                self.allValueLb.font = [UIFont systemFontOfSize:12];
                 [viewBack addSubview:self.allValueLb];
                 break;
             case 1:
@@ -275,11 +276,11 @@
                 self._1ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
                 self._1ValueLb.textColor = [UIColor blackColor];
                 self._1ValueLb.textAlignment = NSTextAlignmentCenter;
-                self._1ValueLb.font = [UIFont systemFontOfSize:8];
+                self._1ValueLb.font = [UIFont systemFontOfSize:12];
                 [viewBack addSubview:self._1ValueLb];
                 break;
             case 2:
-                titleLb.text=@"#1机组";
+                titleLb.text=@"#2机组";
                 // 添加柱形条
                 self._2View = [[UIView alloc] initWithFrame:CGRectMake(0, viewBack.frame.size.height, viewBack.frame.size.width, 0)];
                 self._2View.backgroundColor = RGBA(65, 0, 255, 1);
@@ -288,7 +289,7 @@
                 self._2ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
                 self._2ValueLb.textColor = [UIColor blackColor];
                 self._2ValueLb.textAlignment = NSTextAlignmentCenter;
-                self._2ValueLb.font = [UIFont systemFontOfSize:8];
+                self._2ValueLb.font = [UIFont systemFontOfSize:12];
                 [viewBack addSubview:self._2ValueLb];
                 break;
             default:
@@ -447,7 +448,7 @@
                 self.viewDict[[NSString stringWithFormat:@"%@%@",@"_22",name] ]=_2Lb;
                 
                 if ([name isEqual:@"gl"]) {
-                    titleLb.text=@"主蒸汽温度(C)";
+                    titleLb.text=@"主蒸汽温度(℃)";
                 }
                 if ([name isEqual:@"qj"])
                 {
@@ -459,7 +460,7 @@
             case 3:
             {
                 UILabel *titleLb= [[UILabel alloc] initWithFrame:CGRectMake(oneWidth*i, 0, oneWidth, titleH)];
-                titleLb.text=@"颗粒物";
+                titleLb.text=@"烟尘";
                 titleLb.textColor=[UIColor whiteColor];
                 titleLb.numberOfLines=0;
                 titleLb.textAlignment = NSTextAlignmentCenter;
@@ -561,7 +562,7 @@
                 [_2JZView addSubview:_2Lb];
                 
                 if ([name isEqual:@"gl"]) {
-                    titleLb.text=@"再热气温度(C)";
+                    titleLb.text=@"再热气温度(℃)";
                     _1Lb.text=[NSString stringWithFormat:@"%@%@",@"_51",name] ;
                     _2Lb.text=[NSString stringWithFormat:@"%@%@",@"_52",name] ;
                     self.viewDict[[NSString stringWithFormat:@"%@%@",@"_51",name] ]=_1Lb;
@@ -683,7 +684,7 @@
                     self.allView.frame = rect;
                 }];
                 CGRect lbRect = self.allValueLb.frame;
-                lbRect.origin.y = self.rowH*7-viewH-10;
+                lbRect.origin.y = self.rowH*7-viewH-15;
                 self.allValueLb.frame = lbRect;
                 self.allValueLb.text = [NSString stringWithFormat:@"%ld",(long)value];
             }else if ([jzDict[@"loadName"] isEqual:@"#1机组"])
@@ -695,7 +696,7 @@
                     self._1View.frame = rect;
                 }];
                 CGRect lbRect = self._1ValueLb.frame;
-                lbRect.origin.y = self.rowH*7-viewH-10;
+                lbRect.origin.y = self.rowH*7-viewH-15;
                 self._1ValueLb.frame = lbRect;
                  self._1ValueLb.text = [NSString stringWithFormat:@"%ld",(long)value];
             }
@@ -708,7 +709,7 @@
                     self._2View.frame = rect;
                 }];
                 CGRect lbRect = self._2ValueLb.frame;
-                lbRect.origin.y = self.rowH*7-viewH-10;
+                lbRect.origin.y = self.rowH*7-viewH-15;
                 self._2ValueLb.frame = lbRect;
                  self._2ValueLb.text = [NSString stringWithFormat:@"%ld",(long)value];
             }

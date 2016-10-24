@@ -95,11 +95,6 @@
         [self.currentTableView.header endRefreshing];
     } fail:^{
         [self.currentTableView.header endRefreshing];
-        // 移除HUD
-        [MBProgressHUD hideHUD];
-        
-        // 提醒有没有新数据
-        [MBProgressHUD showError:@"请求失败"];
     }];
 
     

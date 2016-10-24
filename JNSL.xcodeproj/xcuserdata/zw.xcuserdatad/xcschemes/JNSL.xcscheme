@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DB2F8C091D9CD99D0075DD6F"
-               BuildableName = "sldc.app"
+               BuildableName = "JNSL.app"
                BlueprintName = "JNSL"
                ReferencedContainer = "container:JNSL.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DB2F8C091D9CD99D0075DD6F"
-            BuildableName = "sldc.app"
+            BuildableName = "JNSL.app"
             BlueprintName = "JNSL"
             ReferencedContainer = "container:JNSL.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DB2F8C091D9CD99D0075DD6F"
-            BuildableName = "sldc.app"
+            BuildableName = "JNSL.app"
             BlueprintName = "JNSL"
             ReferencedContainer = "container:JNSL.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DB2F8C091D9CD99D0075DD6F"
-            BuildableName = "sldc.app"
+            BuildableName = "JNSL.app"
             BlueprintName = "JNSL"
             ReferencedContainer = "container:JNSL.xcodeproj">
          </BuildableReference>
