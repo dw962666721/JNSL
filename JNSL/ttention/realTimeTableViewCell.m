@@ -44,9 +44,16 @@
 -(void)setData:(NSDictionary *)data{
     self.name.text = [data objectForKey:@"pollSourceName"];
     self.datastatue.text = [data objectForKey:@"alarmTypeName"];
-    self.jizu.text = [data objectForKey:@"facilityName"];
-    self.sdate.text = [data objectForKey:@"beginDate"];
-    self.edate.text = [data objectForKey:@"endDate"];
+    NSString *alarmCauses = [data objectForKey:@"alarmCauses"];
+    NSString *jizu = [data objectForKey:@"facilityName"];
+    NSString *jizustr = [[NSString alloc] initWithFormat:@"%@%@%@%@",jizu,@"(",alarmCauses,@")"];
+    self.jizu.text = jizustr;
+    NSString *begindate = [data objectForKey:@"beginDate"];
+    NSString *bdstr = [[NSString alloc] initWithFormat:@"%@%@",@"起",begindate];
+    self.sdate.text = bdstr;
+    NSString *enddate = [data objectForKey:@"endDate"];
+    NSString *edstr = [[NSString alloc] initWithFormat:@"%@%@",@"起",enddate];
+    self.edate.text = edstr;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

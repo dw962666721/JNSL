@@ -40,7 +40,7 @@
     
     if (self.arr1.count == 0) {
         pagetype = @"unurall";
-        self.arr1 = [[NSArray alloc] init];
+        self.arr1 = [[NSMutableArray alloc] init];
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         dict[@"userId"]=userInfoJNSL.userId;
         [MBProgressHUD showMessage:@"正在加载数据中....." toView:self.view];
@@ -53,7 +53,12 @@
                 NSMutableDictionary *resultDict = [json objectForKey:@"resultEntity"];
                 NSMutableArray *selectArray = [[NSMutableArray alloc] initWithArray:[resultDict objectForKey:@"select"]];
                 if (selectArray.count>0) {
-                    self.arr1 = selectArray;
+                    for (int i = 0; i < selectArray.count; i++) {
+                        NSDictionary *dic = selectArray[i];
+                        if ( [selectArray[i][@"checked"]  isEqual: @"1"] || [selectArray[i][@"checked"] integerValue]  == 1) {
+                            [self.arr1 addObject:dic];
+                        }
+                    }
                 }
                 [self createPanelView];
             }

@@ -35,7 +35,6 @@
     // 创建控件
     [self addTopView];
     
-    
 }
 -(void)addTopView
 {
@@ -210,7 +209,7 @@
 // 系统设置
 -(void)touchSystemSet
 {
-    AboutUsViewController *view = [[AboutUsViewController alloc] init];
+    SystemSetViewController *view = [[SystemSetViewController alloc] init];
     [self.navigationController pushViewController:view animated:YES];
 }
 - (void)didReceiveMemoryWarning {

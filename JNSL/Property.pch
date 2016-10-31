@@ -6,7 +6,9 @@
 //  Copyright (c) 2015年 dw. All rights reserved.
 //
 
-#ifndef Money_Come_Property_pch
+#ifndef Property_pch
+#import <Availability.h>
+
 // 数据请求
 #import "AFNetworkTool.h"
 #import "AppDelegate.h"
@@ -25,6 +27,8 @@
 #import "UserInfo.h"
 // 返回基类
 #import "baseViewController.h"
+// 推送
+#import "JPUSHService.h"
 #define userInfoJNSL ([UserInfo userInfo])
 #define Money_Come_Property_pch
 #define requestType @"http://"
@@ -50,6 +54,9 @@
 #define SaveProblemMessageURL @"/androidAlarmRecordInfoAction!saveProblemMessage.action"
 // 机组详情（汽机，锅炉，环保，公用）
 #define FacilityDetialInfoURL @"/androidOpenPlantAction!getFacilityDetialInfo.action"
+// 获取版本号
+#define GetVersionURL @"/sourceFileAction!getVersion.action"
+#define NewAppURL @"/ios/update.html"
 #define zhifaURL @"/androidSourceFileAction!getSourceShareListMobile.action"
 #define gongkuangURL @"/androidSourceFileAction!getSourceFileList.action"
 #define yujingURL @"/androidAlarmRecordInfoAction!getOverStandardPreAlarm.action"

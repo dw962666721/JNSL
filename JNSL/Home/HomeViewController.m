@@ -104,7 +104,7 @@
     }
     else
     {
-        userInfoJNSL.ip = @"http://10.78.120.60:8080/ep4.1_nm_app/";
+        userInfoJNSL.ip = @"http://60.31.21.53:8080/ep4.1_nm_app/";
     }
 }
 -(void)addViews

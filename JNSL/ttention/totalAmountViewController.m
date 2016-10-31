@@ -66,7 +66,6 @@
                 [self.orvl setText:dataArr];
             }
         }
-        NSLog(@"zhuwei");
         [self addLineData];
         
     } fail:^{
@@ -110,7 +109,6 @@
     dict[@"pollutantType"] = thetype;
     [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,zhexianURL] parameters:dict success:^(id responseObject) {
         [MBProgressHUD hideHUDForView:self.view];
-        NSLog(@"zhuweibbbbbbbb");
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
@@ -167,6 +165,7 @@
     if (![thetype  isEqual: @"so2"]) {
         thetype = @"so2";
         [self clear];
+        self.lineTitle.text = @"SO2排放量(/t)";
         self.lineBtn1.backgroundColor = ColorWithRGB(0x4a4646);
         self.lineBtn2.backgroundColor = [UIColor grayColor];
         self.lineBtn3.backgroundColor = [UIColor grayColor];
@@ -180,6 +179,7 @@
     if (![thetype  isEqual: @"nox"]) {
         thetype = @"nox";
         [self clear];
+        self.lineTitle.text = @"NOX排放量(/t)";
         self.lineBtn1.backgroundColor = [UIColor grayColor];
         self.lineBtn2.backgroundColor = ColorWithRGB(0x4a4646);
         self.lineBtn3.backgroundColor = [UIColor grayColor];
@@ -192,6 +192,7 @@
     if (![thetype  isEqual: @"smoke"]) {
         thetype = @"smoke";
         [self clear];
+        self.lineTitle.text = @"烟尘排放量(/t)";
         self.lineBtn1.backgroundColor = [UIColor grayColor];
         self.lineBtn2.backgroundColor = [UIColor grayColor];
         self.lineBtn3.backgroundColor = ColorWithRGB(0x4a4646);

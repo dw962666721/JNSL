@@ -28,6 +28,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bac10" width="540" height="960"/>
+        <image name="bac10" width="150" height="266"/>
     </resources>
 </document>

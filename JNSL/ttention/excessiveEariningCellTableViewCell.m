@@ -44,7 +44,10 @@
 }
 
 -(void)setData:(NSDictionary *)data{
-    self.lb1.text = [data objectForKey:@"pollSourceName"];
+    NSString *jizustr = [data objectForKey:@"facility_name"];
+    NSString *pollSourceName  = [data objectForKey:@"pollSourceName"];
+    NSString *thename = [[NSString alloc] initWithFormat:@"%@%@%@%@",pollSourceName,@"(",jizustr,@")"];
+    self.lb1.text = thename;
     self.lb2.text = [data objectForKey:@"begin_time"];
     self.lb3.text = [data objectForKey:@"pollutantName"];
     self.lb4.text = [data objectForKey:@"fact_out_nd"];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "AboutUsViewController.h"
-@interface SystemSetViewController : baseViewController
+@interface SystemSetViewController : baseViewController<UIAlertViewDelegate>
 
 @end

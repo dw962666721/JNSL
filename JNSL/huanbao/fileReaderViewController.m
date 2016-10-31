@@ -23,6 +23,7 @@
     self.webview.delegate = self;
     if (self.filename != nil) {
         [self loadDocument:self.filename];
+        //[self loadTxt:self.filename];
     }
     // Do any additional setup after loading the view.
 }
@@ -37,9 +38,10 @@
     NSFileManager *manager = [NSFileManager defaultManager];
     bool isexsit = [manager fileExistsAtPath:file];
     if (isexsit) {
-        NSURL *url = [NSURL fileURLWithPath:file];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        [self.webview loadRequest:request];
+        [self loadTxt:file];
+        //NSURL *url = [NSURL fileURLWithPath:file];
+        //NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        //[self.webview loadRequest:request];
         [MBProgressHUD showMessage:@"" toView:self.view];
     }
 }

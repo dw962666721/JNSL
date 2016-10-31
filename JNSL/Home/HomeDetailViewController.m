@@ -115,20 +115,7 @@
     if (self.type==1) {
         self.navigationItem.rightBarButtonItem = nil;
     }
-    switch (self.type) {
-        case 0:
-            self.title = @"#1锅炉";
-            break;
-        case 1:
-            self.title = @"公用";
-            break;
-        case 2:
-            self.title = @"#2锅炉";
-            break;
-        default:
-            break;
-    }
-    
+       
     [self addViews];
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];

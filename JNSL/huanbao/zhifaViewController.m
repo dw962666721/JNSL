@@ -73,7 +73,7 @@
     
     NSString *urlstr = @"";
     if ([self.viewtype  isEqual: @"zhifa"]) {
-        urlstr = zhifaURL;
+        urlstr =  zhifaURL;
         dict[@"fileTypeId"] = @"ZFAL";
     }else{
         urlstr = gongkuangURL;
@@ -146,8 +146,10 @@
         }
     cell.cellIndex = indexPath.row;
     NSString *datafileurl = [dataArr[indexPath.row] objectForKey:@"fileUrl"];
-    NSString *fileurl = [[NSString alloc] initWithFormat:@"%@,%@", userInfoJNSL.ip, datafileurl ];
+    NSString *fileurl = [[NSString alloc] initWithFormat:@"%@%@", userInfoJNSL.ip, datafileurl ];
     cell.cellUrl = fileurl;
+    NSLog(@"fileurl");
+    NSLog(fileurl);
     cell.cellFilename = [dataArr[indexPath.row] objectForKey:@"fileName"];
     cell.ipath = indexPath;
     cell.zprotocal = self;

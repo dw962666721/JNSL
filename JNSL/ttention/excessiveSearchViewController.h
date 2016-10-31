@@ -30,7 +30,7 @@
 
 @property UIDatePicker *datePicker;
 
-@property NSArray *arr1;
+@property NSMutableArray *arr1;
 
 @property UIButton * pageConfirmBtn;
 

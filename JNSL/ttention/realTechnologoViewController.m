@@ -85,7 +85,12 @@
     NSDictionary *dic = dataArr[indexPath.row];
     NSString *serName = [dic objectForKey:@"serName"];
     NSString *urlstr = [[NSString alloc] initWithFormat:@"%@%@",@"http://112.65.187.118:8074/rsa/diagram/openplant/gview/diagram.html?fileName=",serName];
-    etd.url = urlstr;
+    if (indexPath.row == 0) {
+        etd.url = @"http://60.31.21.53:8082/rsa/diagram/openplant/gview/diagram.html?fileName=HS_SLRD_01.zxml";
+    }
+    if (indexPath.row == 1) {
+        etd.url = @"http://60.31.21.53:8082/rsa/diagram/openplant/gview/diagram.html?fileName=HS_SLRD_02.zxml";
+    }
     //[self.navigationController pushViewController:etd animated:true];
     [self presentViewController:etd animated:YES completion:Nil];
 }

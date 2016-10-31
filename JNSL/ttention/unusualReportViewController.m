@@ -48,9 +48,11 @@
 }
 
 -(void)setDate{
-    NSDate *begindate = [NSDate date];
-    NSTimeInterval  interval =24*60*60*-30; //1:天数
-    NSDate *enddate = [begindate initWithTimeIntervalSinceNow:+interval];
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];//设定时间格式,这里可以设置成自己需要的格式
+    NSDate *begindate = [dateFormat dateFromString:@"2016-08-21 00:00:01"];
+    //NSTimeInterval  interval =24*60*60*-30; //1:天数
+    NSDate *enddate = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];

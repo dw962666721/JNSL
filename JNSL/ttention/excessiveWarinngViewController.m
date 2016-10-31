@@ -147,6 +147,7 @@
     dict[@"endTime"] = endDate;
     dict[@"type"] = wuranType;
     
+    
     [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,yujingURL] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
