@@ -65,14 +65,28 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [JPUSHService registrationIDCompletionHandler:^(int resCode, NSString *registrationID) {
         if(resCode == 0){
             NSLog(@"registrationID获取成功：%@",registrationID);
+            [[NSUserDefaults standardUserDefaults] setObject:registrationID forKey:@"registrationID"];
             
         }
         else{
             NSLog(@"registrationID获取失败，code：%d",resCode);
+            [[NSUserDefaults standardUserDefaults] setObject:@"registrationID获取失败" forKey:@"registrationID"];
         }
     }];
     
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    // 当前应用名称
+    NSString *appCurName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    NSLog(@"当前应用名称：%@",appCurName);
+    // 当前应用软件版本  比如：1.0.1
+    NSString *appCurVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    NSLog(@"当前应用软件版本:%@",appCurVersion);
+    // 当前应用版本号码   int类型
+    NSString *appCurVersionNum = [infoDictionary objectForKey:@"CFBundleVersion"];
+    NSLog(@"当前应用版本号码：%@",appCurVersionNum);
     
+//    NSString *currentVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@%@",@"V",appCurVersion] forKey:@"version"];
     return YES;
 }
 
@@ -117,10 +131,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"%@", [NSString stringWithFormat:@"Device Token: %@", deviceToken]);
-//    NSString *token=((deviceToken.description as NSString).stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))as NSString).stringByReplacingOccurrencesOfString(" ", withString: "")
-//    NSUserDefaults.standardUserDefaults().objectForKey("")
-//    var request=ASIFormDataRequest(URL: NSURL(string: ServerURL + (NotificationUtil.isNotificationEnable() ? "regist" : "logout") + "Notification.jspx"))
-    NSString *token=[[deviceToken.description stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
+//    NSString *token=[[deviceToken.description stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
     [JPUSHService registerDeviceToken:deviceToken];
 }
 

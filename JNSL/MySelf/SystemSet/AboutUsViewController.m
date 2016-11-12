@@ -28,7 +28,11 @@
     // logo
     self.logoImageView = [[UIImageView alloc] initWithFrame:CGRectMake((screenWidth-80)/2, 50, 80, 80)];
     self.logoImageView.image = [UIImage imageNamed:@"logo1"];
+    self.logoImageView.userInteractionEnabled = YES;
     [self.view addSubview:self.logoImageView];
+    
+    UILongPressGestureRecognizer *tap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouch)];
+    [self.logoImageView addGestureRecognizer:tap];
     
     // 版本框
     self.currentVersionView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.logoImageView.frame)+50, screenWidth, 35)];
@@ -41,7 +45,11 @@
     [self.currentVersionView addSubview:currentVersionLb];
     
     UILabel *versionLb = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth-40, 0, 40, self.currentVersionView.frame.size.height)];
-    versionLb.text=@"1.0.1";
+    NSString *currentVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
+    if (currentVersion==nil||[currentVersion isEqual:@""]) {
+        currentVersion = @"V1.0";
+    }
+    versionLb.text=currentVersion;
     versionLb.font = [UIFont systemFontOfSize:13];
     [self.currentVersionView addSubview:versionLb];
     
@@ -66,6 +74,13 @@
     phoneLb.textColor = [UIColor redColor];
     [self.linkUsView addSubview:phoneLb];
     
+}
+-(void)longTouch
+{
+     NSString *registrationID = [[NSUserDefaults standardUserDefaults] objectForKey:@"registrationID"];
+    [MBProgressHUD showSuccess:registrationID];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = registrationID;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

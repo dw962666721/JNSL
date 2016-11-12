@@ -1204,7 +1204,7 @@
 				TargetAttributes = {
 					DB2F8C091D9CD99D0075DD6F = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = WCTC266VH6;
+						DevelopmentTeam = N922758954;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1541,24 +1541,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Magus Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Magus Technology Co., Ltd.";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JNSL/Property.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = JNSL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/JNSL/Resource/JPush",
-					"\"$(SRCROOT)/../Resource/JPush\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.productDev.jnsl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magusproduct.jnsl;
 				PRODUCT_NAME = JNSL;
-				PROVISIONING_PROFILE = "bdb6635a-0c20-42e9-ae0d-575b7c91d765";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "4aea4298-1317-4a08-a107-7f89a8d2383e";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1568,24 +1565,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Magus Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shanghai Magus Technology Co., Ltd.";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JNSL/Property.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = JNSL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/JNSL/Resource/JPush",
-					"\"$(SRCROOT)/../Resource/JPush\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.productDev.jnsl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.magusproduct.jnsl;
 				PRODUCT_NAME = JNSL;
-				PROVISIONING_PROFILE = "bdb6635a-0c20-42e9-ae0d-575b7c91d765";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "4aea4298-1317-4a08-a107-7f89a8d2383e";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

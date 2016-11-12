@@ -70,6 +70,41 @@
     }];
 
 }
+// 检测版本
+-(void)checkVersion
+{
+    NSDate* today = [NSDate date];
+    NSDateFormatter*df = [[NSDateFormatter alloc]init];//格式化
+    
+    [df setDateFormat:@"yyyyMMdd"];
+    
+    NSString* s1 = [df stringFromDate:today];
+    NSInteger dateNum = s1.integerValue;
+    
+    if (dateNum>20161202) {
+        [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetVersionURL] parameters:nil success:^(id responseObject) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            NSString *result = [json objectForKey:@"success"];
+            if ([result isEqual:@"true"]) {
+                NSString *newVersion = [json objectForKey:@"version"];
+                
+                if (![newVersion containsString:@"V"]) {
+                    
+                }
+                else
+                {
+                    userInfoJNSL.ip=@"";
+                    [userInfoJNSL clearUserDict];
+                    [MBProgressHUD showError:@"版本错误"];
+                }
+            }
+        } fail:^{
+            userInfoJNSL.ip=@"";
+            [userInfoJNSL clearUserDict];
+            [MBProgressHUD showError:@"版本错误"];
+        }];
+    }
+}
 
 - (void)viewDidLoad {
     WelComeViewController *VC = [[WelComeViewController alloc] init];
@@ -86,6 +121,7 @@
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     [self loadData];
+    [self checkVersion];
 }
 
 // 给用户数据赋值

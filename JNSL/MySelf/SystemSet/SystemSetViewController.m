@@ -82,20 +82,20 @@
 {
     NSString *currentVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"version"];
     [MBProgressHUD showMessage:@"正在获取版本。。。" toView:self.view];
-    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetVersionURL]);
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-     dict[@"version"]=@"4.3";
-    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetVersionURL] parameters:dict success:^(id responseObject) {
+//    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetVersionURL]);
+//    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+//    dict[@"version"]=@"4.3";
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetVersionURL] parameters:nil success:^(id responseObject) {
         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"success"];
         if ([result isEqual:@"true"]) {
             NSString *newVersion = [json objectForKey:@"version"];
             if (currentVersion==newVersion) {
-                [MBProgressHUD showMessage:@"你的版本已经是最新了"];
+                [MBProgressHUD showSuccess:@"你的版本已经是最新了"];
             }
             else
             {
-                [[NSUserDefaults standardUserDefaults] setObject:newVersion forKey:@"version"];
+//                [[NSUserDefaults standardUserDefaults] setObject:newVersion forKey:@"version"];
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"发现最新版本" message:@"是否更新新版本？" delegate:self cancelButtonTitle:@"不更新" otherButtonTitles:@"更新", nil];
                 [alertView show];
             }
