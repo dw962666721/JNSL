@@ -33,7 +33,7 @@
     self.backImageView.image = [UIImage imageNamed:@"back"];
     self.backImageView.contentMode = UIViewContentModeTopLeft;
     
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     backView.userInteractionEnabled = YES;
     [self.view addSubview:backView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
@@ -67,7 +67,7 @@
     NSInteger viewH=30;
     NSInteger btnH = 25;
     NSInteger splitH = 30;
-    if (IPHONE6||IPHONE6PLUS) {
+    if (IPHONE5||IPHONE6||IPHONE6PLUS) {
         viewH=45;
         logoW = 120;
         icoW = 30;
@@ -133,29 +133,56 @@
     [self.view addSubview:self.serviewView];
     
     UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSplit, 20, screenWidth, 15)];
-    tipLabel.text = @"请输入服务器地址:";
-    tipLabel.font = [UIFont systemFontOfSize:12];
+    if ([userInfoJNSL.ip isEqual:@"http://60.31.21.53:8080/ep4.1_nm_app/"]) {
+        tipLabel.text = @"当前配置为外网，点击切换为内网:";
+    }
+    else
+    {
+        tipLabel.text = @"当前配置为内网，点击切换为外网:";
+    }
+    tipLabel.font = [UIFont boldSystemFontOfSize:15];
     [tipLabel setTextColor:[UIColor whiteColor]];
-    [self.serviewView addSubview:tipLabel];
+    self.ipTipLabel = tipLabel;
+    [self.serviewView addSubview:self.ipTipLabel];
     
-    self.serverTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(leftSplit, 45, screenWidth-leftSplit*2, viewH)];
-    self.serverTextFiled.placeholder = @" 如:192.168.11.102:8080";
-    self.serverTextFiled.backgroundColor = [UIColor whiteColor];
-    self.serverTextFiled.layer.cornerRadius = 5;
-    [self.serviewView addSubview:self.serverTextFiled];
+//    self.serverTextFiled = [[UITextField alloc] initWithFrame:CGRectMake(leftSplit, 45, screenWidth-leftSplit*2, viewH)];
+//    self.serverTextFiled.placeholder = @" 如:192.168.11.102:8080";
+//    self.serverTextFiled.backgroundColor = [UIColor whiteColor];
+//    self.serverTextFiled.layer.cornerRadius = 5;
+//    
+//    [self.serviewView addSubview:self.serverTextFiled];
     
-    UIButton *setSureBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, CGRectGetMaxY(self.serverTextFiled .frame)+20, screenWidth-leftSplit*2, btnH)];
+    UIButton *setSureBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, CGRectGetMaxY(tipLabel .frame)+20, screenWidth-leftSplit*2, btnH)];
     setSureBtn.backgroundColor = ColorWithRGB(0xe87d37);
     [setSureBtn addTarget:self action:@selector(setSureAction) forControlEvents:UIControlEventTouchUpInside];
-    [setSureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    
+    if ([userInfoJNSL.ip isEqual:@"http://60.31.21.53:8080/ep4.1_nm_app/"]) {
+        [setSureBtn setTitle:@"内网" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [setSureBtn setTitle:@"外网" forState:UIControlStateNormal];
+    }
     setSureBtn.layer.cornerRadius = 5;
      [setSureBtn setFont:[UIFont systemFontOfSize:12]];
-    [self.serviewView addSubview:setSureBtn];
+    self.sureServerBtn = setSureBtn;
+    [self.serviewView addSubview:self.sureServerBtn];
 }
 -(void)setSureAction
 {
 //    userInfoJNSL.ip = self.serverTextFiled.text;
-    userInfoJNSL.ip = [NSString stringWithFormat:@"%@%@%@",@"http://",self.serverTextFiled.text,@"//ep4.1_nm_app"];
+//    userInfoJNSL.ip = [NSString stringWithFormat:@"%@%@%@",@"http://",self.serverTextFiled.text,@"//ep4.1_nm_app"];
+    if ([userInfoJNSL.ip isEqual:@"http://60.31.21.53:8080/ep4.1_nm_app/"]) {
+        userInfoJNSL.ip = @"http://10.78.120.60:8080/ep4.1_nm_app/";
+        [self.sureServerBtn setTitle:@"外网" forState:UIControlStateNormal];
+        self.ipTipLabel.text = @"当前配置为内网，点击切换为外网:";
+    }
+    else
+    {
+        userInfoJNSL.ip = @"http://60.31.21.53:8080/ep4.1_nm_app/";
+        [self.sureServerBtn setTitle:@"内网" forState:UIControlStateNormal];
+        self.ipTipLabel.text = @"当前配置为外网，点击切换为内网:";
+    }
     self.serviewView.hidden = YES;
 }
 -(void)loginAction

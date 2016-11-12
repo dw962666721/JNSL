@@ -25,6 +25,7 @@
 
 @property (nonatomic,strong) UIView *setView;
 @property (nonatomic,strong) UITextField *serverIpTextFiled;
+@property (nonatomic,strong) UILabel *ipTipLabel;
 @property (nonatomic,strong) UIButton *sureServerBtn;
 
 @property (nonatomic,strong) UIView *serviewView;

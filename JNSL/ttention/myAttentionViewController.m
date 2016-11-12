@@ -110,6 +110,11 @@
                 
                 [self.navigationController pushViewController:self.realTechnologo animated:YES];
                 break;
+            case 6:
+                self.realTechnologo = [[realTechnologoViewController alloc] init];
+                
+                [self.navigationController pushViewController:self.realTechnologo animated:YES];
+                break;
             default:
                 break;
         }
@@ -128,7 +133,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if ([logintype  isEqual: @"1"]) {
-         return 6;
+         return 7;
     }else{
         return 3;
     }
@@ -160,7 +165,9 @@
                 case 5:
                     cell.img.image = [UIImage imageNamed:@"shishigongyitu"];
                     break;
-                    
+                case 6:
+                    cell.img.image = [UIImage imageNamed:@"shengchanbaobiao"];
+                    break;
                 default:
                     break;
             }
