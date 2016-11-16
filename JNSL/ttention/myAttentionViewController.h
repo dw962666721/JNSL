@@ -14,6 +14,7 @@
 #import "overproofReportViewController.h"
 #import "realtimeViewController.h"
 #import "realTechnologoViewController.h"
+#import "ProductionReportViewController.h"
 
 @interface myAttentionViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
 @property totalAmountViewController *totalAmount;
@@ -22,5 +23,6 @@
 @property overproofReportViewController *overproofReport;
 @property realtimeViewController *realtime;
 @property realTechnologoViewController *realTechnologo;
+@property ProductionReportViewController *productionReport;
 
 @end

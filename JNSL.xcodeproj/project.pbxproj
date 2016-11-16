@@ -71,6 +71,8 @@
 		DB3A081B1DAA97E50085E1D0 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A08181DAA97E50085E1D0 /* LoginViewController.m */; };
 		DB3A081C1DAA97E50085E1D0 /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */; };
 		DB3A081F1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */; };
+		DB3E619E1DD9F34600BD1228 /* WeekTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3E619D1DD9F34600BD1228 /* WeekTableViewCell.m */; };
+		DB3E61A11DD9F3A200BD1228 /* DayView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB3E61A01DD9F3A200BD1228 /* DayView.m */; };
 		DB849B611DB117A200393441 /* realTechTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB849B601DB117A200393441 /* realTechTableViewCell.m */; };
 		DB849B641DB11BFD00393441 /* realTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB849B631DB11BFD00393441 /* realTimeTableViewCell.m */; };
 		DB849B671DB11E3E00393441 /* unusualReportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB849B661DB11E3E00393441 /* unusualReportTableViewCell.m */; };
@@ -80,6 +82,8 @@
 		DB84F0431DB1FC900059934A /* realTechTDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F0421DB1FC900059934A /* realTechTDetailsViewController.m */; };
 		DB84F0491DB209DD0059934A /* excessiveSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F0481DB209DD0059934A /* excessiveSearchViewController.m */; };
 		DB84F04C1DB224CF0059934A /* overproofSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F04B1DB224CF0059934A /* overproofSeachViewController.m */; };
+		DB944E071DD6F1FC00D0CF97 /* ProductionReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB944E061DD6F1FC00D0CF97 /* ProductionReportViewController.m */; };
+		DB944E0A1DD6F27900D0CF97 /* YearMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB944E091DD6F27900D0CF97 /* YearMonthView.m */; };
 		DBBA5D601DBB4EC6005A3CFF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBBA5D5F1DBB4EC6005A3CFF /* GameKit.framework */; };
 		DBBA5D621DBB4ED6005A3CFF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBBA5D611DBB4ED6005A3CFF /* StoreKit.framework */; };
 		DBDD34851DB31D5F000DF69D /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34821DB31D5F000DF69D /* HooDatePicker.m */; };
@@ -294,6 +298,10 @@
 		DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationViewController.m; sourceTree = "<group>"; };
 		DB3A081D1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailTableViewCell.h; sourceTree = "<group>"; };
 		DB3A081E1DAB4C0F0085E1D0 /* HomeDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailTableViewCell.m; sourceTree = "<group>"; };
+		DB3E619C1DD9F34600BD1228 /* WeekTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekTableViewCell.h; sourceTree = "<group>"; };
+		DB3E619D1DD9F34600BD1228 /* WeekTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekTableViewCell.m; sourceTree = "<group>"; };
+		DB3E619F1DD9F3A200BD1228 /* DayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayView.h; sourceTree = "<group>"; };
+		DB3E61A01DD9F3A200BD1228 /* DayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayView.m; sourceTree = "<group>"; };
 		DB849B5F1DB117A200393441 /* realTechTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = realTechTableViewCell.h; sourceTree = "<group>"; };
 		DB849B601DB117A200393441 /* realTechTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = realTechTableViewCell.m; sourceTree = "<group>"; };
 		DB849B621DB11BFD00393441 /* realTimeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = realTimeTableViewCell.h; sourceTree = "<group>"; };
@@ -312,6 +320,10 @@
 		DB84F0481DB209DD0059934A /* excessiveSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = excessiveSearchViewController.m; sourceTree = "<group>"; };
 		DB84F04A1DB224CF0059934A /* overproofSeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = overproofSeachViewController.h; sourceTree = "<group>"; };
 		DB84F04B1DB224CF0059934A /* overproofSeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = overproofSeachViewController.m; sourceTree = "<group>"; };
+		DB944E051DD6F1FC00D0CF97 /* ProductionReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductionReportViewController.h; sourceTree = "<group>"; };
+		DB944E061DD6F1FC00D0CF97 /* ProductionReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductionReportViewController.m; sourceTree = "<group>"; };
+		DB944E081DD6F27900D0CF97 /* YearMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearMonthView.h; sourceTree = "<group>"; };
+		DB944E091DD6F27900D0CF97 /* YearMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearMonthView.m; sourceTree = "<group>"; };
 		DBBA5D5F1DBB4EC6005A3CFF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DBBA5D611DBB4ED6005A3CFF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DBDD34811DB31D5F000DF69D /* HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HooDatePicker.h; sourceTree = "<group>"; };
@@ -614,6 +626,7 @@
 		CF17D3621D9FC3F60084CD9C /* ttention */ = {
 			isa = PBXGroup;
 			children = (
+				DB944E041DD6F1FC00D0CF97 /* ProductReport */,
 				CF716C841DA275FC001AF719 /* lineChartView.h */,
 				CF716C851DA275FC001AF719 /* lineChartView.m */,
 				CF716C811DA251BB001AF719 /* rounfView.h */,
@@ -776,6 +789,21 @@
 				DB3A081A1DAA97E50085E1D0 /* UserInformationViewController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		DB944E041DD6F1FC00D0CF97 /* ProductReport */ = {
+			isa = PBXGroup;
+			children = (
+				DB944E051DD6F1FC00D0CF97 /* ProductionReportViewController.h */,
+				DB944E061DD6F1FC00D0CF97 /* ProductionReportViewController.m */,
+				DB944E081DD6F27900D0CF97 /* YearMonthView.h */,
+				DB944E091DD6F27900D0CF97 /* YearMonthView.m */,
+				DB3E619C1DD9F34600BD1228 /* WeekTableViewCell.h */,
+				DB3E619D1DD9F34600BD1228 /* WeekTableViewCell.m */,
+				DB3E619F1DD9F3A200BD1228 /* DayView.h */,
+				DB3E61A01DD9F3A200BD1228 /* DayView.m */,
+			);
+			path = ProductReport;
 			sourceTree = "<group>";
 		};
 		DBDD34801DB31D5F000DF69D /* HooDatePicker */ = {
@@ -1296,6 +1324,7 @@
 				DBEDAE391DA6B64900913635 /* IQUIWindow+Hierarchy.m in Sources */,
 				DBEDAE491DA7327600913635 /* SystemSetViewController.m in Sources */,
 				DBEDAD671DA6A6DC00913635 /* MJRefreshBackFooter.m in Sources */,
+				DB944E0A1DD6F27900D0CF97 /* YearMonthView.m in Sources */,
 				DBEDAD6A1DA6A6DC00913635 /* MJRefreshHeader.m in Sources */,
 				DBEDAD781DA6A6DC00913635 /* UIView+MJExtension.m in Sources */,
 				DBEDAD7A1DA6A6DC00913635 /* SDImageCache.m in Sources */,
@@ -1336,6 +1365,7 @@
 				CF716C511DA14D51001AF719 /* wulaio4ViewController.m in Sources */,
 				CF17D31B1D9FC2EA0084CD9C /* main.m in Sources */,
 				CF716C481DA14D31001AF719 /* wulaio1ViewController.m in Sources */,
+				DB3E619E1DD9F34600BD1228 /* WeekTableViewCell.m in Sources */,
 				DBEDAE4C1DA73AE200913635 /* AboutUsViewController.m in Sources */,
 				DB849B671DB11E3E00393441 /* unusualReportTableViewCell.m in Sources */,
 				CF716C711DA22012001AF719 /* excessiveWarinngViewController.m in Sources */,
@@ -1367,8 +1397,10 @@
 				DBDD34851DB31D5F000DF69D /* HooDatePicker.m in Sources */,
 				DBEDAD6E1DA6A6DC00913635 /* MJRefreshBackGifFooter.m in Sources */,
 				DB84F0431DB1FC900059934A /* realTechTDetailsViewController.m in Sources */,
+				DB944E071DD6F1FC00D0CF97 /* ProductionReportViewController.m in Sources */,
 				DBEDAD701DA6A6DC00913635 /* MJRefreshBackStateFooter.m in Sources */,
 				DBEDAE371DA6B64900913635 /* IQUIView+Hierarchy.m in Sources */,
+				DB3E61A11DD9F3A200BD1228 /* DayView.m in Sources */,
 				DBEDAD6F1DA6A6DC00913635 /* MJRefreshBackNormalFooter.m in Sources */,
 				CF716C7D1DA22101001AF719 /* realTechnologoViewController.m in Sources */,
 				DBEDAD6C1DA6A6DC00913635 /* MJRefreshAutoNormalFooter.m in Sources */,

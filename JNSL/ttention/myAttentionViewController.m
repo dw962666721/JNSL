@@ -111,9 +111,9 @@
                 [self.navigationController pushViewController:self.realTechnologo animated:YES];
                 break;
             case 6:
-                self.realTechnologo = [[realTechnologoViewController alloc] init];
+                self.productionReport = [[ProductionReportViewController alloc] init];
                 
-                [self.navigationController pushViewController:self.realTechnologo animated:YES];
+                [self.navigationController pushViewController:self.productionReport animated:YES];
                 break;
             default:
                 break;
