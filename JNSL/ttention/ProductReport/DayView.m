@@ -57,7 +57,18 @@
     }
     return _monthReportLb;
 }
--(void)setData:(NSDictionary *)data
+-(UIView*)selectedView
+{
+    if (!_selectedView) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        view.layer.cornerRadius = self.frame.size.width/2;
+        view.backgroundColor = RGBA(70, 41, 244, 1);
+        [self addSubview:view];
+        _selectedView=view;
+    }
+    return _selectedView;
+}
+-(void)setData:(NSMutableDictionary*)data;
 {
     if ([data valueForKey:@"dayNum"]) {
         self.dayLb.text=[data valueForKey:@"dayNum"];

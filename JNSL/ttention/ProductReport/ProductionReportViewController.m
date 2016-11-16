@@ -16,6 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"生产报表";
+    self.currentDate = [NSDate date];
     [self addViews];
     // Do any additional setup after loading the view.
 }
@@ -30,10 +31,10 @@
     NSCalendar *cal = [NSCalendar currentCalendar];
     unsigned int unitFlags = NSYearCalendarUnit|NSMonthCalendarUnit|
     NSDayCalendarUnit;//这句是说你要获取日期的元素有哪些。获取年就要写NSYearCalendarUnit，获取小时就要写NSHourCalendarUnit，中间用|隔开；
-    NSDateComponents *d = [cal components:unitFlags fromDate:[NSDate date]];//把要从date中获取的
+    NSDateComponents *d = [cal components:unitFlags fromDate:self.currentDate];//把要从date中获取的
     NSInteger year = [d year];
     NSInteger month = [d month];
-    NSString *dateStr = [NSString stringWithFormat:@"%ld%@%ld",(long)year,@"-",(long)month];
+    NSString *dateStr = [NSString stringWithFormat:@"%d%@%d",year,@"-",month];
     [self.yearMonthView setCurrentDateStr:dateStr];
     //=================================================================================================
     
@@ -42,6 +43,7 @@
     //=================================================================================================
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 70, screenWidth, screenHeight-65-70)];
     self.scrollView.contentSize = CGSizeMake(screenWidth*3,  screenHeight-65-70);
+    self.scrollView.pagingEnabled = YES;
     [self.view addSubview:self.scrollView];
     
     
@@ -50,18 +52,21 @@
     self.leftTebleView.dataSource=self;
     [self.leftTebleView registerClass:[WeekTableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.scrollView addSubview:self.leftTebleView];
+    [self.leftTebleView reloadData];
     
-    self.centerTebleView = [[UITableView alloc] initWithFrame:CGRectMake(0, screenWidth, screenWidth, self.scrollView.frame.size.height) style:UITableViewStylePlain];
+    self.centerTebleView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth, 0, screenWidth, self.scrollView.frame.size.height) style:UITableViewStylePlain];
     self.centerTebleView.delegate = self;
     self.centerTebleView.dataSource=self;
     [self.centerTebleView registerClass:[WeekTableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.scrollView addSubview:self.centerTebleView];
+    [self.centerTebleView reloadData];
     
-    self.rightTebleView = [[UITableView alloc] initWithFrame:CGRectMake(0, screenWidth*2, screenWidth, self.scrollView.frame.size.height) style:UITableViewStylePlain];
+    self.rightTebleView = [[UITableView alloc] initWithFrame:CGRectMake(screenWidth*2,0, screenWidth, self.scrollView.frame.size.height) style:UITableViewStylePlain];
     self.rightTebleView.delegate = self;
     self.rightTebleView.dataSource=self;
     [self.rightTebleView registerClass:[WeekTableViewCell class] forCellReuseIdentifier:@"cell"];
     [self.scrollView addSubview:self.rightTebleView];
+    [self.rightTebleView reloadData];
     
     //=================================================================================================
     
@@ -74,14 +79,76 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WeekTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    [cell setDayDict:indexPath.row];
+    if (tableView==self.leftTebleView) {
+        NSTimeInterval  interval =24*60*60*30; //1:天数
+       NSDate*date = [NSDate dateWithTimeInterval:-interval sinceDate:self.currentDate];
+        [cell setDayDict:[self firstDay:indexPath.row date:date]];
+    }
+    else if (tableView==self.centerTebleView)
+    {
+        [cell setDayDict:[self firstDay:indexPath.row date:self.currentDate]];
+    }
+    else
+    {
+        NSTimeInterval  interval =24*60*60*30; //1:天数
+        NSDate*date = [NSDate dateWithTimeInterval:interval sinceDate:self.currentDate];
+        [cell setDayDict:[self firstDay:indexPath.row date:date]];
+    }
+    
     return cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    return 6;
+}
+
+
+//常用方法 =================================================================================================
+
+// 根据行数获取第一天日期
+-(NSMutableDictionary*)firstDay:(NSInteger)index date:(NSDate*)date
+{
+    NSInteger firstWeek = [self firstWeekdayInThisMonth:date];
+    NSInteger totalDays = [self totaldaysInThisMonth:date];
+    NSInteger firstDay;
+    if (index==0) {
+        NSTimeInterval  interval =24*60*60*30; //1:天数
+        NSDate*lastDate = [NSDate dateWithTimeInterval:-interval sinceDate:date];
+        NSInteger lastDayNum = [self totaldaysInThisMonth:lastDate];
+        
+        firstDay = lastDayNum-firstWeek+2;
+        if (firstWeek==1) {
+            firstDay=1;
+            return [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"1", @"2",@"2",@"3",@"3",@"4",@"4",@"5",@"5",@"6",@"6",@"7",@"7",[NSString stringWithFormat:@"%d",totalDays],@"totalDays",nil];
+        }
+        else
+        {
+            NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+            for (NSInteger i =1; i<8; i++) {
+                if (firstWeek>i) {
+                    [dict setObject:[NSString stringWithFormat:@"%d",lastDayNum+1-firstWeek+i] forKey:[NSString stringWithFormat:@"%d",i]];
+                }
+                else
+                {
+                    [dict setObject:[NSString stringWithFormat:@"%d",i-firstWeek+1] forKey:[NSString stringWithFormat:@"%d",i]];
+                }
+            }
+            [dict setObject:[NSString stringWithFormat:@"%ld",totalDays] forKey:@"totalDays"];
+            return dict;
+        }
+    }
+   else
+   {
+        firstDay = 9-firstWeek+7*(index-1);
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        for (NSInteger i =1; i<8; i++) {
+             [dict setObject:[NSString stringWithFormat:@"%d",firstDay+i-1] forKey:[NSString stringWithFormat:@"%d",i]];
+        }
+       [dict setObject:[NSString stringWithFormat:@"%d",totalDays] forKey:@"totalDays"];
+       return dict;
+   }
     
 }
-//常用方法 =================================================================================================
 // 获取一个月有多少天
 - (NSInteger)totaldaysInThisMonth:(NSDate *)date{
     NSRange totaldaysInMonth = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
@@ -95,7 +162,15 @@
     [comp setDay:1];
     NSDate *firstDayOfMonthDate = [calendar dateFromComponents:comp];
     NSUInteger firstWeekday = [calendar ordinalityOfUnit:NSCalendarUnitWeekday inUnit:NSCalendarUnitWeekOfMonth forDate:firstDayOfMonthDate];
-    return firstWeekday - 1;
+    NSInteger result = firstWeekday - 1;
+    if (result==7) {
+        result=1;
+    }
+    else
+    {
+        result = result+1;
+    }
+    return result;
 }
 //=================================================================================================
 -(void)YearMonthViewLastYear:(NSString *)dateStr

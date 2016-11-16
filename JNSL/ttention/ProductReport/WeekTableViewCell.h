@@ -20,5 +20,5 @@
 @property (nonatomic,strong) DayView *dayView5;
 @property (nonatomic,strong) DayView *dayView6;
 @property (nonatomic,strong) DayView *dayView7;
--(void)setDayDict:(NSDictionary*)dict;
+-(void)setDayDict:(NSMutableDictionary*)data;
 @end

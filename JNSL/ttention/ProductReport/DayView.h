@@ -12,9 +12,10 @@
 @end
 @interface DayView : UIView
 @property (nonatomic,strong) id<DayViewDelegate> delegate;
+@property (nonatomic,strong) UIView *selectedView;
 @property (nonatomic,strong) UILabel *dayLb;
 @property (nonatomic,strong) UILabel *dayReportLb;
 @property (nonatomic,strong) UILabel *weekReportLb;
 @property (nonatomic,strong) UILabel *monthReportLb;
--(void)setData:(NSDictionary*)data;
+-(void)setData:(NSMutableDictionary*)data;
 @end

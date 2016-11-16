@@ -56,6 +56,7 @@
     }
     return _nextMonthImageView;
 }
+
 -(UIView*)weekView
 {
     if (!_weekView) {
