@@ -9,7 +9,6 @@
 #import "DayView.h"
 
 @implementation DayView
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -21,7 +20,10 @@
 {
     if (!_dayLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 15)];
-        label.text=@"1";
+        label.text=@"";
+        label.textColor = ColorWithRGB(0x0079d9);
+        label.textAlignment=NSTextAlignmentCenter;
+        label.font = [UIFont boldSystemFontOfSize:12];
         [self addSubview:label];
         _dayLb=label;
     }
@@ -32,6 +34,8 @@
     if (!_dayReportLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.frame.size.width, 15)];
         label.text=@"日报";
+        label.textAlignment=NSTextAlignmentCenter;
+        label.font = [UIFont boldSystemFontOfSize:12];
         [self addSubview:label];
         _dayReportLb=label;
     }
@@ -42,6 +46,8 @@
     if (!_weekReportLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width, 15)];
         label.text=@"周报";
+        label.textAlignment=NSTextAlignmentCenter;
+        label.font = [UIFont boldSystemFontOfSize:12];
         [self addSubview:label];
         _weekReportLb=label;
     }
@@ -52,6 +58,8 @@
     if (!_monthReportLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 45, self.frame.size.width, 15)];
         label.text=@"月报";
+        label.textAlignment=NSTextAlignmentCenter;
+        label.font = [UIFont boldSystemFontOfSize:12];
         [self addSubview:label];
         _monthReportLb=label;
     }
@@ -62,27 +70,69 @@
     if (!_selectedView) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         view.layer.cornerRadius = self.frame.size.width/2;
-        view.backgroundColor = RGBA(70, 41, 244, 1);
+        view.backgroundColor = RGBA(70, 41, 244, 0.5);
+        view.hidden=YES;
         [self addSubview:view];
         _selectedView=view;
     }
     return _selectedView;
 }
+-(NSMutableDictionary*)dayData
+{
+    if (!_dayData) {
+        NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+        _dayData=data;
+    }
+    return _dayData;
+}
+-(void)selected:(BOOL)selected
+{
+    if ([self.dayData valueForKey:@"noUseDay"]) {
+        
+    }
+    else
+    {
+        if (selected) {
+//            NSString *day = [self.dayData valueForKey:@"dayNum"];
+//            [self.delegate DayViewSelected:day.integerValue];
+        }
+        [self sendSubviewToBack:self.selectedView];
+        self.selectedView.hidden=!selected;
+        
+    }
+}
 -(void)setData:(NSMutableDictionary*)data;
 {
-    if ([data valueForKey:@"dayNum"]) {
-        self.dayLb.text=[data valueForKey:@"dayNum"];
+    self.dayData = data;
+    if ([self.dayData valueForKey:@"dayNum"]) {
+        self.dayLb.text=[self.dayData valueForKey:@"dayNum"];
     }
     
-    if ([data valueForKey:@"dayReport"]) {
+//    if ([data valueForKey:@"dayReport"]) {
         self.dayReportLb.text=@"日报";
-    }
-    if ([data valueForKey:@"weekReport"]) {
+//    }
+    if ([self.dayData valueForKey:@"weekReport"]) {
         self.weekReportLb.text=@"周报";
     }
+    else
+    {
+        self.weekReportLb.text=@"";
+    }
     
-    if ([data valueForKey:@"monthReport"]) {
+    
+    if ([self.dayData valueForKey:@"monthReport"]) {
         self.monthReportLb.text=@"月报";
     }
+    else
+    {
+         self.monthReportLb.text=@"";
+    }
+    if ([self.dayData valueForKey:@"noUseDay"]) {
+         self.dayLb.textColor = [UIColor lightGrayColor];
+         self.dayReportLb.textColor = [UIColor lightGrayColor];
+         self.weekReportLb.textColor = [UIColor lightGrayColor];
+         self.monthReportLb.textColor = [UIColor lightGrayColor];
+    }
+    
 }
 @end

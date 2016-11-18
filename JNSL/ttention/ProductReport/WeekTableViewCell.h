@@ -12,6 +12,7 @@
 -(void)WeekTableViewCellSelectedIndex:(NSInteger)day;
 @end
 @interface WeekTableViewCell : UITableViewCell<DayViewDelegate>
+@property (nonatomic,strong) NSMutableDictionary*dayData;
 @property (nonatomic,strong) id<WeekTableViewCellDelegate> delegate;
 @property (nonatomic,strong) DayView *dayView1;
 @property (nonatomic,strong) DayView *dayView2;

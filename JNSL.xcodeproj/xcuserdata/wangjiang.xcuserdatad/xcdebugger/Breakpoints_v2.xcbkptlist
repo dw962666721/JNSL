@@ -502,16 +502,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JNSL/ttention/ProductReport/ProductionReportViewController.m"
-            timestampString = "501004510.621951"
+            timestampString = "501176499.039515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-firstDay:date:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-selectedAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JNSL/ttention/ProductReport/ProductionReportViewController.m"
+            timestampString = "501181908.226897"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "-WeekTableViewCellSelectedIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -10,7 +10,7 @@
 #import "YearMonthView.h"
 #import "WeekTableViewCell.h"
 
-@interface ProductionReportViewController : baseViewController<YearMonthViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ProductionReportViewController : baseViewController<WeekTableViewCellDelegate, YearMonthViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) NSDate *currentDate;
 @property (nonatomic,strong) YearMonthView *yearMonthView;
 @property (nonatomic,strong) UIScrollView *scrollView;
