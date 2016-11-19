@@ -10,6 +10,7 @@
 #import "DayView.h"
 @protocol WeekTableViewCellDelegate
 -(void)WeekTableViewCellSelectedIndex:(NSInteger)day;
+//-(void)WeekTableViewCellClearSelected;
 @end
 @interface WeekTableViewCell : UITableViewCell<DayViewDelegate>
 @property (nonatomic,strong) NSMutableDictionary*dayData;
@@ -21,5 +22,7 @@
 @property (nonatomic,strong) DayView *dayView5;
 @property (nonatomic,strong) DayView *dayView6;
 @property (nonatomic,strong) DayView *dayView7;
+@property (nonatomic,strong) UIView *selectedView;
 -(void)setDayDict:(NSMutableDictionary*)data;
+//-(void)clearSelected;
 @end

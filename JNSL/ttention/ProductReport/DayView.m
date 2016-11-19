@@ -60,6 +60,7 @@
         label.text=@"月报";
         label.textAlignment=NSTextAlignmentCenter;
         label.font = [UIFont boldSystemFontOfSize:12];
+        label.textColor = ColorWithRGB(0x0079d9);
         [self addSubview:label];
         _monthReportLb=label;
     }
@@ -97,7 +98,7 @@
 //            [self.delegate DayViewSelected:day.integerValue];
         }
         [self sendSubviewToBack:self.selectedView];
-        self.selectedView.hidden=!selected;
+//        self.selectedView.hidden=!selected;
         
     }
 }
@@ -117,6 +118,7 @@
     else
     {
         self.weekReportLb.text=@"";
+
     }
     
     
@@ -127,11 +129,45 @@
     {
          self.monthReportLb.text=@"";
     }
+    if ([self.dayData valueForKey:@"selected"]) {
+        NSString *flag = [self.dayData valueForKey:@"selected"];
+        if ([flag compare:@"YES"]==NSOrderedSame) {
+           self.selectedView.hidden=NO;
+        }
+        else
+        {
+            self.selectedView.hidden=YES;
+        }
+    }
+    else
+    {
+        self.selectedView.hidden = NO;
+    }
     if ([self.dayData valueForKey:@"noUseDay"]) {
-         self.dayLb.textColor = [UIColor lightGrayColor];
-         self.dayReportLb.textColor = [UIColor lightGrayColor];
-         self.weekReportLb.textColor = [UIColor lightGrayColor];
-         self.monthReportLb.textColor = [UIColor lightGrayColor];
+        NSString *day =[self.dayData valueForKey:@"noUseDay"];
+        NSString *dayNum = [self.dayData valueForKey:@"dayNum"];
+        if ([day compare:dayNum] == NSOrderedSame) {
+            self.dayLb.textColor = [UIColor lightGrayColor];
+            self.dayReportLb.textColor = [UIColor lightGrayColor];
+            self.weekReportLb.textColor = [UIColor lightGrayColor];
+            self.monthReportLb.textColor = [UIColor lightGrayColor];
+            self.selectedView.hidden=YES;
+        }
+    }
+    else
+    {
+        if ([self.dayData valueForKey:@"weekReport"]) {
+            self.dayLb.textColor = [UIColor redColor];
+            self.weekReportLb.textColor = [UIColor redColor];
+            self.monthReportLb.textColor = [UIColor redColor];
+        }
+        else
+        {
+            self.dayLb.textColor = ColorWithRGB(0x0079d9);
+            self.dayReportLb.textColor = [UIColor blackColor];
+            self.weekReportLb.textColor = [UIColor blackColor];
+            self.monthReportLb.textColor = ColorWithRGB(0x0079d9);
+        }
     }
     
 }

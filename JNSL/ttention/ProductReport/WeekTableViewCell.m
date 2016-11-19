@@ -22,6 +22,14 @@
 {
     NSInteger x=0;
     NSInteger h=self.frame.size.height;
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth/7, h)];
+//    view.layer.cornerRadius = view.frame.size.width/2;
+//    view.backgroundColor = RGBA(70, 41, 244, 0.5);
+//    view.hidden=YES;
+//    [self addSubview:view];
+//    self.selectedView=view;
+    
+
     DayView *view1 =  [[DayView alloc] initWithFrame:CGRectMake(x, 0, screenWidth/7, h)];
     view1.tag = 991;
     UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectedAction:)];
@@ -84,6 +92,25 @@
     [self.dayView7 addGestureRecognizer:tap7];
     self.dayView7.tag = 997;
     [self addSubview:self.dayView7];
+    
+//    for (NSInteger i =1; i<8; i++) {
+//        DayView *dayView = [self viewWithTag:990+i];
+//        if ([self.dayData objectForKey:@"dateStr"]) {
+//            NSString *dateStr = [self.dayData objectForKey:@"dateStr"];
+//            if ([self.dayData objectForKey:@"currentYYYYMM"]) {
+//                NSString *day = [self.dayData objectForKey:[NSString stringWithFormat:@"%ld",(long)i]];
+//                NSString *yyyyMMdd = [NSString stringWithFormat:@"%@%@%@",[self.dayData objectForKey:@"currentYYYYMM"],@"-",day];
+//                if ([dateStr compare:yyyyMMdd] == NSOrderedSame) {
+//                    self.selectedView.frame = dayView.frame;
+//                    self.selectedView.hidden=NO;
+//                }
+//                else
+//                {
+//                    self.selectedView.hidden=YES;
+//                }
+//            }
+//        }
+//    }
 }
 -(void)setDayDict:(NSMutableDictionary*)data
 {
@@ -99,6 +126,8 @@
 }
 -(NSMutableDictionary*)getDict:(NSInteger)i data:(NSMutableDictionary*)data
 {
+    NSString * indexStr = [data objectForKey:@"indexRow"];
+    NSInteger index = indexStr.intValue;
     NSString *noUseDaysStr = [data objectForKey:@"unUseDays"];
     NSArray *unUseDaysArray = [noUseDaysStr componentsSeparatedByString:@"|"];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -114,18 +143,46 @@
         [dict setObject:@"月报" forKey:@"monthReport"];
     }
     
-    for (NSString *unDay in unUseDaysArray) {
-        if (unDay==[NSString stringWithFormat:@"%d",day]) {
-            [dict setObject:@"NO" forKey:@"noUseDay"];
+    if ([data objectForKey:@"dateStr"]) {
+        NSString *dateStr = [data objectForKey:@"dateStr"];
+        if ([data objectForKey:@"currentYYYYMM"]) {
+            NSString *yyyyMMdd = [NSString stringWithFormat:@"%@%@%@",[data objectForKey:@"currentYYYYMM"],@"-",day];
+            if (day.integerValue<10) {
+                yyyyMMdd = [NSString stringWithFormat:@"%@%@%@",[data objectForKey:@"currentYYYYMM"],@"-0",day];
+            }
+            if ([dateStr compare:yyyyMMdd] == NSOrderedSame) {
+               [dict setObject:@"YES" forKey:@"selected"];
+            }
+            else
+            {
+                [dict setObject:@"NO" forKey:@"selected"];
+            }
         }
+        
     }
+   
+    //    for (NSString *unDay in unUseDaysArray) {
+    //        if ([unDay compare:day]==NSOrderedSame) {
+    //            [dict setObject:@"NO" forKey:@"noUseDay"];
+    //        }
+    //    }
     for (NSInteger j=0; j<unUseDaysArray.count; j++) {
         NSString *unDay=unUseDaysArray[j];
         if ([unDay compare:day]==NSOrderedSame) {
-            [dict setObject:@"NO" forKey:@"noUseDay"];
-            if (unUseDaysArray.count>1&&j==unUseDaysArray.count-1&&i!=7) {
-                [dict setObject:@"月报" forKey:@"monthReport"];
+            if (index<1) {
+                if (unDay.integerValue>=23) {
+                    [dict setObject:day forKey:@"noUseDay"];
+                    if (unUseDaysArray.count>1&&j==unUseDaysArray.count-1) {
+                        [dict setObject:@"月报" forKey:@"monthReport"];
+                    }
+                }
             }
+            if (index>=4) {
+                if (unDay.integerValue<=14) {
+                     [dict setObject:day forKey:@"noUseDay"];
+                }
+            }
+    
         }
     }
     return dict;
@@ -141,11 +198,17 @@
     [dayView selected:YES];
      NSString *day = [self.dayData objectForKey:[NSString stringWithFormat:@"%d",dayView.tag-990]];
     [self.delegate WeekTableViewCellSelectedIndex:day.integerValue];
+//    self.selectedView.frame = dayView.frame;
+//    self.selectedView.hidden=NO;
 }
--(void)DayViewSelected:(NSInteger)dayNum
+-(void)clearSelected
 {
-    [self.delegate WeekTableViewCellSelectedIndex:dayNum];
+    self.selectedView.hidden=YES;
 }
+//-(void)DayViewSelected:(NSInteger)dayNum
+//{
+//    [self.delegate WeekTableViewCellClearSelected];
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

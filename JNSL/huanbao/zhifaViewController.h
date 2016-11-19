@@ -25,4 +25,6 @@
 @property (strong, nonatomic) NSURLSessionDownloadTask *cancellableTask; // 可取消的下载任务
 @property MBProgressHUD *HUD;
 @property NSString *viewtype;
+-(NSString*)getUrl:(BOOL)type;
+-(NSMutableDictionary*)getDict:(BOOL)type;
 @end

@@ -56,6 +56,8 @@
 #define FacilityDetialInfoURL @"/androidOpenPlantAction!getFacilityDetialInfo.action"
 // 获取版本号
 #define GetVersionURL @"/sourceFileAction!getVersion.action"
+// 获取报表详情
+#define GetReportURL @"/androidReportAction!appReportForms.action"
 #define NewAppURL @"/ios/update.html"
 #define zhifaURL @"/androidSourceFileAction!getSourceShareListMobile.action"
 #define gongkuangURL @"/androidSourceFileAction!getSourceFileList.action"
@@ -65,7 +67,7 @@
 #define chaobiaoURL @"/androidAlarmRecordInfoAction!getExcessiveReportingByUserId.action"
 #define chaobiaoDetailsURL @"/androidAlarmRecordInfoAction!getExcessiveReportingMessageByUserId.action"
 #define jizuURL @"/androidAlarmRecordInfoAction!getFacilityListByEnterpriseId.action"
-#define nianduzongliangURL @"/androidAlarmRecordInfoAction!getAlarmPollTotal.action"
+#define nianduzongliangURL @"/a/Users/wangjiang/Downloads/yizhangtong-PingAn-release-47.apkndroidAlarmRecordInfoAction!getAlarmPollTotal.action"
 #define zhexianURL @"/androidPreAlarmAction!getDayTotalEmissionForChart.action"
 #define shishiURL @"/androidAlarmRecordInfoAction!getAlarmSixWarningListByUserIdV2.action"
 

@@ -23,6 +23,7 @@
 		CF17D36C1D9FC3F60084CD9C /* zhifaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF17D3501D9FC3F60084CD9C /* zhifaViewController.m */; };
 		CF17D3751D9FC3F60084CD9C /* attentionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF17D3641D9FC3F60084CD9C /* attentionCollectionViewCell.m */; };
 		CF17D3761D9FC3F60084CD9C /* myAttentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF17D3661D9FC3F60084CD9C /* myAttentionViewController.m */; };
+		CF3E06D61DE0D2FE00984CC3 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3E06D51DE0D2FE00984CC3 /* ReportViewController.m */; };
 		CF716C481DA14D31001AF719 /* wulaio1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF716C471DA14D31001AF719 /* wulaio1ViewController.m */; };
 		CF716C4B1DA14D3C001AF719 /* wulaio2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF716C4A1DA14D3C001AF719 /* wulaio2ViewController.m */; };
 		CF716C4E1DA14D46001AF719 /* wulaio3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF716C4D1DA14D46001AF719 /* wulaio3ViewController.m */; };
@@ -217,6 +218,8 @@
 		CF17D3641D9FC3F60084CD9C /* attentionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = attentionCollectionViewCell.m; sourceTree = "<group>"; };
 		CF17D3651D9FC3F60084CD9C /* myAttentionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myAttentionViewController.h; sourceTree = "<group>"; };
 		CF17D3661D9FC3F60084CD9C /* myAttentionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myAttentionViewController.m; sourceTree = "<group>"; };
+		CF3E06D41DE0D2FE00984CC3 /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		CF3E06D51DE0D2FE00984CC3 /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		CF716C461DA14D31001AF719 /* wulaio1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wulaio1ViewController.h; sourceTree = "<group>"; };
 		CF716C471DA14D31001AF719 /* wulaio1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wulaio1ViewController.m; sourceTree = "<group>"; };
 		CF716C491DA14D3C001AF719 /* wulaio2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wulaio2ViewController.h; sourceTree = "<group>"; };
@@ -802,6 +805,8 @@
 				DB3E619D1DD9F34600BD1228 /* WeekTableViewCell.m */,
 				DB3E619F1DD9F3A200BD1228 /* DayView.h */,
 				DB3E61A01DD9F3A200BD1228 /* DayView.m */,
+				CF3E06D41DE0D2FE00984CC3 /* ReportViewController.h */,
+				CF3E06D51DE0D2FE00984CC3 /* ReportViewController.m */,
 			);
 			path = ProductReport;
 			sourceTree = "<group>";
@@ -1398,6 +1403,7 @@
 				DBEDAD6E1DA6A6DC00913635 /* MJRefreshBackGifFooter.m in Sources */,
 				DB84F0431DB1FC900059934A /* realTechTDetailsViewController.m in Sources */,
 				DB944E071DD6F1FC00D0CF97 /* ProductionReportViewController.m in Sources */,
+				CF3E06D61DE0D2FE00984CC3 /* ReportViewController.m in Sources */,
 				DBEDAD701DA6A6DC00913635 /* MJRefreshBackStateFooter.m in Sources */,
 				DBEDAE371DA6B64900913635 /* IQUIView+Hierarchy.m in Sources */,
 				DB3E61A11DD9F3A200BD1228 /* DayView.m in Sources */,

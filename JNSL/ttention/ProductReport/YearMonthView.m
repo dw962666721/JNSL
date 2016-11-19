@@ -14,8 +14,8 @@
 {
     self.yearMonthLb.backgroundColor = RGBA(245, 245, 245, 1);
     self.weekView.backgroundColor = [UIColor whiteColor];
-    self.lastMonthImageView.image = [UIImage imageNamed:@"arrow_left3"];
-    self.nextMonthImageView.image = [UIImage imageNamed:@"arrow_right"];
+    self.lastMonthImageView.image = [UIImage imageNamed:@"lastMonth"];
+    self.nextMonthImageView.image = [UIImage imageNamed:@"nextMonth"];
 }
 -(UILabel*)yearMonthLb
 {
@@ -36,6 +36,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 50)];
         imageView.image = [UIImage imageNamed:@"arrow_left3"];
         imageView.contentMode = UIViewContentModeCenter;
+        imageView.userInteractionEnabled=YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(lastMonth)];
         [imageView addGestureRecognizer:tap];
         [self addSubview:imageView];
@@ -49,6 +50,7 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(screenWidth-80, 0, 80, 50)];
         imageView.image = [UIImage imageNamed:@"arrow_right"];
         imageView.contentMode = UIViewContentModeCenter;
+        imageView.userInteractionEnabled=YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextMonth)];
         [imageView addGestureRecognizer:tap];
         [self addSubview:imageView];

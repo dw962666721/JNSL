@@ -58,9 +58,8 @@
     [self loadData:false];
     //[self.DataTable.mj_footer endRefreshing];
 }
-
-//加载数据
--(void)loadData:(BOOL)type{
+-(NSMutableDictionary*)getDict:(BOOL)type
+{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
     if (type) {
@@ -71,13 +70,26 @@
         dict[@"start"]= [NSString stringWithFormat:@"%ld",(long)dataArr.count];
     }
     
+    if ([self.viewtype  isEqual: @"zhifa"]) {
+        dict[@"fileTypeId"] = @"ZFAL";
+    }
+    return dict;
+}
+-(NSString*)getUrl:(BOOL)type
+{
     NSString *urlstr = @"";
     if ([self.viewtype  isEqual: @"zhifa"]) {
         urlstr =  zhifaURL;
-        dict[@"fileTypeId"] = @"ZFAL";
     }else{
         urlstr = gongkuangURL;
     }
+    return urlstr;
+}
+//加载数据
+-(void)loadData:(BOOL)type{
+    NSMutableDictionary *dict = [self getDict:type];
+    
+    NSString *urlstr = [self getUrl:type];
     
     [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,urlstr] parameters:dict success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
