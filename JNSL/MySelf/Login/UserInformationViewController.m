@@ -49,7 +49,7 @@
     self.phoneView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.phoneView];
     UILabel *phoneLb = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 50, viewH)];
-    phoneLb.text=@"电话";
+    phoneLb.text=@"姓名";
     phoneLb.textColor=RGBA(118, 118, 118, 1);
     phoneLb.font = [UIFont boldSystemFontOfSize:13];
     [self.phoneView addSubview:phoneLb];
@@ -68,7 +68,7 @@
     self.emailView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.emailView];
     UILabel *emailLb = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 50, viewH)];
-    emailLb.text=@"用户名";
+    emailLb.text=@"工号";
     emailLb.textColor=RGBA(118, 118, 118, 1);
     emailLb.font = [UIFont boldSystemFontOfSize:13];
     [self.emailView addSubview:emailLb];

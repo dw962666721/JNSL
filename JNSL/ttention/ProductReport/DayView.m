@@ -20,6 +20,9 @@
 {
     if (!_dayLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 15)];
+        if (IPHONE6PLUS||IPHONE6) {
+            label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20)];
+        }
         label.text=@"";
         label.textColor = ColorWithRGB(0x0079d9);
         label.textAlignment=NSTextAlignmentCenter;
@@ -33,6 +36,9 @@
 {
     if (!_dayReportLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, self.frame.size.width, 15)];
+        if (IPHONE6PLUS||IPHONE6) {
+            label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.frame.size.width, 20)];
+        }
         label.text=@"日报";
         label.textAlignment=NSTextAlignmentCenter;
         label.font = [UIFont boldSystemFontOfSize:12];
@@ -45,6 +51,9 @@
 {
     if (!_weekReportLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width, 15)];
+        if (IPHONE6PLUS||IPHONE6) {
+            label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, 20)];
+        }
         label.text=@"周报";
         label.textAlignment=NSTextAlignmentCenter;
         label.font = [UIFont boldSystemFontOfSize:12];
@@ -57,6 +66,9 @@
 {
     if (!_monthReportLb) {
         UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 45, self.frame.size.width, 15)];
+        if (IPHONE6PLUS||IPHONE6) {
+            label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, self.frame.size.width, 20)];
+        }
         label.text=@"月报";
         label.textAlignment=NSTextAlignmentCenter;
         label.font = [UIFont boldSystemFontOfSize:12];

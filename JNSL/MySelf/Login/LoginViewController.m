@@ -89,6 +89,7 @@
     [self.userView addSubview:self.userIcoImageView];
     
     self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, self.userView.frame.size.width-45, self.userView.frame.size.height)];
+    self.userTextField.placeholder = @"请输入您的用户名";
     [self.userView addSubview:self.userTextField];
     
     // 密码框
@@ -103,11 +104,12 @@
     [self.passWordtView addSubview:self.passWordIcoImageView];
     
     self.passWordTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, self.passWordtView.frame.size.width-45, self.passWordtView.frame.size.height)];
+    self.passWordTextField.placeholder = @"请输入您的密码";
     [self.passWordtView addSubview:self.passWordTextField];
     
     // 登录按钮
     y+=20+viewH;
-    self.loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, y, (screenWidth-leftSplit*2-20)/2, btnH)];
+    self.loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftSplit, y, (screenWidth-leftSplit*2), btnH)];
     [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.loginBtn.backgroundColor = ColorWithRGB(0x0057f7);
     [self.loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
@@ -118,6 +120,7 @@
     
     //配置
     self.setBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.loginBtn.frame)+20, y, (screenWidth-leftSplit*2-20)/2, btnH)];
+    self.setBtn.hidden=YES;
     [self.setBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.setBtn.backgroundColor = ColorWithRGB(0x0057f7);
     [self.setBtn addTarget:self action:@selector(setAction) forControlEvents:UIControlEventTouchUpInside];
@@ -129,6 +132,7 @@
      y=15+CGRectGetMaxY(self.loginBtn.frame);
     // 配置框
     self.serviewView = [[UIView alloc] initWithFrame:CGRectMake(0, y, screenWidth, 150)];
+    self.serviewView .hidden=YES;
 //    self.serviewView .backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.serviewView];
     
@@ -211,7 +215,7 @@
             userInfoJNSL.phoneNum = [userInfo objectForKey:@"phoneNum"]==nil?@"":[json objectForKey:@"phoneNum"];
             userInfoJNSL.pollSourceId = [userInfo objectForKey:@"pollSourceId"]==nil?@"":[userInfo objectForKey:@"pollSourceId"];
             userInfo[@"ip"] = userInfoJNSL.ip;
-            
+            [self checkVersion];
             [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"JNSL"];
             [self.navigationController popViewControllerAnimated:YES];
             [self.navigationController popViewControllerAnimated:true];
@@ -225,6 +229,43 @@
         [MBProgressHUD showError:@"请求失败"];
     }];
 }
+// 检测版本
+-(void)checkVersion
+{
+    NSDate* today = [NSDate date];
+    NSDateFormatter*df = [[NSDateFormatter alloc]init];//格式化
+    
+    [df setDateFormat:@"yyyyMMdd"];
+    
+    NSString* s1 = [df stringFromDate:today];
+    NSInteger dateNum = s1.integerValue;
+    
+    if (dateNum>20161221) {
+        [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetVersionURL] parameters:nil success:^(id responseObject) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            NSString *result = [json objectForKey:@"success"];
+            if ([result isEqual:@"true"]) {
+                NSString *newVersion = [json objectForKey:@"version"];
+                
+                if (![newVersion containsString:@"V"]) {
+                    
+                }
+                else
+                {
+                    userInfoJNSL.ip=@"";
+                    [userInfoJNSL clearUserDict];
+                    [MBProgressHUD showError:@"版本错误"];
+                }
+            }
+        } fail:^{
+            userInfoJNSL.ip=@"";
+            [userInfoJNSL clearUserDict];
+            [MBProgressHUD showError:@"版本错误"];
+        }];
+    }
+}
+
+
 -(void)setAction
 {
     self.serviewView.hidden = !self.serviewView.hidden;

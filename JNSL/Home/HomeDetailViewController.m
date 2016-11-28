@@ -19,11 +19,20 @@
 @property NSMutableArray *dataArray1;
 @property NSMutableArray *dataArrayAll;
 @property NSMutableArray *dataArray2;
+@property BOOL firstLoad;
 @end
 
 @implementation HomeDetailViewController
 -(void)loadData
 {
+    if (self.firstLoad) {
+        self.firstLoad=NO;
+        if([userInfoJNSL getUserDict]!=nil)
+        {
+            return;
+        }
+    }
+    
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     switch (self.currentTableView.tag) {
         case 990:
@@ -101,6 +110,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.firstLoad=YES;
     self.dataArray1 = [[NSMutableArray alloc] init];
     self.dataArrayAll = [[NSMutableArray alloc] init];
     self.dataArray2 = [[NSMutableArray alloc] init];
@@ -130,7 +140,7 @@
     }
     
     [self addViews];
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     // Do any additional setup after loading the view.
 }

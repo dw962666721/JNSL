@@ -115,7 +115,10 @@
 -(void)setDayDict:(NSMutableDictionary*)data
 {
     self.dayData=data;
-    self.frame = CGRectMake(0, 0, screenWidth, 60);
+    self.frame = CGRectMake(0, 0, screenWidth, 75);
+    if (IPHONE6||IPHONE6PLUS) {
+        self.frame = CGRectMake(0, 0, screenWidth, 100);
+    }
       for (NSInteger i =1; i<8; i++) {
           DayView *dayView = [self viewWithTag:990+i];
           NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];

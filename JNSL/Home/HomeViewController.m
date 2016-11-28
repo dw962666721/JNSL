@@ -28,6 +28,7 @@
 @property HomeDetailViewController *detailVCAll; // 全厂
 @property HomeDetailViewController *detailVC2; // #2
 @property UILabel *timeLb; // 时间
+@property BOOL firstLoad;
 @end
 
 @implementation HomeViewController
@@ -46,6 +47,14 @@
     if (self.bo) {
         return;
     }
+    if (self.firstLoad) {
+        self.firstLoad=NO;
+        if([userInfoJNSL getUserDict]!=nil)
+        {
+            return;
+        }
+    }
+   
     self.bo = YES;
     self.dataArray =[[NSMutableArray alloc] init];
     [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,HomeURL] parameters:nil success:^(id responseObject) {
@@ -81,7 +90,7 @@
     NSString* s1 = [df stringFromDate:today];
     NSInteger dateNum = s1.integerValue;
     
-    if (dateNum>20161202) {
+    if (dateNum>20161221) {
         [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetVersionURL] parameters:nil success:^(id responseObject) {
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
             NSString *result = [json objectForKey:@"success"];
@@ -107,6 +116,7 @@
 }
 
 - (void)viewDidLoad {
+    self.firstLoad=YES;
     WelComeViewController *VC = [[WelComeViewController alloc] init];
     VC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController: VC animated:NO completion:nil];
@@ -118,7 +128,7 @@
 
     [self loadUserInfo];
     [self addViews];
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     [self loadData];
     [self checkVersion];
@@ -157,20 +167,20 @@
     
     if (IPHONE6PLUS||IPHONE6) {
         // 添加机组信息
-        [self addJZ:320 name:@"jz"];
+        [self addJZ:330 name:@"jz"];
         // 添加锅炉信息
-        [self addJZ:400 name:@"gl"];
+        [self addJZ:410 name:@"gl"];
         // 添加汽机信息
-        [self addJZ:510 name:@"qj"];
+        [self addJZ:520 name:@"qj"];
     }
    else
    {
        // 添加机组信息
-       [self addJZ:230 name:@"jz"];
+       [self addJZ:240 name:@"jz"];
        // 添加锅炉信息
-       [self addJZ:320 name:@"gl"];
+       [self addJZ:330 name:@"gl"];
        // 添加汽机信息
-       [self addJZ:430 name:@"qj"];
+       [self addJZ:440 name:@"qj"];
    }
     
    
@@ -282,10 +292,10 @@
         [self.MainView addSubview:viewBack];
         
         // 写字
-        UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(x+splitW*j, y+height0, width0/3, 15)];
+        UILabel *titleLb = [[UILabel alloc] initWithFrame:CGRectMake(x+splitW*j, y+height0+10, width0/3, 15)];
         titleLb.textAlignment = NSTextAlignmentCenter;
         titleLb.textColor = [UIColor whiteColor];
-        titleLb.font = [UIFont systemFontOfSize:12];
+        titleLb.font = [UIFont systemFontOfSize:16];
         [self.MainView addSubview:titleLb];
         
         switch (j) {
@@ -299,7 +309,7 @@
                 self.allValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
                 self.allValueLb.textColor = [UIColor blackColor];
                 self.allValueLb.textAlignment = NSTextAlignmentCenter;
-                self.allValueLb.font = [UIFont systemFontOfSize:12];
+                self.allValueLb.font = [UIFont systemFontOfSize:15];
                 [viewBack addSubview:self.allValueLb];
                 break;
             case 1:
@@ -312,7 +322,7 @@
                 self._1ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
                 self._1ValueLb.textColor = [UIColor blackColor];
                 self._1ValueLb.textAlignment = NSTextAlignmentCenter;
-                self._1ValueLb.font = [UIFont systemFontOfSize:12];
+                self._1ValueLb.font = [UIFont systemFontOfSize:15];
                 [viewBack addSubview:self._1ValueLb];
                 break;
             case 2:
@@ -325,20 +335,20 @@
                 self._2ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
                 self._2ValueLb.textColor = [UIColor blackColor];
                 self._2ValueLb.textAlignment = NSTextAlignmentCenter;
-                self._2ValueLb.font = [UIFont systemFontOfSize:12];
+                self._2ValueLb.font = [UIFont systemFontOfSize:15];
                 [viewBack addSubview:self._2ValueLb];
                 break;
             default:
                 break;
         }
         // 添加标志说明
-        UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(x+5, y+height0+20, 10, 10)];
+        UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(x+5, y+height0+30, 20, 20)];
         colorView.backgroundColor = RGBA(65, 0, 255, 1);
         [self.MainView addSubview:colorView];
         
-        UILabel *tipLb = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(colorView.frame)+2, colorView.frame.origin.y, 55, colorView.frame.size.height)];
+        UILabel *tipLb = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(colorView.frame)+2, colorView.frame.origin.y, 125, colorView.frame.size.height)];
         tipLb.text=@"机组负荷(MW)";
-        tipLb.font = [UIFont systemFontOfSize:8];
+        tipLb.font = [UIFont systemFontOfSize:15];
         tipLb.textColor = [UIColor blackColor];
         [self.MainView addSubview:tipLb];
         

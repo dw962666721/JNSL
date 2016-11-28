@@ -85,8 +85,8 @@
 		DB84F04C1DB224CF0059934A /* overproofSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB84F04B1DB224CF0059934A /* overproofSeachViewController.m */; };
 		DB944E071DD6F1FC00D0CF97 /* ProductionReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB944E061DD6F1FC00D0CF97 /* ProductionReportViewController.m */; };
 		DB944E0A1DD6F27900D0CF97 /* YearMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB944E091DD6F27900D0CF97 /* YearMonthView.m */; };
-		DBBA5D601DBB4EC6005A3CFF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBBA5D5F1DBB4EC6005A3CFF /* GameKit.framework */; };
 		DBBA5D621DBB4ED6005A3CFF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBBA5D611DBB4ED6005A3CFF /* StoreKit.framework */; };
+		DBCE922E1DEB4BDC0033B487 /* ReportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE922D1DEB4BDC0033B487 /* ReportTableViewCell.m */; };
 		DBDD34851DB31D5F000DF69D /* HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34821DB31D5F000DF69D /* HooDatePicker.m */; };
 		DBDD34861DB31D5F000DF69D /* NSDate+HooDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34841DB31D5F000DF69D /* NSDate+HooDatePicker.m */; };
 		DBDD34891DB33DA8000DF69D /* realTimeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD34881DB33DA8000DF69D /* realTimeSearchViewController.m */; };
@@ -327,8 +327,9 @@
 		DB944E061DD6F1FC00D0CF97 /* ProductionReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductionReportViewController.m; sourceTree = "<group>"; };
 		DB944E081DD6F27900D0CF97 /* YearMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearMonthView.h; sourceTree = "<group>"; };
 		DB944E091DD6F27900D0CF97 /* YearMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearMonthView.m; sourceTree = "<group>"; };
-		DBBA5D5F1DBB4EC6005A3CFF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DBBA5D611DBB4ED6005A3CFF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DBCE922C1DEB4BDC0033B487 /* ReportTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportTableViewCell.h; sourceTree = "<group>"; };
+		DBCE922D1DEB4BDC0033B487 /* ReportTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportTableViewCell.m; sourceTree = "<group>"; };
 		DBDD34811DB31D5F000DF69D /* HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HooDatePicker.h; sourceTree = "<group>"; };
 		DBDD34821DB31D5F000DF69D /* HooDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HooDatePicker.m; sourceTree = "<group>"; };
 		DBDD34831DB31D5F000DF69D /* NSDate+HooDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HooDatePicker.h"; sourceTree = "<group>"; };
@@ -515,7 +516,6 @@
 				DB1A16AF1DC3A30400CF4194 /* CoreFoundation.framework in Frameworks */,
 				DB1A16AD1DC3A21B00CF4194 /* CFNetwork.framework in Frameworks */,
 				DB1A16AB1DC3A1D400CF4194 /* jpush-ios-2.2.0.a in Frameworks */,
-				DBBA5D601DBB4EC6005A3CFF /* GameKit.framework in Frameworks */,
 				DBBA5D621DBB4ED6005A3CFF /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,7 +745,6 @@
 				DB1A16AE1DC3A30400CF4194 /* CoreFoundation.framework */,
 				DB1A16AC1DC3A21B00CF4194 /* CFNetwork.framework */,
 				DBBA5D611DBB4ED6005A3CFF /* StoreKit.framework */,
-				DBBA5D5F1DBB4EC6005A3CFF /* GameKit.framework */,
 				CF17D2991D9FC2EA0084CD9C /* JNSL */,
 				CF17D2A41D9FC2EA0084CD9C /* Images.xcassets */,
 				DB2F8C261D9CD99D0075DD6F /* JNSLTests */,
@@ -807,6 +806,8 @@
 				DB3E61A01DD9F3A200BD1228 /* DayView.m */,
 				CF3E06D41DE0D2FE00984CC3 /* ReportViewController.h */,
 				CF3E06D51DE0D2FE00984CC3 /* ReportViewController.m */,
+				DBCE922C1DEB4BDC0033B487 /* ReportTableViewCell.h */,
+				DBCE922D1DEB4BDC0033B487 /* ReportTableViewCell.m */,
 			);
 			path = ProductReport;
 			sourceTree = "<group>";
@@ -1243,7 +1244,7 @@
 								enabled = 1;
 							};
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -1451,6 +1452,7 @@
 				DBEDAD7B1DA6A6DC00913635 /* SDWebImageCompat.m in Sources */,
 				DBEDAD7E1DA6A6DC00913635 /* SDWebImageDownloaderOperation.m in Sources */,
 				DBEDAD771DA6A6DC00913635 /* UIScrollView+MJRefresh.m in Sources */,
+				DBCE922E1DEB4BDC0033B487 /* ReportTableViewCell.m in Sources */,
 				CF17D36C1D9FC3F60084CD9C /* zhifaViewController.m in Sources */,
 				CF716C4B1DA14D3C001AF719 /* wulaio2ViewController.m in Sources */,
 				CF716C741DA2206C001AF719 /* unusualReportViewController.m in Sources */,
@@ -1590,9 +1592,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.magusproduct.jnsl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dwjnslproduct.jnsl;
 				PRODUCT_NAME = JNSL;
-				PROVISIONING_PROFILE = "4aea4298-1317-4a08-a107-7f89a8d2383e";
+				PROVISIONING_PROFILE = "513f48e8-b9fd-43cc-bbd8-f74d8a359875";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -1614,9 +1616,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.magusproduct.jnsl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dwjnslproduct.jnsl;
 				PRODUCT_NAME = JNSL;
-				PROVISIONING_PROFILE = "4aea4298-1317-4a08-a107-7f89a8d2383e";
+				PROVISIONING_PROFILE = "513f48e8-b9fd-43cc-bbd8-f74d8a359875";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

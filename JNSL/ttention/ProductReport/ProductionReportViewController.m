@@ -20,6 +20,8 @@
     self.selectedDate = [NSDate date];
     [self addViews];
     [self update];
+    [self toLastMonth];
+    [self toNextMonth];
     // Do any additional setup after loading the view.
 }
 -(void)addViews
@@ -38,6 +40,7 @@
     //=================================================================================================
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 70, screenWidth, screenHeight-65-70)];
     self.scrollView.delegate=self;
+    self.scrollView.showsHorizontalScrollIndicator=NO;
     self.scrollView.contentSize = CGSizeMake(screenWidth*3,  screenHeight-65-70);
     self.scrollView.pagingEnabled = YES;
     [self.view addSubview:self.scrollView];
@@ -73,6 +76,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (IPHONE6||IPHONE6PLUS) {
+        return 100;
+    }
     return 75;
 }
 -(void)selectedAction
@@ -314,21 +320,29 @@
 }
 -(void)YearMonthViewLastYear:(NSString *)dateStr
 {
+    [self toLastMonth];
+}
+-(void)toLastMonth
+{
     NSTimeInterval  interval =24*60*60*30; //1:天数
     self.currentDate = [self.currentDate dateByAddingTimeInterval:-interval];
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-//    [UIView animateWithDuration:0.25 animations:^{
-        [self update];
-//    }];
+    //    [UIView animateWithDuration:0.25 animations:^{
+    [self update];
+    //    }];
 }
 -(void)YearMonthViewNextYear:(NSString *)dateStr
+{
+    [self toNextMonth];
+}
+-(void)toNextMonth
 {
     NSTimeInterval  interval =24*60*60*30; //1:天数
     self.currentDate = [self.currentDate dateByAddingTimeInterval:interval];
     [self.scrollView setContentOffset:CGPointMake(screenWidth, 0) animated:YES];
-//    [UIView animateWithDuration:0.25 animations:^{
-        [self update];
-//    }];
+    //    [UIView animateWithDuration:0.25 animations:^{
+    [self update];
+    //    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
