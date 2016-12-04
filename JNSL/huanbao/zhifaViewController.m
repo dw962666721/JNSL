@@ -145,8 +145,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    zhifaDetailsViewController *zhifaDetails = [[zhifaDetailsViewController alloc] init];
-    [self.navigationController pushViewController:zhifaDetails animated:true];
+//    zhifaDetailsViewController *zhifaDetails = [[zhifaDetailsViewController alloc] init];
+//    [self.navigationController pushViewController:zhifaDetails animated:true];
 }
 
 //绘制Cell

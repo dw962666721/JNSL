@@ -21,8 +21,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.logoimg = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
+        self.logoimg.hidden=YES;
         [self addSubview:self.logoimg];
-        self.filename = [[UILabel alloc] initWithFrame:CGRectMake(60, 20, 250, 20)];
+        self.filename = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 280, 20)];
         [self addSubview:self.filename];
         self.downloadBtn = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth-110, 20, 50, 20)];
         self.seeBrn = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth-55, 20, 40, 20)];
