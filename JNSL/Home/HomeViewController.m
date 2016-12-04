@@ -131,7 +131,7 @@
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(loadData) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     [self loadData];
-    [self checkVersion];
+//    [self checkVersion];
 }
 
 // 给用户数据赋值

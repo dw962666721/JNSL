@@ -142,7 +142,7 @@
         [dict setObject:@"周报" forKey:@"weekReport"];
     }
     
-    if (day==lastDay) {
+    if (day==lastDay&&![indexStr isEqual:@"0"]) {
         [dict setObject:@"月报" forKey:@"monthReport"];
     }
     
@@ -152,6 +152,12 @@
             NSString *yyyyMMdd = [NSString stringWithFormat:@"%@%@%@",[data objectForKey:@"currentYYYYMM"],@"-",day];
             if (day.integerValue<10) {
                 yyyyMMdd = [NSString stringWithFormat:@"%@%@%@",[data objectForKey:@"currentYYYYMM"],@"-0",day];
+            }
+            NSString *month = [[yyyyMMdd componentsSeparatedByString:@"-"] objectAtIndex:1];
+            if (day==lastDay) {
+                if ([month isEqual:@"12"]) {
+                    [dict setObject:@"年报" forKey:@"yearReport"];
+                }
             }
             if ([dateStr compare:yyyyMMdd] == NSOrderedSame) {
                [dict setObject:@"YES" forKey:@"selected"];

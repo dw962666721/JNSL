@@ -215,7 +215,6 @@
             userInfoJNSL.phoneNum = [userInfo objectForKey:@"phoneNum"]==nil?@"":[json objectForKey:@"phoneNum"];
             userInfoJNSL.pollSourceId = [userInfo objectForKey:@"pollSourceId"]==nil?@"":[userInfo objectForKey:@"pollSourceId"];
             userInfo[@"ip"] = userInfoJNSL.ip;
-            [self checkVersion];
             [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"JNSL"];
             [self.navigationController popViewControllerAnimated:YES];
             [self.navigationController popViewControllerAnimated:true];

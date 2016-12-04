@@ -18,6 +18,7 @@
 @property (nonatomic,strong) UILabel *dayReportLb;
 @property (nonatomic,strong) UILabel *weekReportLb;
 @property (nonatomic,strong) UILabel *monthReportLb;
+@property (nonatomic,strong) UILabel *yearReportLb;
 //@property (nonatomic,strong) UIView *fontView;
 -(void)selected:(BOOL)selected;
 -(void)setData:(NSMutableDictionary*)data;

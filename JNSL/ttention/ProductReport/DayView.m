@@ -78,10 +78,30 @@
     }
     return _monthReportLb;
 }
+-(UILabel*)yearReportLb
+{
+    if (!_yearReportLb) {
+        UILabel *label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, self.frame.size.width, 15)];
+        if (IPHONE6PLUS||IPHONE6) {
+            label  = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, self.frame.size.width, 20)];
+        }
+        label.text=@"年报";
+        label.textAlignment=NSTextAlignmentCenter;
+        label.font = [UIFont boldSystemFontOfSize:12];
+        label.textColor = ColorWithRGB(0x0079d9);
+        [self addSubview:label];
+        _yearReportLb=label;
+    }
+    return _yearReportLb;
+}
+
 -(UIView*)selectedView
 {
     if (!_selectedView) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        if (IPHONE6PLUS||IPHONE6) {
+            view  = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20*5)];
+        }
         view.layer.cornerRadius = self.frame.size.width/2;
         view.backgroundColor = RGBA(70, 41, 244, 0.5);
         view.hidden=YES;
@@ -141,6 +161,14 @@
     {
          self.monthReportLb.text=@"";
     }
+    if([self.dayData valueForKey:@"yearReport"])
+    {
+        self.yearReportLb.text=@"年报";
+    }
+    else
+    {
+        self.yearReportLb.text=@"";
+    }
     if ([self.dayData valueForKey:@"selected"]) {
         NSString *flag = [self.dayData valueForKey:@"selected"];
         if ([flag compare:@"YES"]==NSOrderedSame) {
@@ -163,6 +191,7 @@
             self.dayReportLb.textColor = [UIColor lightGrayColor];
             self.weekReportLb.textColor = [UIColor lightGrayColor];
             self.monthReportLb.textColor = [UIColor lightGrayColor];
+            self.yearReportLb.textColor = [UIColor lightGrayColor];
             self.selectedView.hidden=YES;
         }
     }
@@ -172,6 +201,7 @@
             self.dayLb.textColor = [UIColor redColor];
             self.weekReportLb.textColor = [UIColor redColor];
             self.monthReportLb.textColor = [UIColor redColor];
+            self.yearReportLb.textColor = [UIColor redColor];
         }
         else
         {
@@ -179,6 +209,8 @@
             self.dayReportLb.textColor = [UIColor blackColor];
             self.weekReportLb.textColor = [UIColor blackColor];
             self.monthReportLb.textColor = ColorWithRGB(0x0079d9);
+            self.yearReportLb.textColor = ColorWithRGB(0x0079d9);
+
         }
     }
     
