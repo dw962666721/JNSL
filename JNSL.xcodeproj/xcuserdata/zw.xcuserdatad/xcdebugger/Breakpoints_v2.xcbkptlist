@@ -826,22 +826,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JNSL/ttention/myAttentionViewController.m"
-            timestampString = "500631982.416013"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "-collectionView:numberOfItemsInSection:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JNSL/ttention/myAttentionViewController.m"
             timestampString = "498659697.849792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

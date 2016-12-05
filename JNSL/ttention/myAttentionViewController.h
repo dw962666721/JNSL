@@ -25,4 +25,6 @@
 @property realTechnologoViewController *realTechnologo;
 @property ProductionReportViewController *productionReport;
 
+@property NSMutableArray *dataarr;
+
 @end

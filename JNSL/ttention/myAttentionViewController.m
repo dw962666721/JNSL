@@ -12,7 +12,7 @@
 {
     NSString *logintype;
 }
- @property  UICollectionView *cillection;
+@property  UICollectionView *cillection;
 
 @end
 
@@ -27,26 +27,37 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [self.navigationController setNavigationBarHidden:NO];
+    //    [self.navigationController setNavigationBarHidden:NO];
 }
 
 -(void)refresuserdata{
     if (userInfoJNSL.userId == nil || [userInfoJNSL.userId  isEqual: @""]) {
         NSLog(@"weidenglu");
         logintype = @"0";
+        self.dataarr = [[NSMutableArray alloc] init];
+        [self.dataarr addObject:[NSDictionary dictionaryWithObject:@"gn_0003" forKey:@"afr_id"]];
+        [self.dataarr addObject:[NSDictionary dictionaryWithObject:@"gn_0004" forKey:@"afr_id"]];
+        [self.dataarr addObject:[NSDictionary dictionaryWithObject:@"gn_0010" forKey:@"afr_id"]];
+        [self.cillection reloadData];
     }else{
         logintype = @"1";
+        //下载权限
+        [self getuserProvide:userInfoJNSL.userId];
     }
-    [self.cillection reloadData];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataarr = [[NSMutableArray alloc] init];
     
     if ([userInfoJNSL.userId  isEqual: @""]|| userInfoJNSL.userId == nil) {
         logintype = @"0";
     }else{
         logintype = @"1";
+        //下载权限
+        [self getuserProvide:userInfoJNSL.userId];
+        
     }
     
     CGFloat screenwid = [UIScreen mainScreen].bounds.size.width;
@@ -65,7 +76,7 @@
         customLayout.itemSize = CGSizeMake((screenwid-120)/3, (screenwid-120)/3);
     }
     
-     self.cillection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenwid, screenHeight-65) collectionViewLayout:customLayout];
+    self.cillection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, screenwid, screenHeight-65) collectionViewLayout:customLayout];
     [self.cillection registerClass:[attentionCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     self.cillection.dataSource = self;
     self.cillection.delegate = self;
@@ -74,54 +85,63 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)getuserProvide:(NSString *)userid{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    dict[@"userId"] = userid;
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,gongnengquanxianURL] parameters:dict success:^(id responseObject) {
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSString *result = [json objectForKey:@"resultCode"];
+        if ([result isEqual:@"true"]) {
+            NSDictionary* resultdic = [json objectForKey:@"resultEntity"];
+            
+            NSMutableArray *resultEntityArray = [[NSMutableArray alloc] initWithArray:resultdic[@"function"]];
+            if (resultEntityArray.count>0) {
+                NSArray *resultArray = resultEntityArray;
+                self.dataarr = [[NSMutableArray alloc] initWithArray:resultArray];
+                [self.cillection reloadData];
+            }
+        }
+        
+    } fail:^{
+        
+    }];
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    if ([logintype  isEqual: @"1"]) {
-        switch (indexPath.row) {
-            case 0:
-                self.totalAmount = [[totalAmountViewController alloc] init];
-                
-                [self.navigationController pushViewController:self.totalAmount animated:YES];
-                
-                break;
-            case 1:
-                self.excessiveWarinng = [[excessiveWarinngViewController alloc] init];
-                
-                [self.navigationController pushViewController:self.excessiveWarinng animated:YES];
-                break;
-            case 2:
-                self.unusualReport = [[unusualReportViewController alloc] init];
-                
-                [self.navigationController pushViewController:self.unusualReport animated:YES];
-                break;
-            case 3:
-                self.overproofReport = [[overproofReportViewController alloc] init];
-                
-                [self.navigationController pushViewController:self.overproofReport animated:YES];
-                break;
-            case 4:
-                
-                self.realtime = [[realtimeViewController alloc] init];
-                
-                [self.navigationController pushViewController:self.realtime animated:YES];
-                break;
-            case 5:
-                self.realTechnologo = [[realTechnologoViewController alloc] init];
-                
-                [self.navigationController pushViewController:self.realTechnologo animated:YES];
-                break;
-            case 6:
-                self.productionReport = [[ProductionReportViewController alloc] init];
-                
-                [self.navigationController pushViewController:self.productionReport animated:YES];
-                break;
-            default:
-                break;
-        }
-    }else{
-        [MBProgressHUD showError:@"请先登录,您没有权限"];
+    NSDictionary *dic = self.dataarr[indexPath.row];
+    NSString *ID = dic[@"afr_id"];
+    if([ID  isEqual: @"gn_0009"]){
+        self.overproofReport = [[overproofReportViewController alloc] init];
+        [self.navigationController pushViewController:self.overproofReport animated:YES];
     }
-   
+    if([ID  isEqual: @"gn_0011"]){
+        self.realTechnologo = [[realTechnologoViewController alloc] init];
+        [self.navigationController pushViewController:self.realTechnologo animated:YES];
+    }
+    if([ID  isEqual: @"gn_0010"]){
+        self.realtime = [[realtimeViewController alloc] init];
+        [self.navigationController pushViewController:self.realtime animated:YES];
+    }
+    if([ID  isEqual: @"gn_0001"]){
+        self.productionReport = [[ProductionReportViewController alloc] init];
+        [self.navigationController pushViewController:self.productionReport animated:YES];
+    }
+    if([ID  isEqual: @"gn_0003"]){
+        self.totalAmount = [[totalAmountViewController alloc] init];
+        [self.navigationController pushViewController:self.totalAmount animated:YES];
+    }
+    if([ID  isEqual: @"gn_0004"]){
+        self.excessiveWarinng = [[excessiveWarinngViewController alloc] init];
+        [self.navigationController pushViewController:self.excessiveWarinng animated:YES];
+    }
+    if([ID  isEqual: @"gn_0008"]){
+        self.unusualReport = [[unusualReportViewController alloc] init];
+        [self.navigationController pushViewController:self.unusualReport animated:YES];
+    }
+    
+    
+    
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -132,12 +152,8 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    if ([logintype  isEqual: @"1"]) {
-         return 7;
-    }else{
-        return 3;
-    }
-   
+    return self.dataarr.count;
+    
 }
 
 
@@ -145,46 +161,28 @@
 {
     attentionCollectionViewCell *cell = [self.cillection dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     if (cell) {
-        if ([logintype  isEqual: @"1"]) {
-            switch (indexPath.row) {
-                case 0:
-                    cell.img.image = [UIImage imageNamed:@"zongliangjiankong"];
-                    break;
-                case 1:
-                    cell.img.image = [UIImage imageNamed:@"chaobiaoyujing"];
-                    break;
-                case 2:
-                    cell.img.image = [UIImage imageNamed:@"yichangbaogao"];
-                    break;
-                case 3:
-                    cell.img.image = [UIImage imageNamed:@"chaobiaobaogao"];
-                    break;
-                case 4:
-                    cell.img.image = [UIImage imageNamed:@"shishibaojing"];
-                    break;
-                case 5:
-                    cell.img.image = [UIImage imageNamed:@"shishigongyitu"];
-                    break;
-                case 6:
-                    cell.img.image = [UIImage imageNamed:@"shengchanbaobiao"];
-                    break;
-                default:
-                    break;
-            }
-        }else{
-            switch (indexPath.row) {
-                case 0:
-                    cell.img.image = [UIImage imageNamed:@"zongliangjiankong"];
-                    break;
-                case 1:
-                    cell.img.image = [UIImage imageNamed:@"chaobiaobaogao"];
-                    break;
-                case 2:
-                    cell.img.image = [UIImage imageNamed:@"shishibaojing"];
-                    break;
-                default:
-                    break;
-            }
+        NSDictionary *dic = self.dataarr[indexPath.row];
+        NSString *ID = dic[@"afr_id"];
+        if([ID  isEqual: @"gn_0009"]){
+            cell.img.image = [UIImage imageNamed:@"chaobiaobaogao"];
+        }
+        if([ID  isEqual: @"gn_0011"]){
+            cell.img.image = [UIImage imageNamed:@"shishigongyitu"];
+        }
+        if([ID  isEqual: @"gn_0010"]){
+            cell.img.image = [UIImage imageNamed:@"shishibaojing"];
+        }
+        if([ID  isEqual: @"gn_0001"]){
+            cell.img.image = [UIImage imageNamed:@"shengchanbaobiao"];
+        }
+        if([ID  isEqual: @"gn_0003"]){
+            cell.img.image = [UIImage imageNamed:@"zongliangjiankong"];
+        }
+        if([ID  isEqual: @"gn_0004"]){
+            cell.img.image = [UIImage imageNamed:@"chaobiaoyujing"];
+        }
+        if([ID  isEqual: @"gn_0008"]){
+            cell.img.image = [UIImage imageNamed:@"yichangbaogao"];
         }
     }
     
@@ -209,13 +207,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

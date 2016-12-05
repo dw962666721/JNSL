@@ -20,8 +20,13 @@
     self.selectedDate = [NSDate date];
     [self addViews];
     [self update];
-    [self toLastMonth];
-    [self toNextMonth];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self toLastMonth];
+            [self toNextMonth];
+        });
+    });
+    
     // Do any additional setup after loading the view.
 }
 -(void)addViews

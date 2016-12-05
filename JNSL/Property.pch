@@ -70,6 +70,7 @@
 #define nianduzongliangURL @"/a/Users/wangjiang/Downloads/yizhangtong-PingAn-release-47.apkndroidAlarmRecordInfoAction!getAlarmPollTotal.action"
 #define zhexianURL @"/androidPreAlarmAction!getDayTotalEmissionForChart.action"
 #define shishiURL @"/androidAlarmRecordInfoAction!getAlarmSixWarningListByUserIdV2.action"
+#define gongnengquanxianURL @"/androidAlarmRecordInfoAction!getFunctionRollMsg.action"
 
 #define screenHeight  ([UIScreen mainScreen].bounds.size.height)
 #define screenWidth  ([UIScreen mainScreen].bounds.size.width)
