@@ -212,7 +212,7 @@
             userInfoJNSL.userIcon = [userInfo objectForKey:@"userIcon"]==nil?@"":[userInfo objectForKey:@"userIcon"];
             userInfoJNSL.rollName = [userInfo objectForKey:@"rollName"]==nil?@"":[userInfo objectForKey:@"rollName"];
             userInfoJNSL.email = [userInfo objectForKey:@"email"]==nil?@"":[userInfo objectForKey:@"email"];
-            userInfoJNSL.phoneNum = [userInfo objectForKey:@"phoneNum"]==nil?@"":[json objectForKey:@"phoneNum"];
+            userInfoJNSL.phoneNum = [userInfo objectForKey:@"phoneNum"]==nil?@"":[userInfo objectForKey:@"phoneNum"];
             userInfoJNSL.pollSourceId = [userInfo objectForKey:@"pollSourceId"]==nil?@"":[userInfo objectForKey:@"pollSourceId"];
             userInfo[@"ip"] = userInfoJNSL.ip;
             [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"JNSL"];

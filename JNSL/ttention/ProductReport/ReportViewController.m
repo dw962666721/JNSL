@@ -71,16 +71,16 @@
 }
 -(NSString*)getUrl:(BOOL)type
 {
-    NSString *url = [NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,GetReportURL];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@%@",userInfoJNSL.ip,GetReportURL,@"?reportDate=",self.dayStr];
     return url;
 }
 //加载数据
 -(void)loadData:(BOOL)type{
-    NSMutableDictionary *dict = [self getDict:type];
+//    NSMutableDictionary *dict = [self getDict:type];
     
     NSString *urlstr = [self getUrl:type];
     
-    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,urlstr] parameters:dict success:^(id responseObject) {
+    [AFNetworkTool postJSONWithUrl:[NSString stringWithFormat:@"%@%@",userInfoJNSL.ip,urlstr] parameters:nil success:^(id responseObject) {
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSString *result = [json objectForKey:@"resultCode"];
         if ([result isEqual:@"true"]) {
