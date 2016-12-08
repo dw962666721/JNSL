@@ -192,7 +192,6 @@
         }
     currentFilename = filename;
     currentIndexpath = indexpath;
-        //NSString *fileurl = @"http://farm6.staticflickr.com/5505/9824098016_0e28a047c2_b_d.jpg";
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         self.cancellableTask = [self.currentSession downloadTaskWithRequest:request];
         [self.cancellableTask resume];
@@ -237,13 +236,14 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
         //回到主线程进行本地视频播放
         dispatch_async(dispatch_get_main_queue(), ^{
             //成功
-            [MBProgressHUD showError:@"成功"];
+            //[MBProgressHUD showError:@"成功"];
+            [self endProgress];
             //刷新表格
             NSArray *arr = [[NSArray alloc] initWithObjects:currentIndexpath, nil];
             [self.DataTable reloadRowsAtIndexPaths:arr withRowAnimation:UITableViewRowAnimationMiddle];
         });
     }
-    [self endProgress];
+    
 }
 
 
