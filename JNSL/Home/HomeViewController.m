@@ -306,7 +306,7 @@
                 self.allView.backgroundColor = RGBA(65, 0, 255, 1);
                 [viewBack addSubview:self.allView];
                 // 添加数值
-                self.allValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
+                self.allValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 15)];
                 self.allValueLb.textColor = [UIColor blackColor];
                 self.allValueLb.textAlignment = NSTextAlignmentCenter;
                 self.allValueLb.font = [UIFont systemFontOfSize:15];
@@ -319,7 +319,7 @@
                 self._1View.backgroundColor = RGBA(65, 0, 255, 1);
                 [viewBack addSubview:self._1View];
                 // 添加数值
-                self._1ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
+                self._1ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 15)];
                 self._1ValueLb.textColor = [UIColor blackColor];
                 self._1ValueLb.textAlignment = NSTextAlignmentCenter;
                 self._1ValueLb.font = [UIFont systemFontOfSize:15];
@@ -332,7 +332,7 @@
                 self._2View.backgroundColor = RGBA(65, 0, 255, 1);
                 [viewBack addSubview:self._2View];
                 // 添加数值
-                self._2ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 10)];
+                self._2ValueLb = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, viewBack.frame.size.width, 15)];
                 self._2ValueLb.textColor = [UIColor blackColor];
                 self._2ValueLb.textAlignment = NSTextAlignmentCenter;
                 self._2ValueLb.font = [UIFont systemFontOfSize:15];
@@ -674,10 +674,10 @@
 
 -(void)look1
 {
-    if (self.detailVC1==nil) {
+//    if (self.detailVC1==nil) {
         self.detailVC1 = [[HomeDetailViewController alloc] init];
         [self.detailVC1 setVCType:0];
-    }
+//    }
     [self.navigationController pushViewController:self.detailVC1 animated:YES];
 }
 -(void)lookAll
@@ -690,10 +690,10 @@
 }
 -(void)look2
 {
-    if (self.detailVC2==nil) {
+//    if (self.detailVC2==nil) {
         self.detailVC2 = [[HomeDetailViewController alloc] init];
         [self.detailVC2 setVCType:2];
-    }
+//    }
     [self.navigationController pushViewController:self.detailVC2 animated:YES];
 }
 -(void)writeData
