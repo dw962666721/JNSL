@@ -16,6 +16,7 @@
 }
 -(void)layoutSubviews
 {
+    [super layoutSubviews];
     [self addViews];
 }
 -(void)addViews
